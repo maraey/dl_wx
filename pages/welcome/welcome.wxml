@@ -1,0 +1,7 @@
+<view class="welcome">
+  <image src="../../static/images/welcome@2x.png" class="wel_img"></image>
+  <view class="tittle">欢迎使用共享充电宝代理系统</view>
+  <navigator class="btn" url="/pages/login/login">
+    <text class="btn_text">立即进入</text>
+  </navigator>
+</view>

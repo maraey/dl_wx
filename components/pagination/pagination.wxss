@@ -1,0 +1,78 @@
+.pagination {
+  width: 690rpx;
+  height: 56rpx;
+  margin: 0 auto;
+}
+
+.pagination .wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination .wrap .firstOrLast {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #1D2129;
+}
+
+.pagination .wrap .previous {
+  margin: 0 16rpx 0 20rpx;
+}
+
+.pagination .wrap .next {
+  margin: 0 20rpx 0 16rpx;
+}
+
+.pagination .wrap .previousOrNext {
+  width: 56rpx;
+  height: 56rpx;
+}
+
+.pagination .wrap .image {
+  width: 56rpx;
+  height: 56rpx;
+}
+
+.pagination .wrap .list {
+  height: 56rpx;
+  width: 270rpx;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #333333;
+  white-space: nowrap;
+}
+
+.pagination .wrap .list .item {
+  width: 56rpx;
+  height: 56rpx;
+  text-align: center;
+  line-height: 56rpx;
+  background: #F7F8FA;
+
+}
+
+.pagination .wrap .list .itemWrap {
+  display: inline-block;
+}
+
+.pagination .wrap .list .itemWrap+.itemWrap {
+  margin-left: 19rpx;
+}
+
+.pagination .wrap .list .select {
+  background: #E8F3FF;
+  color: #3D82FF;
+}
+
+.pagination .wrap .total {
+  width: 118rpx;
+  height: 56rpx;
+  margin-right: 20rpx;
+  text-align: center;
+  line-height: 56rpx;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #1D2129;
+  background: #F2F3F5;
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "tabBar": "/components/tabBar/tabBar",
+    "datePicker":"/components/datePicker/datePicker"
+  }
+}

@@ -1,0 +1,17 @@
+<view class="resetPsw">
+  <view>
+    <view class="inputWrap">
+      <view class="title">旧密码</view>
+      <input class="input" type="text" placeholder="请输入旧密码" placeholder-class="phcolor" bindinput="handleOld"/>
+    </view>
+    <view class="inputWrap">
+      <view class="title">新密码</view>
+      <input class="input" type="password" placeholder="请输入新密码" placeholder-class="phcolor" bindinput="handleNew"/>
+    </view>
+    <view class="inputWrap">
+      <view class="title">确认新密码</view>
+      <input class="input" type="password" placeholder="请输入密码（密码为英文字母与数字组成）" placeholder-class="phcolor" bindinput="handleConfirm"/>
+    </view>
+    <view class="btn" bindtap="sub">保存</view>
+  </view>
+</view>

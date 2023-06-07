@@ -1,0 +1,55 @@
+<view class="end_order">
+  <view class="end_order_box">
+    <view class="end_order_box_title">订单信息</view>
+    <view class="end_order_box_item">
+      <text class="end_order_box_text">订单编号：</text>
+      <text class="end_order_box_text">{{info.order_no}}</text>
+    </view>
+    <view class="end_order_box_item">
+      <text class="end_order_box_text">租借时间：</text>
+      <text class="end_order_box_text">{{info.start_time}}</text>
+    </view>
+    <view class="end_order_box_item">
+      <text class="end_order_box_text">消费金额：</text>
+      <text class="end_order_box_text">{{info.amount}}</text>
+    </view>
+    <view class="end_order_box_item">
+      <text class="end_order_box_text">使用时长：</text>
+      <text class="end_order_box_text">{{info.use_time}}</text>
+    </view>
+    <view class="end_order_box_item">
+      <text class="end_order_box_text">收费标准：</text>
+      <text class="end_order_box_text">{{info.billing}}</text>
+    </view>
+  </view>
+  <view class="end_order_box">
+    <view class="end_order_box_text">扣除金额</view>
+    <view class="end_order_box_input">
+      <input class="input" type="text" value="{{amount}}" placeholder-class="phcolor" placeholder="请输入需扣除金额" bindinput="amount" />
+    </view>
+    <view class="end_order_box_text">备注</view>
+    <view class="end_order_box_textarea">
+      <textarea class="textarea" placeholder-class="phcolor" value="{{remark}}" placeholder="请输入备注" bindinput="remark"></textarea>
+    </view>
+    <view class="is_return">
+      <view class="end_order_box_text" style="margin-bottom: 0;">是否归还</view>
+      <view class="is_return_radio">
+        <radio-group class="is_return_radio_group" bindchange="changeRadio">
+          <label class="radio_group">
+            <view class="radio">
+              <radio color="#3D82FF" value="{{0}}" checked="{{is_lose==0}}"/>
+            </view>
+            <text class="radio_group_text">已归还</text>
+          </label>
+          <label class="radio_group">
+            <view class="radio">
+              <radio color="#3D82FF" value='1' checked="{{is_lose==1}}"/>
+            </view>
+            <text class="radio_group_text" >未归还</text>
+          </label>
+        </radio-group>
+      </view>
+    </view>
+  </view>
+  <view class="end_btn" bindtap="end">结束订单</view>
+</view>

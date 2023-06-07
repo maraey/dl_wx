@@ -1,0 +1,6 @@
+<view class="tips" bindtap="isShow">
+  <view class="tips_text" wx:if="{{isShow}}">
+    <view><slot></slot></view>
+  </view>
+  <image class="image" src="../../static/images/tips.png"></image>
+</view>

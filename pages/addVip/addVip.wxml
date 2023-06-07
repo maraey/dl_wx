@@ -1,0 +1,157 @@
+<wxs src="../../utils/utils.wxs" module="utils" />
+<view class="addVip">
+  <view class="box">
+    <view class="item">
+      <view class="title">优惠方式</view>
+      <view class="info">
+        <radio-group class="radio_group" bindchange="bindType">
+          <label class="radio_group_label">
+            <view class="radio_group_label_radio">
+              <radio color="#3D82FF" value="2" checked="{{type==2}}" />
+            </view>
+            <view class="radio_group_text">免费</view>
+          </label>
+          <label class="radio_group_label">
+            <view class="radio_group_label_radio">
+              <radio color="#3D82FF" value="1" checked="{{type==1}}" />
+            </view>
+            <view class="radio_group_text">打折</view>
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view class="item" wx:if="{{type==1}}">
+      <view class="title">折扣</view>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="info">
+          <text class="text" wx:if="{{!index}}">折</text>
+          <text class="text" style="color: #333;" wx:if="{{index}}">{{array[index]}}</text>
+        </view>
+      </picker>
+    </view>
+    <view class="item" wx:if="{{utils.indexOf(device_types,'wired')!=-1&&type==2}}">
+      <view class="title">充电线免费次数</view>
+      <view class="info">
+        <input class="input" type="number" placeholder-class="phcolor" placeholder="次" value="{{wired_free}}" bindinput="handleWired"/>
+      </view>
+    </view>
+    <view class="item" >
+      <view class="title">充电宝免费规则</view>
+      <view class="info" bindtap="openPopup">
+        <text class="text"
+          wx:if="{{!confirmData.powerbank_free&&!confirmData.powerbank_num&&!confirmData.powerbank_every_time}}">次数/时长</text>
+        <text class="text" style="color: #333;"
+          wx:if="{{!confirmData.powerbank_free&&confirmData.powerbank_num&&confirmData.powerbank_every_time}}">{{confirmData.powerbank_num}}次{{confirmData.powerbank_every_time}}分钟</text>
+        <text class="text" style="color: #333;"
+          wx:if="{{confirmData.powerbank_free&&!confirmData.powerbank_every_time}}">{{confirmData.powerbank_free}}分钟</text>
+        <image class="image" src="../../static/images/more_down.png"></image>
+      </view>
+    </view>
+    <view class="item" wx:if="{{!info.name}}">
+      <view class="title">选择门店</view>
+      <view class="info" bindtap="bindSeller">
+        <text class="text" wx:if="{{selectedSellerList.length==0}}">请选择门店</text>
+        <text class="text" style="color: #333;" wx:if="{{selectedSellerList.length>0}}">已选择{{selectedSellerList.length}}位门店</text>
+        <image class="image" src="../../static/images/more_down.png"></image>
+      </view>
+    </view>
+    <!-- <view class="item" wx:if="{{info.name}}">
+      <view class="title">选择门店</view>
+      <view class="info">
+        <text class="text" style="color: #333;">已选择{{info.name}}门店</text>
+      </view>
+    </view>
+    <view class="item" wx:if="{{info.member_id}}">
+      <view class="title">查找会员</view>
+      <view class="info">
+        <input class="input" disabled type="number" placeholder-class="phcolor" placeholder="输入会员ID" value="{{info.member_id}}"/>
+      </view>
+    </view> -->
+    <view class="item" wx:if="{{!info.member_id}}">
+      <view class="title">查找会员</view>
+      <view class="info">
+        <input class="input" disabled="{{disabled}}" type="number" placeholder-class="phcolor" placeholder="输入会员ID" value="{{member_id}}" bindinput="handleUserId" />
+        <text class="search_btn" bindtap="searchUser" wx:if="{{!disabled}}">查询</text>
+        <text class="search_delete" bindtap="searchDelete" wx:if="{{disabled}}">删除</text>
+      </view>
+      <view class="vip_info_box" wx:if="{{showSearch}}">
+        <view class="vip_info">
+          <image class="vip_face" src="{{user_info.avatar}}"></image>
+          <text class="vip_name">{{user_info.nick}}</text>
+        </view>
+        <view class="vip_confirm" bindtap="vipConfirm">确认</view>
+      </view>
+    </view>
+  </view>
+  <view class="btn" bindtap="sub" wx:if="{{editType==0}}">
+    添加
+  </view>
+  <view class="btn" bindtap="edit1" wx:if="{{editType==1}}">
+    修改
+  </view>
+  <view class="btn" bindtap="edit2" wx:if="{{editType==2}}">
+    修改
+  </view>
+  <popup wx:if="{{showPopup}}" bindclose="closePopup">
+    <!-- 充电宝 -->
+    <view class="popup_wrap">
+      <view class="popup_title">
+        <view class="popup_title_left">充电宝免费规则</view>
+        <view class="popup_confirm" bindtap="confirmRule">确定</view>
+      </view>
+      <view class="popup_line"></view>
+      <view class="popup_list">
+        <view class="popup_item">
+          <view class="popup_item_left">
+            <text>免费规则</text>
+            <text class="popup_red">*</text>
+          </view>
+          <view class="popup_item_right" style="justify-content: flex-end;">
+            <radio-group class="radio_group" bindchange="selectType">
+              <label class="radio_box">
+                <view class="radio">
+                  <radio color="#3D82FF" value="1" checked="{{powerbank_type==1}}" />
+                </view>
+                <text>次数</text>
+              </label>
+              <label class="radio_box">
+                <view class="radio">
+                  <radio color="#3D82FF" value="2" checked="{{powerbank_type==2}}" />
+                </view>
+                <text>时长</text>
+              </label>
+            </radio-group>
+          </view>
+        </view>
+        <view class="popup_item" wx:if="{{powerbank_type==1}}">
+          <view class="popup_item_left" style="width: 260rpx;">
+            <text>充电宝每日免费次数</text>
+          </view>
+          <view class="popup_item_right">
+            <input class="input" type="text" value="{{confirmData.powerbank_num}}" bindinput="batteryNUm"
+              placeholder-class="phcolor" placeholder="次" />
+          </view>
+        </view>
+        <view class="popup_item" wx:if="{{powerbank_type==1}}">
+          <view class="popup_item_left">
+            <text>每次免费时长</text>
+          </view>
+          <view class="popup_item_right">
+            <input class="input" type="text" value="{{confirmData.powerbank_every_time}}" bindinput="batteryEveryTime"
+              placeholder-class="phcolor" placeholder="分钟" />
+          </view>
+        </view>
+        <view class="popup_item" wx:if="{{powerbank_type==2}}">
+          <view class="popup_item_left">
+            <text>充电宝总免费时长</text>
+          </view>
+          <view class="popup_item_right">
+            <input class="input" type="text" value="{{confirmData.powerbank_free}}" bindinput="batteryFree"
+              placeholder-class="phcolor" placeholder="分钟" />
+          </view>
+        </view>
+      </view>
+    </view>
+  </popup>
+  <bindSeller bindcancle="cancleSeller" bindselected="selectSeller" selectedList="{{selectedSellerList}}" wx:if="{{bindSeller}}"></bindSeller>
+</view>

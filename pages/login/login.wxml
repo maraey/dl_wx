@@ -1,0 +1,39 @@
+<!-- 
+<view id="login">
+  <image class="login_bg" src="/static/bg.png"></image>
+  <view class="loginList">
+    <view class="logo">
+      <view class="logoimg">用户登录</view>
+    </view>
+    <view class="phone">
+      <image class="phoneIc" src="/static/ic_phone.png"></image>
+      <input type="text" placeholder="请输入手机号" placeholder-class="placeholderClass" maxlength="20" bindinput="handlePhone"></input>
+    </view>
+
+    <view class="phone">
+      <image class="phoneIc" src="/static/ic_yanzheng.png"></image>
+      <input type="password" placeholder="请输入密码" placeholder-class="placeholderClass" maxlength="20" bindinput="handlePassword"></input>
+    </view>
+    <navigator class="forgetPassword" url="/pages/forgetPassword/forgetPassword">忘记密码</navigator>
+    <button class="signIn" bindtap="login">登录</button>
+  </view>
+</view> -->
+<view class="login">
+  <view class="top">
+    <image class="image" src="../../static/images/Frame@2x.png"></image>
+    <view class="text">欢迎使用富立共享代理系统</view>
+  </view>
+  <view class="bottom">
+    <view class="input">
+      <input type="text" placeholder="请输入手机号" value="{{phone}}" data-name="phone" placeholder-class="placeholderClass" maxlength="20" bindinput="handlePhone"/>
+    </view>
+    <view class="input">
+      <input type="password" placeholder="请输入密码" value="{{password}}"  
+      data-name="password" placeholder-class="placeholderClass" maxlength="20" bindinput="handlePsw"></input>
+    </view>
+    <view class="forget">
+      <!-- <navigator class="forgetPassword" url="/pages/forgetPassword/forgetPassword">忘记密码</navigator> -->
+    </view>
+    <view class="loginbtn" bindtap="login">立即登录</view>
+  </view>
+</view>

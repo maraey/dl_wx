@@ -1,0 +1,24 @@
+<view class="pagination">
+  <view class="wrap">
+    <view class="firstOrLast" bindtap="bindFirst">首页</view>
+    <view class="previousOrNext previous" bindtap="previous">
+      <image class="image" src="../../static/images/previous.png"></image>
+    </view>
+    <!-- <view class="list">
+      <view class="itemWrap" wx:for="{{pageNum}}" wx:key="index" data-index="{{index+1}}" bindtap="bindPage">
+        <view class="item {{page==index+1?'select':''}}">{{index+1}}</view>
+      </view>
+    </view> -->
+    <scroll-view scroll-x class="list" scroll-into-view="{{scrollInto}}">
+      <view class="itemWrap" id="{{'id'+(index+1)}}" wx:for="{{pageNum}}" wx:key="index" data-index="{{index+1}}" bindtap="bindPage">
+        <view class="item {{page==index+1?'select':''}}">{{index+1}}</view>
+      </view>
+    </scroll-view>
+
+    <view class="previousOrNext next" bindtap="next">
+      <image class="image" src="../../static/images/next.png"></image>
+    </view>
+    <view class="total">共{{pageNum.length}}页</view>
+    <view class="firstOrLast" bindtap="bindLast">尾页</view>
+  </view>
+</view>

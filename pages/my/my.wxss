@@ -1,0 +1,307 @@
+.my {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30rpx 30rpx 0 30rpx;
+  background: #F8F8F8;
+  height: 100vh;
+}
+
+.my .user_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 690rpx;
+}
+
+.my .user_info .info{
+    display: flex;
+    align-items: center;
+    width: 500rpx;
+}
+
+.my .user_info .info .ava_img{
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.my .user_info .info .name_info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 30rpx;
+  height: 100rpx;
+}
+
+.my .user_info .info .name_info .date_info{
+  height: 40rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #9B9FA7;
+  line-height: 33rpx;
+}
+
+.my .user_info .info .name_info .name_role{
+  display: flex;
+  height: 44rpx;
+}
+
+.my .user_info .info .name_info .name_role .name_text{
+  height: 44rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #2F3B4E;
+  line-height: 38rpx;
+}
+
+.my .user_info .info .name_info .name_role .role{
+  margin-left: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80rpx;
+  height: 40rpx;
+  background: #6EB7FF;
+  border-radius: 8rpx 8rpx 8rpx 8rpx;
+  opacity: 1;
+}
+
+.my .user_info .info .name_info .name_role .role .role_text{
+  height: 28rpx;
+  font-size: 23rpx;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 23rpx;
+}
+
+.my .user_info .out_img{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.my .user_info .welcome {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  line-height: 42rpx;
+}
+
+.my .user_info .log_out {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 84rpx;
+  height: 42rpx;
+  margin: 0;
+  padding: 0;
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #FFFFFF;
+  background: #F0513A;
+  border-radius: 4rpx
+}
+
+.my .account_info {
+  width: 690rpx;
+  margin: 30rpx 0;
+  padding: 36rpx 32rpx;
+  background: #FFFFFF;
+  box-shadow: 0rpx 4rpx 12rpx 0rpx rgba(61, 130, 255, 0.1);
+  border-radius: 8rpx;
+  box-sizing: border-box;
+}
+
+.my .account_info .line{
+  width: 626rpx;
+  height: 2rpx;
+  background: #EDF0F4;
+  border-radius: 0rpx 0rpx 0rpx 0rpx;
+  opacity: 1;
+}
+
+.my .account_info .text {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(51, 51, 51, .5);
+  line-height: 40rpx;
+}
+
+.my .account_info .amount {
+  margin-top: 10rpx;
+  font-size: 48rpx;
+  font-weight: 500;
+  color: #333333;
+  line-height: 58rpx;
+}
+
+.my .account_info .amount_small {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333333;
+  line-height: 34rpx;
+}
+
+.my .account_info .account_info_top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+
+.my .account_info .account_info_top .account_info_top_item {
+  display: flex;
+  flex-direction: column;
+  width: 300rpx;
+}
+
+.my .account_info .account_info_top .line {
+  height: 48rpx;
+  margin: 0 80rpx;
+  border-left: 2rpx solid rgba(0, 0, 0, 0.1);
+}
+
+.my .account_info .account_info_top .amount {
+  height: 58rpx;
+  font-size: 48rpx;
+  font-weight: 500;
+  color: #333333;
+  line-height: 58rpx;
+}
+
+.my .account_info .account_info_bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40rpx;
+}
+
+.my .account_info .account_info_bottom .account_info_bottom_item {
+  display: flex;
+  flex-direction: column;
+}
+
+.my .account_info .account_info_bottom .account_info_bottom_item .text {
+  margin-bottom: 4rpx;
+}
+
+.my .title {
+  margin-left: 30rpx;
+  margin-bottom: 24rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  line-height: 44rpx;
+}
+
+.my .something{
+  padding: 30rpx 0rpx;
+  width: 686rpx;
+  margin-bottom: 42rpx;
+  background: #FFFFFF;
+  border-radius: 16rpx 16rpx 16rpx 16rpx;
+  opacity: 1;
+}
+
+.my .else {
+  margin: 8rpx 0 30rpx 0;
+}
+
+.my .lists {
+  display: flex;
+  flex-wrap: wrap;
+  width: 690rpx;
+}
+
+.my .lists .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 25%;
+}
+
+.my .lists .item .image_wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 18rpx;
+}
+
+.my .lists .item .image_wrap .image{
+  width: 80rpx;
+  height: 80rpx;
+}
+
+
+.my .lists .item .text {
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #333333;
+  line-height: 36rpx;
+}
+
+.my .scroll{
+  position: relative;
+  padding: 30rpx 0rpx;
+  width: 686rpx;
+  height: 240rpx;
+  margin-bottom: 42rpx;
+  background: #FFFFFF;
+  border-radius: 16rpx 16rpx 16rpx 16rpx;
+  opacity: 1;
+}
+.my .scroll .scroll_lists{
+  width: 96%;
+  height: 260rpx;
+  white-space: nowrap;
+  margin: 0 auto;
+}
+.my .scroll .scroll_lists .scroll_item{
+  width: 170rpx;
+  height: 80rpx;
+  line-height: 56rpx;
+  display: inline-block;
+  text-align: center;
+}
+
+.my .scroll .scroll_lists .scroll_item .image_wraps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 46rpx;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.my .scroll .scroll_lists .scroll_item .text {
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #333333;
+  line-height: 36rpx;
+}
+
+.my .scroll .show_line{
+  position: absolute;
+  left: 45%;
+  bottom: 30rpx;
+  display: flex;
+  align-items: center;
+  height: 10rpx;
+}
+
+.my .scroll .show_line .line_left{
+  width: 32rpx;
+  height: 8rpx;
+  background: #3D82FF;
+  border-radius: 8rpx 8rpx 8rpx 8rpx;
+  opacity: 1;
+}
+
+.my .scroll .show_line .line_right{
+  width: 32rpx;
+  height: 8rpx;
+  background: #3D82FF;
+  border-radius: 8rpx 8rpx 8rpx 8rpx;
+  opacity: 0.3;
+}

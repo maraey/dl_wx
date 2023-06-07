@@ -1,0 +1,130 @@
+<view class="batteryDevice">
+  <view class="wrap">
+    <view class="screen_bar" wx:if="{{info.role!='seller'&&info.role!='introducer'}}">
+      <view class="screen_title_wrap" data-type="online" bindtap="selectScreen">
+        <text class="screen_title {{selectType == 'online'?'screen_title_select':''}}">{{status_text}}</text>
+        <view class="{{selectType == 'online'?'screen_triangle_select':'screen_triangle'}}"></view>
+      </view>
+      <view class="screen_title_wrap select" data-type="my" bindtap="selectScreen" wx:if="{{info.role=='agent'}}">
+        <text class="screen_title {{selectType == 'my'?'screen_title_select':''}}">{{is_sub?'下级数据':'我的数据'}}</text>
+        <view class="{{selectType == 'my'?'screen_triangle_select': 'screen_triangle'}}"></view>
+      </view>
+      <view class="screen_title_wrap" data-type="screen" bindtap="selectScreen">
+        <text class="screen_title {{selectType == 'screen'?'screen_title_select':''}}">筛选</text>
+        <view class="{{selectType == 'screen'?'screen_triangle_select':'screen_triangle'}}"></view>
+      </view>
+    </view>
+    <view class="screen_bar role_seller" wx:if="{{info.role=='seller'||info.role=='introducer'}}">
+      <view class="screen_title_wrap" data-type="screen" bindtap="selectScreen">
+        <text class="screen_title screen_title_select">筛选</text>
+          <image class="image" src="/static/images/shaixuan.png"></image>
+      </view>
+    </view>
+  </view>
+  <view>
+    <view class="device_status_number">
+      <text>{{status_text}}</text>
+      <text>设备:{{total}}台</text>
+    </view>
+  </view>
+
+  <view>
+    <scroll-view scroll-y class="batteryDevice_list" bindscrolltolower="scrolltolower">
+      <view class="batteryDevice_item" wx:for="{{list}}" wx:key="index" wx:if="{{list.length>0}}">
+        <view class="device_id_box">
+          <text class="device_id">设备二维码：{{item.qrcode}}</text>
+          <text class="copy" data-id="{{item.qrcode}}" bindtap="copy">复制</text>
+        </view>
+        <view class="bind_seller_box">
+          <text>所属门店：</text>
+          <text class="seller_name">{{item.seller_name}}</text>
+          <text class="bind_seller" data-id="{{item.qrcode}}" wx:if="{{!item.seller_name&&item.can_edit}}" bindtap="bindSeller">点击选择门店</text>
+          <text class="unbind_seller" data-id="{{item.qrcode}}" bindtap="unbindSeller" wx:if="{{item.seller_name&&item.can_edit}}">解绑</text>
+        </view>
+        <view class="agency_box" wx:if="{{item.sub_role}}">
+          <text>{{item.sub_role}}</text>
+          <text class="agency_name">{{item.sub_name}}</text>
+        </view>
+        <view class="options_box">
+          <view class="options">
+            
+            <view class="option_bind" wx:if="{{!item.sub_id&&item.can_edit}}" data-id="{{item.qrcode}}" bindtap="bindAgency">绑定代理</view>
+            <view class="option_unbind" wx:if="{{item.sub_id&&item.can_edit}}" data-id="{{item.qrcode}}" bindtap="changeAgency">更换代理</view>
+            <view class="options_detail" data-id="{{item.qrcode}}" bindtap="setError" wx:if="{{!item.is_fault&&info.role=='agent'}}">设为故障</view>
+            <view class="options_detail resetError" data-id="{{item.qrcode}}" bindtap="resetError" wx:if="{{item.is_fault&&info.role!='seller'&&info.role!='introducer'}}">取消故障</view>
+          </view>
+        </view>
+      </view>
+      <view class="nodata" wx:if="{{list.length==0}}">
+        <image class="nodataImg" src="../../static/images/nodata.png"></image>
+        <view class="nodataText">暂无数据</view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="popup" wx:if="{{showPopup}}" bindtap="closePopup">
+    <view class="popup_box" catchtap="stop">
+      <view wx:if="{{selectType=='online'}}">
+        <view class="popup_box_title">
+          状态选择
+        </view>
+        <view class="popup_box_options">
+          <!-- <view class="popup_box_option {{screenStatus=='all'?'popup_box_option_select':''}}" data-type="all" catchtap="selectScreenStatus">全部</view> -->
+          <view class="popup_box_option {{screenStatus=='bind'?'popup_box_option_select':''}}" data-type="bind" catchtap="selectScreenStatus">已绑</view>
+          <view class="popup_box_option {{screenStatus=='unbind'?'popup_box_option_select':''}}" data-type="unbind" catchtap="selectScreenStatus">未绑</view>
+          <view class="popup_box_option {{screenStatus=='fail'?'popup_box_option_select':''}}" data-type="fail" catchtap="selectScreenStatus">故障</view>
+        </view>
+      </view>
+      <view wx:if="{{selectType=='my'}}">
+        <view class="popup_box_title">
+          数据选择
+        </view>
+        <view class="popup_box_options">
+          <view class="popup_box_option {{screenMy?'':'popup_box_option_select'}}" data-type="my" catchtap="selectScreenMy">我的数据</view>
+          <view class="popup_box_option {{screenMy?'popup_box_option_select':''}}" data-type="sub" catchtap="selectScreenMy">下级数据</view>
+        </view>
+      </view>
+      <view wx:if="{{selectType=='screen'}}">
+        <view class="popup_box_screen">
+          <view class="popup_box_title">
+            设备二维码
+          </view>
+          <view class="popup_box_screen_input">
+            <input class="input" type="text" placeholder-class="phcolor" placeholder="请输入设备编号" value="{{keyword}}" bindinput="handleDeviceId" />
+            <image class="image_scan" src="/static/images/scan_mini.png" bindtap="scanBind"></image>
+          </view>
+        </view>
+        <view class="popup_box_screen">
+          <view class="popup_box_title">
+            所属门店
+          </view>
+          <view class="popup_box_screen_input">
+            <input class="input" type="text" placeholder-class="phcolor" placeholder="请输入所属门店" value="{{seller}}" bindinput="handleSeller" />
+          </view>
+        </view>
+        <view class="popup_box_screen" wx:if="{{is_sub&&info.role=='agent'}}">
+          <view class="popup_box_title">
+            代理名称
+          </view>
+          <view class="popup_box_screen_input">
+            <input class="input" type="text" placeholder-class="phcolor" placeholder="请输入代理名称" value="{{agency_name}}" bindinput="handleAgency" />
+          </view>
+        </view>
+        <view class="popup_box_screen" wx:if="{{!is_sub&&info.role=='agent'}}">
+          <view class="popup_box_title">
+            地推名称
+          </view>
+          <view class="popup_box_screen_input">
+            <input class="input" type="text" placeholder-class="phcolor" placeholder="请输入地推名称" value="{{employee_name}}" bindinput="handleEmployee" />
+          </view>
+        </view>
+      </view>
+      <view class="popup_box_line"></view>
+      <view class="popup_box_btn">
+        <view class="popup_box_reset" catchtap="screenReset">重置</view>
+        <view class="popup_box_sub" catchtap="screenSub">确定</view>
+      </view>
+    </view>
+  </view>
+  <bindAgency bindcancle="cancleAgency" bindselected="selectAgency" wx:if="{{bindAgency}}"></bindAgency>
+  <bindSellerDevice bindcancle="cancleSeller" bindselected="selectSeller" wx:if="{{bindSeller}}"></bindSellerDevice>
+</view>

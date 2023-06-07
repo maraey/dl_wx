@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "bindSellerAdjust":"/components/bindSellerAdjust/bindSellerAdjust"
+  },
+  "navigationBarTitleText": "一键调价"
+}

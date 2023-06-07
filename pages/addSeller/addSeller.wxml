@@ -1,0 +1,497 @@
+<wxs src="../../utils/utils.wxs" module="utils" />
+<view class="add_seller" catchtouchmove="{{showPopup?'touchMove':''}}">
+  <view class="add_seller_box">
+    <view class="add_seller_box_title">基础信息</view>
+    <view class="add_seller_list">
+      <view class="add_seller_item">
+        <view class="add_seller_item_title">
+          <text>门店名称</text>
+          <text class="add_seller_item_title_icon">*</text>
+        </view>
+        <view class="add_seller_item_input">
+          <input class="input" type="text" value="{{name}}" bindinput="handleName" placeholder-class="phcolor" placeholder="请输入门店名称" />
+        </view>
+      </view>
+      <view class="add_seller_item">
+        <view class="add_seller_item_title">
+          <text>选择行业</text>
+          <text class="add_seller_item_title_icon">*</text>
+        </view>
+        <view class="add_seller_item_input">
+          <picker mode="multiSelector" bindchange="bindPickerIndustryChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+            <view class="add_seller_item_picker">
+              <view class="picker">
+                <view class="pickerPlaceholder" wx:if="{{!industry_id}}">请选择所在行业</view>
+                <view wx:if="{{industry_id}}">{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}</view>
+              </view>
+              <image class="image" src="../../static/images/more_down.png"></image>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="add_seller_item">
+        <view class="add_seller_item_title">
+          <text>所在区域</text>
+          <text class="add_seller_item_title_icon">*</text>
+        </view>
+        <view class="add_seller_item_input">
+          <picker bindchange="bindPickerRegionChange" mode="region" value="{{pickerRegionIndex}}">
+            <view class="add_seller_item_picker">
+              <view class="picker">
+                <!-- <view class="pickerPlaceholder" wx:if="{{!pickerIndustryIndex}}">请选择省市区</view> -->
+                <view>{{pickerRegionIndex}}</view>
+              </view>
+              <image class="image" src="../../static/images/more_down.png"></image>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="add_seller_item">
+        <view class="add_seller_item_title">
+          <text>经纬度</text>
+          <text class="add_seller_item_title_icon">*</text>
+        </view>
+        <view class="add_seller_item_input" bindtap="changeLoca">
+          <text class="add_seller_item_input_text_placeholder" wx:if="{{!longitude}}">请选择经纬度</text>
+          <view class="add_seller_item_input_value" wx:if="{{longitude}}"><text>{{longitude}},</text>
+            <text>{{latitude}}</text>
+          </view>
+          <view class="add_seller_item_input_text_icon" >
+            <image class="image" src="../../static/images/location.png"></image>
+            <text class="text">地图搜索</text>
+          </view>
+        </view>
+      </view>
+      <view class="add_seller_item">
+        <view class="add_seller_item_title">
+          <text>详细地址</text>
+          <text class="add_seller_item_title_icon">*</text>
+        </view>
+        <view class="add_seller_item_input">
+          <input class="input" type="text" bindinput="handleAddress" value="{{address}}" placeholder-class="phcolor" placeholder="请输入详细地址" />
+        </view>
+      </view>
+      <view class="add_seller_item">
+        <view class="add_seller_item_title">
+          <text>门店账户</text>
+          <text class="add_seller_item_title_icon">*</text>
+        </view>
+        <view class="add_seller_item_input">
+          <text class="add_seller_item_input_text_placeholder" wx:if="{{!seller_select.user_id}}">选择门店负责人</text>
+          <text class="add_seller_item_input_text_placeholder" style="color: #333333;" wx:if="{{seller_select.user_id}}">{{seller_select.name}}</text>
+          <view class="add_seller_item_input_text_icon ">
+            <text class="text text_red" bindtap="clearSellerSelect">清空</text>
+            <view class="line"></view>
+            <text class="text" bindtap="toSelectManager">选择</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="add_seller_item" wx:if="{{app_role!='bd'}}">
+        <view class="add_seller_item_title">
+          <text>地推</text>
+          <text class="add_seller_item_title_icon">*</text>
+        </view>
+        <view class="add_seller_item_input">
+          <text class="add_seller_item_input_text_placeholder" wx:if="{{!bd_select.user_id}}">选择地推</text>
+          <text class="add_seller_item_input_text_placeholder" style="color: #333333;" wx:if="{{bd_select.user_id}}">{{bd_select.name}}</text>
+          <view class="add_seller_item_input_text_icon ">
+            <text class="text text_red" bindtap="clearbdSelect">清空</text>
+            <view class="line"></view>
+            <text class="text" bindtap="toSelectBd">选择</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="add_seller_item" wx:if="{{app_role!='bd'}}">
+        <view class="add_seller_item_title">
+          <text>地推分成</text>
+          <text class="add_seller_item_title_icon">*</text>
+        </view>
+        <view class="add_seller_item_input">
+          <input class="input" type="text" value="{{bd_brokerage}}" bindinput="handleBrokerage_bd" placeholder-class="phcolor" placeholder="请输入地推分成" />
+        </view>
+      </view>
+
+      <view class="add_seller_item">
+        <view class="add_seller_item_title">
+          <text>佣金百分比</text>
+          <text class="add_seller_item_title_icon">*</text>
+        </view>
+        <view class="add_seller_item_input">
+          <input class="input" type="text" value="{{store_brokerage}}" bindinput="handleBrokerage" placeholder-class="phcolor" placeholder="请输入佣金百分比" />
+        </view>
+        <view class="add_seller_item_tips">必须小于所属上级分成比的整数</view>
+      </view>
+      <view class="add_seller_item">
+        <view class="add_seller_item_title">
+          <text>折旧率</text>
+          <!-- <text class="add_seller_item_title_icon">*</text> -->
+        </view>
+        <view class="add_seller_item_input">
+          <input class="input" type="text" value="{{store_rate}}" bindinput="handleBrokerageRate" placeholder-class="phcolor" placeholder="请输入折旧率" />
+        </view>
+        <view class="add_seller_item_tips">门店实际比例为:佣金百分比*折旧率,如70*80=56%</view>
+      </view>
+      <!-- <view class="add_seller_item">
+        <view class="add_seller_item_title">
+          <text>门店列表显示比例</text>
+        </view>
+        <view class="add_seller_item_input">
+          <input class="input" type="text" value="{{brokerage_show}}" bindinput="handleBrokerageShow" placeholder-class="phcolor" placeholder="请输入显示比例" />
+        </view>
+      </view> -->
+      <!-- <view class="add_seller_item">
+        <view class="add_seller_item_title">
+          <text>入场费用</text>
+        </view>
+        <view class="add_seller_item_input">
+          <input class="input" type="text" value="{{cost_amount}}" bindinput="handleCostAmount" placeholder-class="phcolor" placeholder="请输入入场费用" />
+        </view>
+      </view> -->
+    </view>
+  </view>
+  <!-- 中间人 -->
+  <view class="add_seller_box">
+    <view class="add_seller_box_title">
+      <text>渠道商</text>
+      <text class="add_seller_box_title_tips">（如有渠道商请填写）</text>
+    </view>
+    <view class="add_seller_list">
+      <view class="add_seller_item">
+        <view class="add_seller_item_introducer" wx:for="{{introducer}}" wx:key="index">
+          <text class="introducer_text">{{item.name}},分成比: {{item.rate}},折旧费率比: {{item.brokerage}}</text>
+          <text class="introducer_text_red" data-index="{{index}}" bindtap="delIntroducer">删除</text>
+        </view>
+      </view>
+      <view class="add_introducer" data-type="introducer" bindtap="showPopupType">添加中间人</view>
+    </view>
+  </view>
+  <view class="add_seller_box">
+    <view class="add_seller_box_title">
+      <text>计费信息</text>
+    </view>
+    <view class="add_seller_list" wx:if="{{utils.indexOf(login_info_devices,'powerbank')!=-1}}">
+      <view class="add_seller_item_switch">
+        <text class="text">充电宝</text>
+        <view class="switch">
+          <switch color="#3D82FF" checked="{{switchTypeBattery}}" bindchange="isShowInputBattery"></switch>
+        </view>
+      </view>
+      <view class="add_seller_item">
+        <view class="add_seller_item_title">
+          <text>充电宝计费策略</text>
+          <text class="add_seller_item_title_icon">*</text>
+        </view>
+        <view class="add_seller_item_input" data-type="battery" bindtap="showPopupType">
+          <text class="price_placeholder" wx:if="{{isShowPlaceholderBattery}}">请输入计费策略</text>
+          <text class="price" wx:if="{{!isShowPlaceholderBattery}}">{{battery_amount.unit==1?'1小时':'半小时'}}/{{battery_amount.amount}}元|{{battery_amount.freetime}}分钟免费|最高消费{{battery_amount.ceiling}}元</text>
+        </view>
+      </view>
+      <view class="add_seller_item_switch" style="margin-top: 20rpx;" wx:if="{{utils.indexOf(login_info_devices,'wired')!=-1}}">
+        <text class="text">充电线</text>
+        <view class="switch">
+          <switch color="#3D82FF" checked="{{switchTypeLine}}" data-type="line" bindchange="isShowInputLine"></switch>
+        </view>
+      </view>
+      <view class="add_seller_item" wx:if="{{switchTypeLine}}">
+        <view class="add_seller_item_title">
+          <text>充电线计费策略</text>
+        </view>
+        <view class="add_seller_item_input" data-type="line" bindtap="showPopupType">
+          <text class="price_placeholder" wx:if="{{isShowPlaceholderLine}}">计费单位：小时；是；计费时间</text>
+          <text class="price" wx:if="{{!isShowPlaceholderLine}}">
+            <text wx:for="{{wired_amount}}" wx:key="index">{{item.amount?item.amount+'元/'+ item.text +'; ':''}}</text>
+          </text>
+        </view>
+      </view>
+      <view class="add_seller_item_switch" style="margin-top: 20rpx;" wx:if="{{utils.indexOf(login_info_devices,'pile')!=-1}}">
+        <text class="text">充电桩</text>
+        <view class="switch">
+          <switch color="#3D82FF" checked="{{switchTypePile}}" bindchange="isShowInputPile"></switch>
+        </view>
+      </view>
+      <view class="add_seller_item" wx:if="{{switchTypePile}}">
+        <view class="add_seller_item_title">
+          <text>充电桩计费策略</text>
+        </view>
+        <view class="add_seller_item_input" data-type="pile" bindtap="showPopupType">
+          <text class="price_placeholder" wx:if="{{isShowPlaceholderPile}}">电价成本 充电模式 可否刷卡</text>
+          <text class="price" wx:if="{{!isShowPlaceholderPile}}">电价成本{{pile_amount.cost}},{{pile_amount.balance_enable==1?'单次充电,':''}}{{pile_amount.temporary_enable==1?'临时充电,':''}}{{pile_amount.package_enable==1?'包月启用,':''}}{{pile_amount.card_enable==1?'可刷卡,':''}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="add_seller_box">
+    <view class="add_seller_box_title">其他信息</view>
+    <view class="add_seller_list">
+      <view class="add_seller_item">
+        <view class="add_seller_item_title">
+          <text>门店电话</text>
+        </view>
+        <view class="add_seller_item_input">
+          <input class="input" type="text" bindinput="handleTel" value="{{tel}}" placeholder-class="phcolor" placeholder="请输入门店电话" />
+        </view>
+      </view>
+      <view class="add_seller_item">
+        <view class="add_seller_item_title">
+          <text>营业时间</text>
+          <!-- <text class="add_seller_item_title_icon">*</text> -->
+        </view>
+        <view class="picker_time_box">
+          <view class="picker_time">
+            <picker mode="time" value="{{start_time}}" bindchange="bindStartTimeChange">
+              <view class="picker">
+                {{start_time}}
+              </view>
+            </picker>
+            <view class="line"></view>
+            <picker mode="time" value="{{end_time}}" bindchange="bindEndTimeChange">
+              <view class="picker">
+                {{end_time}}
+              </view>
+            </picker>
+          </view>
+        </view>
+      </view>
+      <view class="add_seller_item">
+        <view class="add_seller_item_title">
+          <text>门店图片</text>
+          <!-- <text class="add_seller_item_title_icon">*</text> -->
+        </view>
+        <view class="picker_image_box" bindtap="uploadImage">
+          <image class="picker_image" src="../../static/images/add_seller_add_image.png" wx:if="{{!picture_url}}">
+          </image>
+          <image class="picker_image" src="{{picture_url}}" wx:if="{{picture_url}}"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="add_seller_box">
+    <view class="add_seller_box_title">权限设置</view>
+    <view class="add_seller_list">
+      <view class="add_seller_item_switch">
+        <text class="text">禁用状态</text>
+        <view class="switch">
+          <switch color="#3D82FF" checked="{{status==2}}" bindchange="switchStatus"></switch>
+        </view>
+      </view>
+      <!-- <view class="add_seller_item_switch">
+        <text class="text">一键调价</text>
+        <view class="switch">
+          <switch color="#3D82FF" checked="{{is_adjust==1}}" bindchange="switchIsAdjust"></switch>
+        </view>
+      </view> -->
+    </view>
+  </view>
+  <view class="add_seller_sub" bindtap="sub">确定</view>
+  <popup wx:if="{{showPopup}}" bindclose="closePopup">
+    <!-- 充电宝 -->
+    <view class="popup_wrap" wx:if="{{showPopupType=='battery'}}">
+      <view class="popup_title">
+        <view class="popup_title_left">充电宝计费策略</view>
+        <view class="popup_confirm" bindtap="confirmBattery">确定</view>
+      </view>
+      <view class="popup_line"></view>
+      <view class="popup_list">
+        <view class="popup_item">
+          <view class="popup_item_left">
+            <text>计费单位</text>
+            <text class="popup_red">*</text>
+          </view>
+          <view class="popup_item_right" style="justify-content: flex-end;">
+            <radio-group class="radio_group" bindchange="selectBatteryBillingUnit">
+              <label class="radio_box">
+                <view class="radio">
+                  <radio color="#3D82FF" value="1" checked="{{battery_amount.unit==1}}" />
+                </view>
+                <text>小时</text>
+              </label>
+              <label class="radio_box">
+                <view class="radio">
+                  <radio color="#3D82FF" value="2" checked="{{battery_amount.unit==2}}" />
+                </view>
+                <text>半小时</text>
+              </label>
+            </radio-group>
+          </view>
+        </view>
+        <!-- <view class="popup_item" wx:if="{{battery_amount.unit==1}}">
+          <view class="popup_item_left">
+            <text>计费时间</text>
+            <text class="popup_red">*</text>
+          </view>
+          <view class="popup_item_right">
+            <input type="text" value="{{battery_amount.billingtime}}" bindinput="batteryBillingTime" placeholder-class="phcolor" placeholder="请输入计费时间" />
+          </view>
+        </view> -->
+        <view class="popup_item">
+          <view class="popup_item_left">
+            <text>计费金额/元</text>
+            <text class="popup_red">*</text>
+          </view>
+          <view class="popup_item_right">
+            <input class="input" type="text" value="{{battery_amount.amount}}" bindinput="batteryAmount" placeholder-class="phcolor" placeholder="请输入计费时间" />
+          </view>
+        </view>
+        <view class="popup_item">
+          <view class="popup_item_left">
+            <text>免费分钟</text>
+            <text class="popup_red">*</text>
+          </view>
+          <view class="popup_item_right">
+            <input class="input" type="text" value="{{battery_amount.freetime}}" bindinput="batteryFreetime" placeholder-class="phcolor" placeholder="请输入计费时间" />
+            <view class="icon">
+              <tips>
+                <view style="width:512rpx;">用户每次租借前多少分钟免费填0或者为空表示不免费</view>
+              </tips>
+            </view>
+          </view>
+        </view>
+        <view class="popup_item">
+          <view class="popup_item_left">
+            <text>最高消费</text>
+            <text class="popup_red">*</text>
+          </view>
+          <view class="popup_item_right">
+            <input type="text" value="{{battery_amount.ceiling}}" bindinput="batteryCeiling" placeholder-class="phcolor" placeholder="请输入计费时间" />
+            <view class="icon">
+              <tips>
+                <view style="width:618rpx;">每日最高消费限额,超出时长按照金额来算填0或者为空表示不限制</view>
+              </tips>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 充电线 -->
+    <view class="popup_wrap" wx:if="{{showPopupType=='line'}}">
+      <view class="popup_title">
+        <view class="popup_title_left">充电线计费策略</view>
+        <view class="popup_confirm" bindtap="confirmLine">确定</view>
+      </view>
+      <view class="line_box">
+        <view class="line_time_list">
+          <view class="line_time_item {{selectLineTime==item.time?'bgw':''}}" wx:for="{{wired_amount}}" wx:key="index">
+            {{item.text}}</view>
+        </view>
+        <view class="line_account_list">
+          <view class="line_account_item" wx:for="{{wired_amount}}" wx:key="index">
+            <input class="input" type="text" value="{{item.amount}}" data-time="{{item.time}}" data-index="{{index}}" bindtap="selectLineTime" bindinput="handleLineAmount" placeholder-class="phcolor" placeholder="请输入金额/元" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 充电桩 -->
+    <view class="popup_wrap" wx:if="{{showPopupType=='pile'}}">
+      <view class="popup_title">
+        <view class="popup_title_left">充电桩计费策略</view>
+        <view class="popup_confirm" bindtap="confirmPile">确定</view>
+      </view>
+      <view class="popup_line"></view>
+      <view class="popup_list">
+        <view class="popup_item">
+          <view class="popup_item_left">
+            <text>电价成本</text>
+            <!-- <text class="popup_red">*</text> -->
+          </view>
+          <view class="popup_item_right" style="justify-content: flex-end;">
+            <view class="popup_item_right_input">
+              <input class="input" value="{{cost_pile}}" type="text" bindinput="costPile" />
+            </view>
+            <text class="colorGrey">元/度</text>
+          </view>
+        </view>
+        <view class="popup_item">
+          <view class="popup_item_left">
+            <text>单次充电</text>
+            <!-- <text class="popup_red">*</text> -->
+          </view>
+          <view class="popup_item_right" style="justify-content: flex-end;" bindtap="toPileB">
+            <text class="colorGrey" wx:if="{{getBalance.times.length>0&&getBalance.balance_enable==0}}">未启用</text>
+            <text wx:if="{{getBalance.times.length>0&&getBalance.balance_enable==1&&getBalance.bill_type==1}}">已启用,简洁版</text>
+            <text wx:if="{{getBalance.times.length>0&&getBalance.balance_enable==1&&getBalance.bill_type==2}}">已启用,详细版</text>
+            <text wx:if="{{getBalance.times.length>0&&getBalance.balance_enable==1&&getBalance.bill_type==3}}">已启用,自定义</text>
+            <image class="image_icon" src="/static/images/more_icon.png"></image>
+          </view>
+        </view>
+        <view class="popup_item">
+          <view class="popup_item_left">
+            <text>临时充电</text>
+            <!-- <text class="popup_red">*</text> -->
+          </view>
+          <view class="popup_item_right" style="justify-content: flex-end;" bindtap="toPileT">
+            <text class="colorGrey" wx:if="{{getTemporary.recharge.length>0&&getTemporary.temporary_enable==0}}">未启用</text>
+            <text wx:if="{{getTemporary.recharge.length>0&&getTemporary.temporary_enable==1&&getTemporary.bill_type==1}}">已启用,简洁版</text>
+            <text wx:if="{{getTemporary.recharge.length>0&&getTemporary.temporary_enable==1&&getTemporary.bill_type==2}}">已启用,详细版</text>
+            <text wx:if="{{getTemporary.recharge.length>0&&getTemporary.temporary_enable==1&&getTemporary.bill_type==3}}">已启用,自定义</text>
+            <image class="image_icon" src="/static/images/more_icon.png"></image>
+          </view>
+        </view>
+        <view class="popup_item">
+          <view class="popup_item_left">
+            <text>包月设置</text>
+            <!-- <text class="popup_red">*</text> -->
+          </view>
+          <view class="popup_item_right" style="justify-content: flex-end;" bindtap="toPileMonth">
+            <text class="colorGrey" wx:if="{{getMonth.type&&getMonth.package_enable==0}}">未启用</text>
+            <text wx:if="{{getMonth.type&&getMonth.package_enable==1&&getMonth.time==1}}">已启用,包月</text>
+            <text wx:if="{{getMonth.type&&getMonth.package_enable==1&&getMonth.time==2}}">已启用,包季度</text>
+            <text wx:if="{{getMonth.type&&getMonth.package_enable==1&&getMonth.time==3}}">已启用,包半年</text>
+            <text wx:if="{{getMonth.type&&getMonth.package_enable==1&&getMonth.time==4}}">已启用,包年</text>
+            <image class="image_icon" src="/static/images/more_icon.png"></image>
+          </view>
+        </view>
+        <view class="popup_item">
+          <view class="popup_item_left">
+            <text>刷卡模式</text>
+            <!-- <text class="popup_red">*</text> -->
+          </view>
+          <view class="popup_item_right" style="justify-content: flex-end;">
+            <view class="switch">
+              <switch color="#3D82FF" checked="{{card_enable==1}}" bindchange="changeCardEnable"></switch>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 中间人 -->
+    <view class="popup_wrap" wx:if="{{showPopupType=='introducer'}}">
+      <view class="popup_title">
+        <view class="popup_title_left">添加中间人</view>
+        <view class="popup_confirm" bindtap="introducerSub">确定</view>
+      </view>
+      <view class="popup_line"></view>
+      <view class="popup_list">
+        <view class="popup_item">
+          <view class="popup_item_left">
+            <text>中间人</text>
+            <text class="popup_red">*</text>
+          </view>
+          <view class="popup_item_right" bindtap="toSelectIntroducer">
+            <text style="color: #AAAAAA;" wx:if="{{!introducer_select.name}}">请选择中间人</text>
+            <text wx:if="{{introducer_select.name}}">{{introducer_select.name}}</text>
+          </view>
+        </view>
+        <view class="popup_item">
+          <view class="popup_item_left">
+            <text>分成比</text>
+            <text class="popup_red">*</text>
+          </view>
+          <view class="popup_item_right">
+            <input type="text" bindinput="handleIntroducerDivide" placeholder-class="phcolor" placeholder="请输入中间人分成比" />
+          </view>
+        </view>
+        <view class="popup_item">
+          <view class="popup_item_left">
+            <text>折旧费率比</text>
+            <text class="popup_red">*</text>
+          </view>
+          <view class="popup_item_right">
+            <input type="text" bindinput="handleIntroducerDepreciation" placeholder-class="phcolor" placeholder="请输入折旧费率比" />
+          </view>
+        </view>
+      </view>
+    </view>
+  </popup>
+</view>

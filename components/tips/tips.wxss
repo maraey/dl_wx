@@ -1,0 +1,28 @@
+.tips {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.tips .tips_text {
+  position: absolute;
+  top: -50rpx;
+  right: 50rpx;
+  /* width: 512rpx; */
+  height: 52rpx;
+  font-size: 20rpx;
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 52rpx;
+  text-align: center;
+  background: #000000;
+  border-radius: 4rpx;
+  opacity: 0.5;
+}
+.tips .image{
+  width: 40rpx;
+  height: 40rpx;
+}

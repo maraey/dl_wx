@@ -1,0 +1,119 @@
+<wxs src="../../utils/utils.wxs" module="utils" />
+<view class="sellerDetail">
+  <view class="top">
+    <view class="top_left">
+      <view class="seller_title">{{info.name}}</view>
+      <view class="seller_address">{{info.address}}</view>
+    </view>
+    <view class="top_right">
+      <view class="image_box" bindtap="navi">
+        <image class="image" src="../../static/images/navigation.png"></image>
+        <text>导航</text>
+      </view>
+      <view class="image_box" bindtap="delete">
+        <image class="image" src="../../static/images/delete.png"></image>
+        <text>删除</text>
+      </view>
+    </view>
+  </view>
+  <view class="line"></view>
+  <view class="middle">
+    <view class="item">
+      <view class="item_title">门店负责人</view>
+      <view class="item_text">{{info.manager_name}}</view>
+    </view>
+    <view class="item" wx:if="{{login_info.role!='bd'}}">
+      <view class="item_title">所属代理商</view>
+      <view class="item_text">{{info.agent_name}}</view>
+    </view>
+    <view class="item" wx:if="{{info.bd_name&&info.bd_id!=0&&login_info.role!='bd'}}">
+      <view class="item_title">所属地推</view>
+      <view class="item_text">{{info.bd_name}}</view>
+    </view>
+    <view class="item">
+      <view class="item_title">行业</view>
+      <view class="item_text">{{info.industry_name}}</view>
+    </view>
+    <view class="item">
+      <view class="item_title">佣金百分比</view>
+      <view class="item_text">{{info.store_brokerage}}</view>
+    </view>
+    <view class="item">
+      <view class="item_title">门店分成系数比</view>
+      <view class="item_text">{{info.store_rate}}</view>
+    </view>
+    <view class="item">
+      <view class="item_title">营业时间</view>
+      <view class="item_text">{{info.shop_start}}-{{info.shop_end}}</view>
+    </view>
+    <view class="item" wx:if="{{info.device_types.battery=='true'}}">
+      <view class="item_title">充电宝计费策略</view>
+      <view class="item_text">{{info.battery_text[0]}}｜{{info.battery_text[1]}}｜{{info.battery_text[2]}}</view>
+    </view>
+    <view class="item" wx:if="{{info.device_types.wired=='true'}}">
+      <view class="item_title">充电线计费策略</view>
+      <view class="item_text">
+        <view class="item_text_item" wx:for="{{info.wired_text_new}}" wx:key="index">{{item}}</view>
+      </view>
+    </view>
+    <!-- <view class="item">
+      <view class="item_title">免费时长/分钟</view>
+      <view class="item_text">2</view>
+    </view>
+    <view class="item">
+      <view class="item_title">最高消费</view>
+      <view class="item_text">99</view>
+    </view> -->
+  </view>
+  <view class="line"></view>
+  <view class="bottom">
+    <view class="bottom_list" bindtap="bindDevice">
+      <image class="image" src="../../static/images/seller_detail_bind.png"></image>
+      <text>绑定设备</text>
+    </view>
+    <view class="bottom_list" bindtap="edit">
+      <image class="image" src="../../static/images/seller_detail_edit.png"></image>
+      <text>修改门店</text>
+    </view>
+    <view class="bottom_list" bindtap="batteryDevice" wx:if="{{utils.indexOf(device_types,'battery')!=-1}}">
+      <image class="image" src="../../static/images/seller_detail_device.png"></image>
+      <text>充电宝设备</text>
+    </view>
+    <view class="bottom_list" bindtap="lineDevice" wx:if="{{utils.indexOf(device_types,'wired')!=-1}}">
+      <image class="image" src="../../static/images/seller_detail_line.png"></image>
+      <text>充电线</text>
+    </view>
+    <view class="bottom_list" bindtap="pileDevice" wx:if="{{utils.indexOf(device_types,'pile')!=-1}}">
+      <image class="image" src="../../static/images/seller_detail_pile.png"></image>
+      <text>充电桩设备</text>
+    </view>
+    <view class="bottom_list" bindtap="batchLine" wx:if="{{utils.indexOf(device_types,'wired')!=-1}}">
+      <image class="image" src="../../static/images/seller_detail_batchbind.png"></image>
+      <text>批量绑定充电线</text>
+    </view>
+    <view class="bottom_list" bindtap="toVipList">
+      <image class="image" src="../../static/images/seller_detail_addvip.png"></image>
+      <text>门店VIP</text>
+    </view>
+    <view class="bottom_list" bindtap="toStatistics">
+      <image class="image" src="../../static/images/statistics.png"></image>
+      <text>数据统计</text>
+    </view>
+  </view>
+  <view class="popup" wx:if="{{showBatch}}" catchtap="cancel">
+    <view class="popup_box" catchtap="stop">
+      <view class="popup_title">批量绑定充电线</view>
+      <view class="input_box">
+        <input class="input" maxlength="18" type="text" placeholder-class="phcolor" value="{{start}}" placeholder="请输入起始值" catchinput="getStart" />
+      </view>
+      <view class="input_box">
+        <input class="input" maxlength="18" placeholder-class="phcolor" type="text" value="{{end}}" placeholder="请输入末尾值" catchinput="getEnd" />
+      </view>
+      <view class="popup_btn_box">
+        <view class="btn cancel" catchtap="cancel">取消</view>
+        <view class="btn_line"></view>
+        <view class="btn confirm" catchtap="confirm">确定</view>
+      </view>
+    </view>
+  </view>
+</view>

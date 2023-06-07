@@ -1,0 +1,32 @@
+<view class="tabbar">
+
+  <view class="item" bindtap="toPage" data-selected='order'>
+    <image class="image" src="../../static/images/tab_order_s.png" wx:if="{{selected=='order'}}"></image>
+    <image class="image" src="../../static/images/tab_order.png" wx:if="{{selected!='order'}}"></image>
+    <text class="{{selected=='order'?'text':'text1'}}">订单</text>
+  </view>
+  <view class="item" bindtap="toPage" data-selected='statistics' wx:if="{{role!='seller'&&role!='introducer'}}">
+    <image class="image" src="../../static/images/tab_statistics_s.png" wx:if="{{selected=='statistics'}}"></image>
+    <image class="image" src="../../static/images/tab_statistics.png" wx:if="{{selected!='statistics'}}"></image>
+    <text class="{{selected=='statistics'?'text':'text1'}}">统计</text>
+  </view>
+  <view class="item" >
+    <image class="image" src="../../static/images/index.png" wx:if="{{selected=='index'}}"></image>
+    <image class="image" src="../../static/images/index.png" wx:if="{{selected!='index'}}"></image>
+    <text class="{{selected=='index'?'text':'text1'}}"></text>
+  </view>
+  <view class="item" bindtap="toPage" data-selected='seller'>
+    <image class="image" src="../../static/images/tab_seller_s.png" wx:if="{{selected=='seller'}}"></image>
+    <image class="image" src="../../static/images/tab_seller.png" wx:if="{{selected!='seller'}}"></image>
+    <text class="{{selected=='seller'?'text':'text1'}}">门店</text>
+  </view>
+  <view class="item" bindtap="toPage" data-selected='my'>
+    <image class="image" src="../../static/images/tab_my_s.png" wx:if="{{selected=='my'}}"></image>
+    <image class="image" src="../../static/images/tab_my.png" wx:if="{{selected!='my'}}"></image>
+    <text class="{{selected=='my'?'text':'text1'}}">我的</text>
+  </view>
+  <view class="index" bindtap="toPage" data-selected='index'>
+    <image src="../../static/images/index.png" class="index_img"></image>
+  </view>
+</view>
+

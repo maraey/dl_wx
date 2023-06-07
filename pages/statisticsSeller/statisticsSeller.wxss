@@ -1,0 +1,172 @@
+page {
+  background-color: #F4F5F5;
+}
+
+.statisticsSeller .date_box {
+  width: 750rpx;
+  height: 88rpx;
+  background: #FFFFFF;
+}
+
+.statisticsSeller .date_box .top {
+  display: flex;
+  align-items: center;
+  width: 750rpx;
+  height: 88rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.statisticsSeller .date_box .top .image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 8rpx;
+}
+
+.statisticsSeller .date_box .top .to {
+  margin: 0 12rpx;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #AAAAAA;
+}
+
+.statisticsSeller .date_box .top .text {
+  height: 36rpx;
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #999999;
+  line-height: 36rpx;
+}
+.statisticsSeller .date_box .top .select{
+  color: #777777;
+}
+.statisticsSeller .date_box .top .picker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220rpx;
+  height: 56rpx;
+  background: #F8F8F8;
+  border-radius: 8px;
+}
+
+.statisticsSeller .echarts_box {
+  position: relative;
+  width: 750rpx;
+  height: 530rpx;
+  margin: 30rpx 0;
+  padding: 30rpx 0 0 64rpx;
+  background: #FFFFFF;
+  box-sizing: border-box;
+}
+
+.statisticsSeller .echarts_box .title {
+  height: 42rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #333333;
+  line-height: 42rpx;
+}
+
+.statisticsSeller .echarts_box .title .text {
+  height: 34rpx;
+  margin-left: 16rpx;
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #999999;
+  line-height: 34rpx;
+}
+
+.statisticsSeller .echarts_box .amount {
+  height: 48rpx;
+  margin: 16rpx 0 30rpx;
+  font-size: 40rpx;
+  font-weight: 500;
+  color: #333333;
+  line-height: 48rpx;
+}
+
+.statisticsSeller .device {
+  width: 750rpx;
+  height: 234rpx;
+  padding: 30rpx;
+  background: #FFFFFF;
+  box-sizing: border-box;
+}
+
+.statisticsSeller .device+.device {
+  margin-top: 30rpx;
+}
+
+.statisticsSeller .device .title {
+  display: flex;
+  align-items: center;
+}
+
+.statisticsSeller .device .title .blue_box {
+  width: 8rpx;
+  height: 32rpx;
+  margin-right: 16rpx;
+  background-color: #3D82FF;
+}
+
+.statisticsSeller .device .title .text {
+  height: 40rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #000000;
+  line-height: 40rpx;
+}
+
+.statisticsSeller .device .line {
+  width: 690rpx;
+  height: 2rpx;
+  margin: 24rpx 0;
+  background: #F5F5F5;
+}
+
+.statisticsSeller .device .list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.statisticsSeller .device .list .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statisticsSeller .device .list .item .item_title {
+  height: 34rpx;
+  margin-bottom: 16rpx;
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #999999;
+  line-height: 34rpx;
+}
+
+.statisticsSeller .device .list .item .item_text {
+  height: 34rpx;
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #333333;
+  line-height: 34rpx;
+}
+
+.container {
+  position: absolute;
+  top: 60rpx;
+  bottom: 0;
+  left: 0rpx;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+ec-canvas {
+  width: 100%;
+  height: 100%;
+}

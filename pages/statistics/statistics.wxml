@@ -1,0 +1,96 @@
+<wxs src="../../utils/utils.wxs" module="utils" />
+<view class="statistics">
+  <view>
+    <view class="tab_box">
+      <view class="tab_item {{tab_select=='seller'?'tab_select':''}}" data-type="seller" bindtap="tabSelect">
+        <text>门店</text>
+        <view>
+          <view class="tab_line"></view>
+        </view>
+      </view>
+      <view class="tab_item {{tab_select=='employee'?'tab_select':''}}" data-type="employee" bindtap="tabSelect" wx:if="{{info.role=='agent'}}"> 
+        <text>地推</text>
+        <view>
+          <view class="tab_line"></view>
+        </view>
+      </view>
+      <view class="tab_item {{tab_select=='agency'?'tab_select':''}}" data-type="agency" bindtap="tabSelect" wx:if="{{info.role=='agent'}}">
+        <text>代理</text>
+        <view>
+          <view class="tab_line"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view>
+    <view class="input_box">
+      <image class="image" src="/static/images/search_bar.png"></image>
+      <input class="input" type="text" value="{{keyword}}" placeholder-class="phcolor" placeholder="{{placeholder}}" bindinput="handleKeyword"/>
+    </view>
+  </view>
+  <view>
+    <view class="picker_box">
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker">
+          <text class="text">{{array[index]}}</text>
+          <image class="image" src="/static/images/xiala_b.png"></image>
+        </view>
+      </picker>
+      <picker mode="date" fields="month" value="{{month}}" bindchange="bindMonthChange" wx:if="{{index==1}}">
+        <view class="picker">
+          <text class="text">{{month}}</text>
+          <image class="image" src="/static/images/xiala_b.png"></image>
+        </view>
+      </picker>
+      <picker mode="date" value="{{date}}" bindchange="bindDateChange" wx:if="{{index==2}}">
+        <view class="picker">
+          <text class="text">{{date}}</text>
+          <image class="image" src="/static/images/xiala_b.png"></image>
+        </view>
+      </picker>
+    </view>
+  </view>
+  <!-- <view>
+    <view class="tab_list">
+      <view class="tab_list_item {{type=='all'?'tab_list_item_select':''}}" data-type="all" bindtap="tabType">全部</view>
+      <view class="tab_list_item {{type=='1'?'tab_list_item_select':''}}" data-type="1" bindtap="tabType" wx:if="{{utils.indexOf(device_types,'battery')!=-1}}">充电宝</view>
+      <view class="tab_list_item {{type=='2'?'tab_list_item_select':''}}" data-type="2" bindtap="tabType" wx:if="{{utils.indexOf(device_types,'wired')!=-1}}">充电线</view>
+      <view class="tab_list_item {{type=='3'?'tab_list_item_select':''}}" data-type="3" bindtap="tabType" wx:if="{{utils.indexOf(device_types,'pile')!=-1}}">充电桩</view>
+    </view>
+  </view> -->
+  <view>
+    <scroll-view scroll-y class="list">
+      <view class="item" wx:for="{{list}}" wx:key="index" wx:if="{{list.length>0}}">
+        <view class="item_top">
+          <text class="title">{{item.name}}</text>
+          <view class="copy" data-name="{{item.name}}" bindtap="copy">复制</view>
+        </view>
+        <view class="line"></view>
+        <view class="info" wx:if="{{tab_select=='seller'}}">
+          <text class="info_title">订单数量</text>
+          <text class="info_text">{{item.order_num}}个</text>
+        </view>
+        <view class="info">
+          <text class="info_title">实收金额</text>
+          <text class="info_text">{{item.pay_amount}}元</text>
+        </view>
+        <view class="info">
+          <text class="info_title">总金额</text>
+          <text class="info_text">{{item.order_amount}}元</text>
+        </view>
+        <view class="info">
+          <text class="info_title">总退款</text>
+          <text class="info_text">{{item.refund_amount}}元</text>
+        </view>
+      </view>
+      <view class="nodata" wx:if="{{list.length==0}}">
+        <image class="nodataImg" src="../../static/images/nodata.png"></image>
+        <view class="nodataText">暂无数据</view>
+      </view>
+      <!-- 占位 -->
+      <view style="height: 30rpx;width: 626rpx;">
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<tabBar selected="statistics"></tabBar>

@@ -1,0 +1,119 @@
+<view class="batteryDeviceDetail">
+  <view>
+    <view class="wrap">
+      <view class="screen_bar">
+        <view class="screen_item {{screen_type == 'basic'?'screen_selected':''}}" data-type="basic" bindtap="screen"><text>基本信息</text>
+          <view class="line"></view>
+        </view>
+        <view class="screen_item {{screen_type == 'profit'?'screen_selected':''}}" data-type="profit" bindtap="screen"><text>设备收益</text>
+          <view class="line"></view>
+        </view>
+        <view class="screen_item {{screen_type == 'manage'?'screen_selected':''}}" data-type="manage" bindtap="screen"><text>设备详情</text>
+          <view class="line"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{screen_type == 'basic'}}">
+    <view class="basic_info">
+      <view class="basic_info_item">
+        <view class="title">门店名称</view>
+        <view class="text">{{info.seller_name}}</view>
+      </view>
+      <view class="basic_info_item">
+        <view class="title">门店地址</view>
+        <view class="text">{{info.seller_address}}</view>
+      </view>
+      <view class="basic_info_item" wx:if="{{info.agency}}">
+        <view class="title">{{info.agency.type}}</view>
+        <view class="text">{{info.agency.name}}</view>
+      </view>
+      <view class="basic_info_item">
+        <view class="title">设备类型</view>
+        <view class="text">{{info.device_type}}</view>
+      </view>
+      <view class="basic_info_item">
+        <view class="title">设备号</view>
+        <view class="text">{{info.device_id}}</view>
+      </view>
+      <view class="basic_info_item">
+        <view class="title">上线时间</view>
+        <view class="text">{{info.create_time}}</view>
+      </view>
+      <view class="basic_info_item" style="align-items: flex-start;">
+        <view class="title">充电码</view>
+        <view class="qrcode">
+          <view class="text">{{info.qrcode_text}}</view>
+          <image class="image" src="{{info.qrcode}}"></image>
+        </view>
+      </view>
+
+    </view>
+    <view class="return" bindtap="return">退回上级</view>
+  </view>
+  <view>
+    <view class="manage" wx:if="{{screen_type == 'manage'}}">
+      <view class="manage_top_box">
+        <view class="device_set">
+          <view class="device_id">设备编号：{{info.device_id}}</view>
+          <view class="set_error" bindtap="setError" wx:if="{{info.is_fault==0}}">设为故障</view>
+          <view class="set_error" bindtap="cancelError" wx:if="{{info.is_fault==1}}">取消故障</view>
+        </view>
+      </view>
+      <view class="slot_box" wx:for="{{info.lock_data}}" wx:key="index">
+        <view class="slot_title">
+          <text>插座{{item.lock_id}}</text>
+        </view>
+        <view class="line"></view>
+        <view class="battery_info">
+          <view class="battery_item">
+            <view class="battery_title">用户</view>
+            <view>{{item.user}}</view>
+          </view>
+          <view class="battery_item">
+            <view class="battery_title">开始时间</view>
+            <view>{{item.time}}</view>
+          </view>
+          <view class="battery_item">
+            <view class="battery_title">状态</view>
+            <view class="battery_title_fault" wx:if="{{item.status==3}}">故障</view>
+            <view wx:if="{{item.status==1}}">空闲</view>
+            <view style="color: #3D82FF;" wx:if="{{item.status==2}}">使用</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view>
+    <view class="profit" wx:if="{{screen_type == 'profit'}}">
+      <view class="tab">
+        <view class="tab_item {{tabType=='year'?'tab_selected':''}}" data-type="year" bindtap="selectYear">年份</view>
+        <view class="tab_item {{tabType=='month'?'tab_selected':''}}" data-type="month" bindtap="selectYear">月份</view>
+      </view>
+      <view class="list_wrap">
+        <view class="list_title">
+          <picker bindchange="bindPickerChange" wx:if="{{tabType=='year'}}" value="{{index}}" range="{{array}}">
+            <view class="picker">
+              <view>{{array[index]}}</view>
+              <image class="image" src="/static/images/xiala.png"></image>
+            </view>
+          </picker>
+          <picker mode="date" value="{{date}}" fields="month" wx:if="{{tabType=='month'}}" bindchange="bindDateChange">
+            <view class="picker">
+              <view>{{date}}</view>
+              <image class="image" src="/static/images/xiala.png"></image>
+            </view>
+          </picker>
+          <view class="total_amount">{{tabType=='year'?'年':'月'}}总金额：¥{{totalAmount}}</view>
+        </view>
+      </view>
+      <view class="line"></view>
+      <view class="profit_list">
+        <view class="item" wx:for="{{tabList}}" wx:key="index">
+          <text class="item_title">{{item.month}}</text>
+          <text class="item_item_amount">{{item.amount}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

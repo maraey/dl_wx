@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "popup": "/components/popup/popup",
+    "tips": "/components/tips/tips"
+  },
+  "navigationBarTitleText": "添加门店"
+}

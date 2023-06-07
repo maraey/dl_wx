@@ -1,0 +1,27 @@
+<view class="addIntroducer">
+  <view class="basic_info">
+    <view class="title">基础信息</view>
+    <view class="basic_info_input_wrap">
+      <text class="addIntroducer_title">用户名</text>
+      <input class="basic_info_input" type="text" bindinput="handleName" placeholder-class="phcolor" placeholder="请输入用户名"/>
+    </view>
+    <view class="basic_info_input_wrap line">
+      <text class="addIntroducer_title">登录手机</text>
+      <input class="basic_info_input" type="text" bindinput="handlePhone" placeholder-class="phcolor" placeholder="请输入手机号码"/>
+    </view>
+    <view class="basic_info_input_wrap">
+      <text class="addIntroducer_title">登录密码</text>
+      <input class="basic_info_input" type="text" bindinput="handlePsw" placeholder-class="phcolor" placeholder="请输入密码"/>
+    </view>
+  </view>
+  <view class="authority_set">
+    <view class="title">权限设置</view>
+    <view class="authority_set_switch_wrap">
+      <text class="addIntroducer_title">禁止使用</text>
+      <view class="authority_set_switch">
+        <switch color="#3D82FF" checked="{{status==2}}" bindchange="handleStatus"></switch>
+      </view>
+    </view>
+  </view>
+  <view class="btn" bindtap="sub">确 定</view>
+</view>

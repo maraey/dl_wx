@@ -1,0 +1,112 @@
+<scroll-view scroll-y class="seller" bindscrolltolower="scrolltolower">
+  <view class="wrap">
+    <!-- 代理权限 -->
+    <view class="screen_bar" wx:if="{{info.role=='agent'}}">
+      <view class="screen_title_wrap" data-type="my" bindtap="selectScreen">
+        <text class="screen_title {{selectType == 'my'?'screen_title_select':''}}" wx:if="{{newDataMy.screenMy === 'all'}}">全部</text>
+        <text class="screen_title {{selectType == 'my'?'screen_title_select':''}}" wx:if="{{newDataMy.screenMy === 'self'}}">我的数据</text>
+        <text class="screen_title {{selectType == 'my'?'screen_title_select':''}}" wx:if="{{newDataMy.screenMy === 'sub'}}">下级数据</text>
+        <view class="{{selectType == 'my'?'screen_triangle_select': 'screen_triangle'}}"></view>
+      </view>
+      <view class="screen_title_wrap" data-type="screen" bindtap="selectScreen">
+        <text class="screen_title {{selectType == 'screen'?'screen_title_select':''}}">筛选</text>
+        <view class="{{selectType == 'screen'?'screen_triangle_select':'screen_triangle'}}"></view>
+      </view>
+    </view>
+    <view class="screen_bar role_seller" wx:if="{{info.role!='agent'}}">
+      <view class="screen_title_wrap" data-type="screen" bindtap="selectScreen">
+        <text class="screen_title screen_title_select">筛选</text>
+        <image class="image" src="/static/images/shaixuan.png"></image>
+      </view>
+    </view>
+    <view class="line"></view>
+    <!-- <view class="screen_info">
+      <view class="screen_info_text">
+        当前筛选时间：2021-11-01至2021-11-18
+      </view>
+      <view class="screen_info_text">
+        总数量：999
+      </view>
+    </view> -->
+  </view>
+  <view style="padding-top: 30rpx;">
+    <view class="item_box" wx:for="{{list}}" wx:key="seller_id" data-id="{{item.store_id}}" bindtap="toDetail" wx:if="{{list.length>0}}">
+      <view class="item_title">
+        <view class="item_title_text">{{item.name}}</view>
+        <image class="image" src="../../static/images/more.png" wx:if="{{info.role!='manager'&&info.role!='introducer'}}"></image>
+      </view>
+      <view class="address">{{item.address}}</view>
+      <view class="item_wrap" wx:if="{{info.role!='bd'}}">
+        <view class="item_left">{{item.is_sub=='true'?'所属代理':'所属地推'}}</view>
+        <view class="item_right">{{item.sub_name}}</view>
+      </view>
+      <view class="item_wrap">
+        <view class="item_left">提成比例</view>
+        <view class="item_right">{{item.rate}}</view>
+      </view>
+      <view class="item_wrap">
+        <view class="item_left">创建时间</view>
+        <view class="item_right">{{item.created_time}}</view>
+      </view>
+    </view>
+    <view class="nodata" wx:if="{{list.length==0}}">
+      <image class="nodataImg" src="../../static/images/nodata.png"></image>
+      <view class="nodataText">暂无数据</view>
+    </view>
+  </view>
+  <view class="add" bindtap="addSeller" wx:if="{{info.role!='manager'&&info.role!='introducer'}}">
+    <image class="image" src="../../static/images/add_seller_btn.png"></image>
+  </view>
+  <view class="popup" wx:if="{{showPopup}}" bindtap="closePopup">
+    <view class="popup_box" catchtap="stop">
+      <view wx:if="{{selectType=='my'}}">
+        <view class="popup_box_title">
+          数据选择
+        </view>
+        <view class="popup_box_options">
+          <view class="popup_box_option {{screenMy=='all'?'popup_box_option_select':''}}" data-type="all" catchtap="selectScreenMy">全部</view>
+          <view class="popup_box_option {{screenMy=='self'?'popup_box_option_select':''}}" data-type="self" catchtap="selectScreenMy">我的数据</view>
+          <view class="popup_box_option {{screenMy=='sub'?'popup_box_option_select':''}}" data-type="sub" catchtap="selectScreenMy">下级数据</view>
+        </view>
+      </view>
+      <view wx:if="{{selectType=='screen'}}">
+        <view class="popup_box_screen">
+          <view class="popup_box_title">
+            门店名称
+          </view>
+          <view class="popup_box_screen_input">
+            <input class="input" type="text" value="{{keyword}}" placeholder-class="phcolor" placeholder="请输入门店名称" bindinput="handleSeller" />
+          </view>
+        </view>
+        <view class="popup_box_screen">
+          <view class="popup_box_title">
+            创建时间
+          </view>
+          <view class="popup_box_screen_picker">
+            <view class="popup_screen_date">
+              <image class="popup_date_image" src="../../static/images/popup_date.png"></image>
+              <picker mode="date" value="{{start_date}}" catchchange="bindStartDateChange">
+                <view class="popup_picker_placeholder" wx:if="{{!start_date}}">请选择起始时间</view>
+                <view class="popup_picker" wx:if="{{start_date}}">{{start_date}}</view>
+              </picker>
+            </view>
+            <view class="popup_screen_date">
+              <image class="popup_date_image" src="../../static/images/popup_date.png"></image>
+              <picker mode="date" value="{{end_date}}" catchchange="bindEndDateChange">
+                <view class="popup_picker_placeholder" wx:if="{{!end_date}}">请选择结束时间</view>
+                <view class="popup_picker" wx:if="{{end_date}}">{{end_date}}</view>
+              </picker>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="popup_box_line"></view>
+      <view class="popup_box_btn">
+        <view class="popup_box_reset" catchtap="screenReset">重置</view>
+        <view class="popup_box_sub" catchtap="screenSub">确定</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+<tabBar selected="seller"></tabBar>

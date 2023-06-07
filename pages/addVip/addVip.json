@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "添加门店VIP",
+  "usingComponents": {
+    "popup": "/components/popup/popup",
+    "bindSeller":"/components/bindSeller/bindSeller"
+  }
+}

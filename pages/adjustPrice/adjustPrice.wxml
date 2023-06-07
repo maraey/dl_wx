@@ -1,0 +1,61 @@
+<view class="adjustPrice">
+  <view class="title">起始日期</view>
+  <view class="input_box">
+    <picker mode="date" value="{{start_date}}" bindchange="bindStartDate">
+      <view class="picker">
+        <view class="picker_text" wx:if="{{start_date}}">{{start_date}}</view>
+        <view class="placeholder" wx:if="{{!start_date}}">请选择起始日期</view>
+      </view>
+    </picker>
+  </view>
+  <view class="title">结束日期</view>
+  <view class="input_box">
+    <picker mode="date" value="{{end_date}}" bindchange="bindEndDate">
+      <view class="picker">
+        <view class="picker_text" wx:if="{{end_date}}">{{end_date}}</view>
+        <view class="placeholder" wx:if="{{!end_date}}">请选择结束日期</view>
+      </view>
+    </picker>
+  </view>
+  <view class="title">时间段</view>
+  <view class="time_wrap">
+    <view class="time_box">
+      <picker mode="time" value="{{start_time}}" bindchange="bindStartTime">
+        <view class="picker">
+          <view class="picker_text" wx:if="{{start_time}}">{{start_time}}</view>
+          <view class="placeholder" wx:if="{{!start_time}}">开始时间</view>
+        </view>
+      </picker>
+    </view>
+    <view class="time_wrap_text">至</view>
+    <view class="time_box">
+      <picker mode="time" value="{{end_time}}" bindchange="bindEndChange">
+        <view class="picker">
+          <view class="picker_text" wx:if="{{end_time}}">{{end_time}}</view>
+          <view class="placeholder" wx:if="{{!end_time}}">结束时间</view>
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class="title">周期</view>
+  <view class="check_box" bindtap="selectWeek">
+    <view class="item {{item.select?'select':''}}" data-week="{{index}}" wx:for="{{week}}" wx:key='index'>{{item.week}}
+    </view>
+    <view class="item" bindtap="dis" style="visibility: hidden;">
+    </view>
+  </view>
+  <view class="title" style="margin-top: 20rpx;">上调价格</view>
+  <view class="input_box">
+    <input class="input" type="text" placeholder="充电宝上浮百分比" placeholder-class="phcolor" value="{{device_rate}}" bindinput="bindDeviceRate" />
+  </view>
+  <view class="tips">注：只允许充电宝一键调价</view>
+  <view class="title" style="margin-top: 20rpx;">门店列表</view>
+  <view class="input_box" bindtap="bindSeller">
+    <view class="addSeller">
+      <text>已选择{{seller.length}}家门店</text>
+      <image class="image" src="/static/images/add.png"></image>
+    </view>
+  </view>
+  <view class="sub" bindtap="sub">保存</view>
+  <bindSellerAdjust bindcancle="cancleSeller" bindselected="selectSeller" wx:if="{{bindSeller}}" del="{{delList}}" add = "{{addList}}"></bindSellerAdjust>
+</view>

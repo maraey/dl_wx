@@ -1,0 +1,67 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/order/order",
+    "pages/addSeller/addSeller",
+    "pages/pileSet/pileSet",
+    "pages/pileMonth/pileMonth",
+    "pages/pileTemplate/pileTemplate",
+    "pages/statistics/statistics",
+    "pages/pileDetail/pileDetail",
+    "pages/batteryDeviceDetail/batteryDeviceDetail",
+    "pages/batteryDevice/batteryDevice",
+    "pages/statisticsSeller/statisticsSeller",
+    "pages/adjustPrice/adjustPrice",
+    "pages/WithdrawalLog/WithdrawalLog",
+    "pages/replenishLog/replenishLog",
+    "pages/replenish/replenish",
+    "pages/resetPsw/resetPsw",
+    "pages/sellerList/sellerList",
+    "pages/agencyList/agencyList",
+    "pages/agencyDetail/agencyDetail",
+    "pages/vipDetail/vipDetail",
+    "pages/addVip/addVip",
+    "pages/sellerVip/sellerVip",
+    "pages/editWithdrawal/editWithdrawal",
+    "pages/Withdrawal/Withdrawal",
+    "pages/orderProfit/orderProfit",
+    "pages/orderProfitDetail/orderProfitDetail",
+    "pages/agencyAndstaff/agencyAndstaff",
+    "pages/selectIntroducer/selectIntroducer",
+    "pages/addAgency/addAgency",
+    "pages/login/login",
+    "pages/addSellerAccount/addSellerAccount",
+    "pages/my/my",
+    "pages/endOrder/endOrder",
+    "pages/orderDetail/orderDetail",
+    "pages/addIntroducer/addIntroducer",
+    "pages/addStaff/addStaff",
+    "pages/forget/forget",
+    "pages/selectSeller/selectSeller",
+    "pages/seller/seller",
+    "pages/sellerDetail/sellerDetail",
+    "pages/line/line",
+    "components/bindSellerDevice/bindSellerDevice",
+    "pages/pile/pile",
+    "pages/welcome/welcome",
+    "pages/selectBD/selectBD",
+    "pages/dataBoard/dataBoard"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "共享充电宝代理系统",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于门店的位置"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "requiredPrivateInfos": [
+    "chooseLocation"
+  ]
+}

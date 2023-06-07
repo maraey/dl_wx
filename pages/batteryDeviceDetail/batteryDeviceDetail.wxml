@@ -1,0 +1,128 @@
+<view class="batteryDeviceDetail">
+  <view>
+    <view class="wrap">
+      <view class="screen_bar">
+        <view class="screen_item {{screen_type == 'basic'?'screen_selected':''}}" data-type="basic" bindtap="screen">
+          <text>基本信息</text>
+          <view class="line"></view>
+        </view>
+        <view class="screen_item {{screen_type == 'profit'?'screen_selected':''}}" data-type="profit" bindtap="screen">
+          <text>设备收益</text>
+          <view class="line"></view>
+        </view>
+        <view class="screen_item {{screen_type == 'manage'?'screen_selected':''}}" data-type="manage" bindtap="screen">
+          <text>槽位管理</text>
+          <view class="line"></view>
+        </view>
+      </view>
+      <view>
+        <view class="options" wx:if="{{screen_type == 'manage'&&info.open_lock}}">
+          <view class="option" bindtap="openAll">弹出所有</view>
+          <view class="option" bindtap="getInfo">刷新电池</view>
+          <view class="option" bindtap="reset">重启</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="basic_info" wx:if="{{screen_type == 'basic'}}">
+    <view class="basic_info_item">
+      <view class="title">门店名称</view>
+      <view class="text">{{info.store_name}}</view>
+    </view>
+    <view class="basic_info_item">
+      <view class="title">门店地址</view>
+      <view class="text">{{info.store_address}}</view>
+    </view>
+    <view class="basic_info_item" wx:if="{{info.agent}}">
+      <view class="title">{{info.agent.type}}</view>
+      <view class="text">{{info.agent.name}}</view>
+    </view>
+    <view class="basic_info_item">
+      <view class="title">流量卡</view>
+      <view class="text">{{info.sim}}</view>
+    </view>
+    <view class="basic_info_item">
+      <view class="title">添加时间</view>
+      <view class="text">{{info.create_time}}</view>
+    </view>
+    <view class="basic_info_item">
+      <view class="title">心跳时间</view>
+      <view class="text">{{info.heart_time}}</view>
+    </view>
+    <view class="basic_info_item" style="align-items: flex-start;">
+      <view class="title">二维码</view>
+      <view class="qrcode">
+        <view class="text">{{info.qrcode_text}}</view>
+        <image class="image" src="{{info.img}}"></image>
+      </view>
+    </view>
+  </view>
+  <view class="return" wx:if="{{screen_type == 'basic'&&info.can_back}}" bindtap="return">退回上级</view>
+  <view class="manage" wx:if="{{screen_type == 'manage'}}">
+    <view class="manage_top_box">
+      <view class="device_set">
+        <view class="device_id">设备编号：{{info.device_id}}</view>
+        <view class="set_error" bindtap="setError" wx:if="{{info.is_fault==0}}">设为故障</view>
+        <view class="set_error" bindtap="cancelError" wx:if="{{info.is_fault==1}}">取消故障</view>
+      </view>
+      <view class="set_volume">
+        <view class="title">设置音量</view>
+        <view class="input_box">
+          <input class="input" type="text" value="{{info.volume}}" bindinput="handleVolume" placeholder="请输入音量" />
+        </view>
+        <view class="set_btn" bindtap="setVolume">确定</view>
+      </view>
+    </view>
+    <view class="slot_box" wx:for="{{info.battery}}" wx:key="index">
+      <view class="slot_title">
+        <text>槽位{{item.lock_id}}</text>
+        <view class="open" data-lock="{{item.lock_id}}" bindtap="openLock" wx:if="{{info.open_lock}}">弹出</view>
+      </view>
+      <view class="line"></view>
+      <view class="battery_info">
+        <view class="battery_item">
+          <view class="battery_title">电池ID</view>
+          <view>{{item.battery_id}}</view>
+        </view>
+        <view class="battery_item">
+          <view class="battery_title">电池电量</view>
+          <view>{{item.power}}%</view>
+        </view>
+        <view class="battery_item">
+          <view class="battery_title">状态</view>
+          <view class="{{item.is_fault?'battery_title_fault':''}}">{{item.is_fault?'故障':'正常'}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="profit" wx:if="{{screen_type == 'profit'}}">
+    <view class="tab">
+      <view class="tab_item {{tabType=='year'?'tab_selected':''}}" data-type="year" bindtap="selectYear">年份</view>
+      <view class="tab_item {{tabType=='month'?'tab_selected':''}}" data-type="month" bindtap="selectYear">月份</view>
+    </view>
+    <view class="list_wrap">
+      <view class="list_title">
+        <picker bindchange="bindPickerChange" wx:if="{{tabType=='year'}}" value="{{index}}" range="{{array}}">
+          <view class="picker">
+            <view>{{array[index]}}</view>
+            <image class="image" src="/static/images/xiala.png"></image>
+          </view>
+        </picker>
+        <picker mode="date" value="{{date}}" fields="month" wx:if="{{tabType=='month'}}" bindchange="bindDateChange">
+          <view class="picker">
+            <view>{{date}}</view>
+            <image class="image" src="/static/images/xiala.png"></image>
+          </view>
+        </picker>
+        <view class="total_amount">{{tabType=='year'?'年':'月'}}总金额：¥{{totalAmount}}</view>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="profit_list">
+      <view class="item" wx:for="{{tabList}}" wx:key="index">
+        <text class="item_title">{{item.month}}</text>
+        <text class="item_item_amount">{{item.amount}}</text>
+      </view>
+    </view>
+  </view>
+</view>

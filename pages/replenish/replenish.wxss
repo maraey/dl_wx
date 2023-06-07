@@ -1,0 +1,53 @@
+.replenish {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.replenish .inputWrap {
+  display: flex;
+  align-items: center;
+  width: 690rpx;
+  height: 96rpx;
+  border-bottom: 2rpx solid #F5F5F5;
+}
+
+.replenish .inputWrap .title {
+  width: 140rpx;
+  height: 40rpx;
+  margin-right: 28rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #333333;
+  line-height: 40rpx;
+}
+
+.replenish .inputWrap .input {
+  width: 500rpx;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #333333;
+}
+
+.replenish .btn {
+  width: 690rpx;
+  height: 88rpx;
+  margin-top: 30rpx;
+  text-align: center;
+  line-height: 88rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #FFFFFF;
+  background: #3D82FF;
+  border-radius: 44rpx;
+}
+
+.replenish .log {
+  height: 34rpx;
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  color: #3D82FF;
+  line-height: 34rpx;
+  text-align: center;
+}

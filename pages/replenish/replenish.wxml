@@ -1,0 +1,22 @@
+<view class="replenish">
+  <view>
+    <view class="inputWrap">
+      <view class="title">收货人名字</view>
+      <input class="input" type="text" placeholder="请输入收货人名字" placeholder-class="phcolor" bindinput="handleName" />
+    </view>
+    <view class="inputWrap">
+      <view class="title">收货手机</view>
+      <input class="input" type="number" placeholder="请输入收货手机" placeholder-class="phcolor" bindinput="handlePhone" />
+    </view>
+    <view class="inputWrap">
+      <view class="title">收货地址</view>
+      <input class="input" type="text" placeholder="请输入收货地址" placeholder-class="phcolor" bindinput="handleAddress" />
+    </view>
+    <view class="inputWrap">
+      <view class="title">补宝数量</view>
+      <input class="input" type="number" disabled value="{{num}}" placeholder="请输入补宝数量" placeholder-class="phcolor" />
+    </view>
+    <view class="btn" bindtap="sub">申请补宝</view>
+    <view class="log" bindtap="log">查看补宝记录</view>
+  </view>
+</view>

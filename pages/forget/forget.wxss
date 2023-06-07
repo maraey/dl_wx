@@ -1,0 +1,160 @@
+.forget{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 30rpx;
+}
+.forget .input_wrapinput_wrap{
+  display: flex;
+  align-items: center;
+  width: 690rpx;
+  padding: 30rpx 0;
+  border-bottom: 2rpx solid #F5F5F5;
+}
+.forget .space-between{
+  justify-content: space-between;
+}
+.forget .input_wrapinput_wrap .title{
+  width: 160rpx;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #333333;
+  line-height: 36rpx;
+}
+.forget .input_wrapinput_wrap .wrap{
+  display: flex;
+  align-items: center;
+}
+.forget .input_wrapinput_wrap .input{
+  width: 390rpx;
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #333333;
+  line-height: 34px;
+}
+.forget .input_wrapinput_wrap .get_sms{
+  width: 150rpx;
+  height: 44rpx;
+  font-size: 22rpx;
+  font-weight: 400;
+  line-height: 44rpx;
+  text-align: center;
+  color: #FFFFFF;
+  background: #3D82FF;
+  border-radius: 22rpx;
+}
+.forget .input_wrapinput_wrap .get_sms_count_time{
+  width: 150rpx;
+  height: 44rpx;
+  font-size: 22rpx;
+  font-weight: 400;
+  line-height: 44rpx;
+  text-align: center;
+  color: #999999;
+  background: #F8F8F8;
+  border-radius: 22rpx;
+}
+.forget .sub{
+  width: 690rpx;
+  height: 88rpx;
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  line-height: 88rpx;
+  text-align: center;
+  color: #FFFFFF;
+  background: #3D82FF;
+  border-radius: 44rpx;
+}
+.popup{
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+.popup .box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 622rpx;
+  height: 420rpx;
+  margin-top: 24vh;
+  background: #FFFFFF;
+  border-radius: 8rpx;
+}
+.popup .box .popup_title{
+  margin-top: 30rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333333;
+  line-height: 42rpx;
+}
+.popup .box .input_wrap{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 534rpx;
+  height: 82rpx;
+  margin: 28rpx 0 24rpx 0;
+  padding: 0 24rpx;
+  background: #F8F8F8;
+  border-radius: 4rpx;
+  box-sizing: border-box;
+}
+.popup .box .input_wrap .popup_input{
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #333333;
+  line-height: 34rpx;
+}
+.popup .box .input_wrap .popup_text{
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #F0513A;
+  line-height: 34rpx;
+}
+.popup .box .popup_sms{
+  display: flex;
+  align-items: center;
+  width: 534rpx;
+}
+.popup .box .popup_sms .popup_image{
+  width: 222rpx;
+  height: 88rpx;
+  margin-right: 26rpx;
+}
+.popup .box .popup_sms .popup_sms_text{
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #AAAAAA;
+  line-height: 36rpx;
+}
+.popup .box .popup_line{
+  width: 622rpx;
+  margin: 30rpx 0 24rpx 0;
+  border-top: 2rpx solid #F5F5F5;
+}
+.popup .box .popup_btn_wrap{
+  display: flex;
+  justify-content: space-around;
+  width: 622rpx;
+}
+.popup .box .popup_btn_wrap .popup_btn_line{
+  height: 26rpx;
+  border-left: 2rpx solid #F5F5F5;
+}
+.popup .box .popup_btn_wrap .popup_btn{
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  font-size: 30rpx;
+  font-weight: 400;
+  color: #333333;
+  line-height: 42rpx;
+}
+.popup .box .popup_btn_wrap .popup_btn_weight{
+  font-weight: 500;
+}

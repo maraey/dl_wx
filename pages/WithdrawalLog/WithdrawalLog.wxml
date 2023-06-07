@@ -1,0 +1,51 @@
+<view class="WithdrawalLog">
+  <view class="box" wx:for="{{list}}" wx:key="id" wx:if="{{list.length>0}}">
+    <view class="top">
+      <view class="statusAndAmount">
+        <view class="status yellow" wx:if="{{item.status==1}}">{{item.status_text}}</view>
+        <view class="status" wx:if="{{item.status==2}}">{{item.status_text}}</view>
+        <view class="status red" wx:if="{{item.status==3}}">{{item.status_text}}</view>
+        <view class="amount yellow" wx:if="{{item.status==1}}">-{{item.withdrawal_amount}}</view>
+        <view class="amount" wx:if="{{item.status==2}}">-{{item.withdrawal_amount}}</view>
+        <view class="amount black" wx:if="{{item.status==3}}">{{item.withdrawal_amount}}</view>
+      </view>
+      <view class="timeAndAccount">
+        <view class="time">{{item.create_time}}</view>
+        <view class="accountBox" data-index="{{index}}" bindtap="upDown">
+          <view class="accountTitle">账户余额</view>
+          <view class="account">¥{{item.balance}}</view>
+          <image class="image" src="/static/images/down.png" wx:if="{{!item.upDown}}"></image>
+          <image class="image" src="/static/images/up.png" wx:if="{{item.upDown}}"></image>
+        </view>
+      </view>
+    </view>
+    <view class="bottom" wx:if="{{item.upDown}}">
+      <view class="item">
+        <view class="title">手续费</view>
+        <view class="text">¥{{item.service_amount}}</view>
+      </view>
+      <view class="item" wx:if="{{item.status!=3}}">
+        <view class="title">到账金额</view>
+        <view class="text">¥{{item.pay_amount}}</view>
+      </view>
+      <view class="item" wx:if="{{item.status!=3}}">
+        <view class="title">流水号</view>
+        <view class="text">{{item.order_no}}</view>
+      </view>
+      <view class="item" wx:if="{{item.status==3}}">
+        <view class="title">账号</view>
+        <view class="text">{{item.name}}</view>
+      </view>
+      <view class="item" wx:if="{{item.status==3}}">
+        <view class="title">原因</view>
+        <view class="text">{{item.remark}}</view>
+      </view>
+    </view>
+    <view class="circle left" wx:if="{{item.upDown}}"></view>
+    <view class="circle right" wx:if="{{item.upDown}}"></view>
+  </view>
+  <view class="nodata" wx:if="{{list.length==0}}">
+    <image class="nodataImg" src="../../static/images/nodata.png"></image>
+    <view class="nodataText">暂无数据</view>
+  </view>
+</view>

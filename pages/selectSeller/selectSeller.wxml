@@ -1,0 +1,20 @@
+<view class="selectSeller">
+  <view class="search_bar">
+    <image class="image" src="../../static/images/search_bar.png"></image>
+    <input class="input" type="text" bindinput="handleInput" placeholder-class="phcolor" placeholder="请输入关键词" />
+  </view>
+  <view class="list">
+    <radio-group >
+      <view class="item" data-item="{{item}}" bindtap="selectInfo" wx:for="{{list}}" wx:key="index">
+        <text>{{item.name}}</text>
+        <view class="radio"  >
+          <radio color="#3D82FF" checked="{{info.user_id==item.user_id}}"/>
+        </view>
+      </view>
+    </radio-group>
+  </view>
+  <view class="btn">
+    <view class="cancle" bindtap="cancle">取消</view>
+    <view class="sub" bindtap="sub">确定</view>
+  </view>
+</view>

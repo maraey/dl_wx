@@ -1,0 +1,36 @@
+<view class="bindAgency">
+  <view>
+    <view class="bindAgency_screen">
+      <view class="bindAgency_screen_item {{role=='agent'?'select':''}}" data-role="agent" bindtap="selectRole">代理</view>
+      <view class="bindAgency_screen_item {{role=='bd'?'select':''}}" data-role="bd" bindtap="selectRole">地推</view>
+    </view>
+  </view>
+  <view>
+    <view class="input_box">
+      <image class="image" src="../../static/images/search_bar.png"></image>
+      <input class="input" type="text" placeholder-class="phcolor" placeholder="请输入关键词" bindinput="handleName" />
+    </view>
+  </view>
+  <view>
+    <view class="list">
+      <radio-group>
+        <view class="item" data-id="{{item.user_id}}" bindtap="handleSelect" wx:for="{{list}}" wx:key="index">
+          <text class="name">{{item.name}}</text>
+          <view class="radio">
+            <radio color="#3D82FF" value="{{item.user_id}}" checked="{{selected==item.user_id}}"></radio>
+          </view>
+        </view>
+      </radio-group>
+    </view>
+  </view>
+  <view>
+    <view class="bottom">
+      <pagination bindnewPage="handlePage" wx:if="{{total>20}}" total="{{total}}" pageSize="{{pageSize}}"></pagination>
+      <view class="btn">
+        <view class="cancel" bindtap="cancle">取消</view>
+        <view class="sub" bindtap="sub">确定</view>
+      </view>
+    </view>
+
+  </view>
+</view>

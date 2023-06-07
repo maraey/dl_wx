@@ -1,0 +1,60 @@
+<view class="pileMonth">
+  <view class="open_box">
+    <view class="title">包月启用</view>
+    <view class="switch">
+      <switch color="#3D82FF" checked="{{package_enable==1}}" bindchange="change"></switch>
+    </view>
+  </view>
+  <view class="info">
+    <view class="top">
+      <view class="title">包月功能</view>
+      <radio-group class="radios" bindchange="radioChange">
+        <view class="item">
+          <view class="radio">
+            <radio color="#3D82FF" value="1" checked="{{type==1}}"></radio>
+          </view>
+          <text class="name">次数</text>
+        </view>
+        <view class="item">
+          <view class="radio">
+            <radio color="#3D82FF" value="2" checked="{{type==2}}"></radio>
+          </view>
+          <text class="name">时长</text>
+        </view>
+      </radio-group>
+    </view>
+    <view class="bottom">
+      <text class="title">包月允许最大充电功率</text>
+      <view class="right">
+        <view class="input_box">
+          <input class="input" type="text" value="{{max_power}}" placeholder-class="phcolor" placeholder="请输入" bindinput="handlePower"/>
+        </view>
+        <text class="unit">W</text>
+      </view>
+    </view>
+  </view>
+  <view class="operate">
+    <view class="title">只能选择其中一种进行设置</view>
+    <view class="tab_box">
+      <view class="tab_item {{time==1?'tab_select':''}}" data-time="1" bindtap="tabTime">包月</view>
+      <view class="tab_item {{time==2?'tab_select':''}}" data-time="2" bindtap="tabTime">包季</view>
+      <view class="tab_item {{time==3?'tab_select':''}}" data-time="3" bindtap="tabTime">包半年</view>
+      <view class="tab_item {{time==4?'tab_select':''}}" data-time="4" bindtap="tabTime">包年</view>
+    </view>
+    <view class="inputs">
+      <view class="right">
+        <view class="input_box">
+          <input class="input" type="text" value="{{amount}}" placeholder-class="phcolor" placeholder="请输入" bindinput="handleAmount"/>
+        </view>
+        <text class="unit">元</text>
+      </view>
+      <view class="right">
+        <view class="input_box">
+          <input class="input" type="text" placeholder-class="phcolor" placeholder="请输入" value="{{num}}" bindinput="handleNum" />
+        </view>
+        <text class="unit">{{type==1?'次':'小时'}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="btn" bindtap="btn">确定</view>
+</view>

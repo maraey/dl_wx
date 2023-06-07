@@ -1,0 +1,76 @@
+<view class="addAgency">
+  <view class="basic_info">
+    <view class="title">基础信息</view>
+    <view class="basic_info_input_wrap space_between">
+      <text class="addAgency_title">加盟方式</text>
+      <radio-group class="radio_group" bindchange="bindIsSelf">
+        <label class="radio_group_label" >
+          <view class="radio_group_label_radio">
+            <radio color="#3D82FF" value="1" checked="{{is_self==1}}"/>
+          </view>
+          <view class="radio_group_text">加盟商</view>
+        </label>
+        <label class="radio_group_label" wx:if="{{self}}">
+          <view class="radio_group_label_radio">
+            <radio color="#3D82FF" value="2" checked="{{is_self==2}}"/>
+          </view>
+          <view class="radio_group_text">服务商</view>
+        </label>
+      </radio-group>
+    </view>
+    <view class="basic_info_input_wrap line_top">
+      <text class="addAgency_title">用户名</text>
+      <input class="basic_info_input" type="text" bindinput="handleName" placeholder-class="phcolor" value="{{name}}" placeholder="请输入用户名"/>
+    </view>
+    <view class="basic_info_input_wrap line">
+      <text class="addAgency_title">登录手机</text>
+      <input class="basic_info_input" type="text" bindinput="handlePhone" placeholder-class="phcolor" disabled="{{disable}}" value="{{phone}}" placeholder="请输入手机号码"/>
+    </view>
+    <view class="basic_info_input_wrap ">
+      <text class="addAgency_title">登录密码</text>
+      <input class="basic_info_input" type="password" bindinput="handlePsw" placeholder-class="phcolor" disabled="{{disable}}"  value="{{password}}" placeholder="请输入密码"/>
+    </view>
+    <view class="basic_info_input_wrap line_top">
+      <text class="addAgency_title">提成比例</text>
+      <input class="basic_info_input" type="number" bindinput="handleRate" placeholder-class="phcolor" value="{{brokerage}}" placeholder="请输入提成比例"/>
+    </view>
+  </view>
+  <view class="authority_set">
+    <view class="title">权限设置</view>
+    <view class="authority_set_switch_wrap" wx:if="{{is_sub}}">
+      <text class="addAgency_title" style="width: 218rpx;">允许添加下级代理</text>
+      <view class="authority_set_switch">
+        <switch color="#3D82FF" checked="{{can_sub==1}}" bindchange="canSub"></switch>
+      </view>
+    </view>
+    <view class="authority_set_line" wx:if="{{is_sub}}"></view>
+    <view class="authority_set_switch_wrap">
+      <text class="addAgency_title">弹出电池</text>
+      <view class="authority_set_switch">
+        <switch color="#3D82FF" checked="{{can_popup==1}}" bindchange="openLock"></switch>
+      </view>
+    </view>
+    <view class="authority_set_line"></view>
+    <view class="authority_set_switch_wrap">
+      <text class="addAgency_title">是否可提现</text>
+      <view class="authority_set_switch">
+        <switch color="#3D82FF" checked="{{can_withdrawal==1}}" bindchange="handleWithdrawal"></switch>
+      </view>
+    </view>
+    <view class="authority_set_line"></view>
+    <view class="authority_set_switch_wrap">
+      <text class="addAgency_title">禁止使用</text>
+      <view class="authority_set_switch">
+        <switch color="#3D82FF" checked="{{status==2}}" bindchange="handleStatus"></switch>
+      </view>
+    </view>
+    <view class="authority_set_line" wx:if="{{is_self== 1}}"></view>
+    <view class="authority_set_switch_wrap" wx:if="{{is_self== 1}}">
+      <text class="addAgency_title">是否可风控</text>
+      <view class="authority_set_switch">
+        <switch color="#3D82FF" checked="{{can_pass==1}}" bindchange="handlePass"></switch>
+      </view>
+    </view>
+  </view>
+  <view class="btn" bindtap="sub">确 定</view>
+</view>

@@ -1,0 +1,108 @@
+<view class="dataBoard">
+  <view class="top_box">
+    <view>
+      <view class="title_box">
+        <text class="title">设备数据</text>
+        <text class="time">更新于{{devices.time}}</text>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view>
+      <view class="box">
+        <view class="item" bindtap="viewDevice" data-status="bind">
+          <view class="num blue">{{devices.bind_num}}</view>
+          <view class="text">绑定机柜</view>
+        </view>
+        <view class="item">
+          <view class="num black">{{devices.online_ratio}}%</view>
+          <view class="text">机柜实时在线率</view>
+        </view>
+      </view>
+    </view>
+    <view style="margin-top: 20rpx;" >
+      <view class="box">
+        <view class="item" bindtap="viewDevice" data-status="offline">
+          <view class="num red">{{devices.offline_num}}</view>
+          <view class="text">断电机柜</view>
+        </view>
+        <view class="item" bindtap="viewDevice" data-status="empty">
+          <view class="num blue">{{devices.empty_num}}</view>
+          <view class="text">空仓机柜</view>
+        </view>
+        <view class="item" bindtap="viewDevice" data-status="full">
+          <view class="num blue">{{devices.full_num}}</view>
+          <view class="text">满仓机柜</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="middle_box">
+    <view class="title_box mb24">
+      <text class="title">数据预警</text>
+    </view>
+    <view class="table_title">
+      <view class="title_box">
+        <view class="item w150" >数据类型</view>
+        <view class="item w48" >数量</view>
+        <view class="item w85" >占比</view>
+        <view class="item w48" >明细</view>
+      </view>
+    </view>
+    <view class="item_box">
+      <view class="title_box">
+        <view class="item w150">1～3天断电</view>
+        <view class="item w48">{{warnData.offline1_3.num}}</view>
+        <view class="item w85">{{warnData.offline1_3.ratio}}%</view>
+        <view class="item w48 blue" bindtap="dataBoardDetail" data-type="offline1_3">查看</view>
+      </view>
+    </view>
+    <view class="item_box">
+      <view class="title_box">
+        <view class="item w150">3～5天断电</view>
+        <view class="item w48">{{warnData.offline3_5.num}}</view>
+        <view class="item w85">{{warnData.offline3_5.ratio}}%</view>
+        <view class="item w48 blue" bindtap="dataBoardDetail" data-type="offline3_5">查看</view>
+      </view>
+    </view>
+    <view class="item_box">
+      <view class="title_box">
+        <view class="item w150">5天以上断电</view>
+        <view class="item w48">{{warnData.offline5.num}}</view>
+        <view class="item w85">{{warnData.offline5.ratio}}%</view>
+        <view class="item w48 blue" bindtap="dataBoardDetail" data-type="offline5">查看</view>
+      </view>
+    </view>
+    <view class="item_box">
+      <view class="title_box">
+        <view class="item w150">1～3天不活跃</view>
+        <view class="item w48">{{warnData.active1_3.num}}</view>
+        <view class="item w85">{{warnData.active1_3.ratio}}%</view>
+        <view class="item w48 blue" bindtap="dataBoardDetail" data-type="active1_3">查看</view>
+      </view>
+    </view>
+    <view class="item_box">
+      <view class="title_box">
+        <view class="item w150">3～7天不活跃</view>
+        <view class="item w48">{{warnData.active3_7.num}}</view>
+        <view class="item w85">{{warnData.active3_7.ratio}}%</view>
+        <view class="item w48 blue" bindtap="dataBoardDetail" data-type="active3_7">查看</view>
+      </view>
+    </view>
+    <view class="item_box">
+      <view class="title_box">
+        <view class="item w150">全天空仓机柜</view>
+        <view class="item w48">{{warnData.empty.num}}</view>
+        <view class="item w85">{{warnData.empty.ratio}}%</view>
+        <view class="item w48 blue" bindtap="dataBoardDetail" data-type="empty">查看</view>
+      </view>
+    </view>
+  </view>
+  <view class="bottom_box">
+    <view class="title_box">
+      <text class="title">数据趋势-机柜日在线率</text>
+    </view>
+    <view class="container">
+      <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}" force-use-old-canvas='true'></ec-canvas>
+    </view>
+  </view>
+</view>

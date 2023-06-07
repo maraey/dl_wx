@@ -1,0 +1,36 @@
+.order_detail {
+  width: 100vw;
+  background-color: #F4F5F5;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+
+.order_detail .order_detail_box {
+  padding: 36rpx 32rpx;
+  background-color: #fff;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.order_detail .order_detail_box .order_detail_box_title {
+  margin-bottom: 20rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333333;
+  line-height: 44rpx;
+}
+
+.order_detail .order_detail_box .order_detail_box_wrap+.order_detail_box_wrap {
+  margin-top: 30rpx;
+}
+
+.order_detail .order_detail_box .order_detail_box_list .order_detail_box_item {
+  display: flex;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #999999;
+  line-height: 40rpx;
+}
+.order_detail .order_detail_box .order_detail_box_list .order_detail_box_item+.order_detail_box_item{
+  margin-top: 16rpx;
+}

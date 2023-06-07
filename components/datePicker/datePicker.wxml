@@ -1,0 +1,34 @@
+<view class="datePicker" catchtap="close" catchtouchmove="stop">
+  <view class="box" catchtap="stop">
+    <view class="title">{{title}}</view>
+    <view class="input_box">
+      <view class="input_wrap">
+        <image class="image" src="/static/images/popup_date.png"></image>
+        <picker mode="date" value="{{dateMax}}" end="{{dateMax}}" bindchange="bindStartDate">
+          <view class="picker">
+            <view class="phcolor" wx:if="{{!start}}">请选择起始时间</view>
+            <view wx:if="{{start}}">{{start}}</view>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="input_box">
+      <view class="input_wrap">
+        <image class="image" src="/static/images/popup_date.png"></image>
+        <picker mode="date" value="{{dateMax}}" end="{{dateMax}}" bindchange="bindEndDate">
+          <view class="picker">
+            <view class="phcolor" wx:if="{{!end}}">请选择结束时间</view>
+            <view wx:if="{{end}}">{{end}}</view>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="btns_box">
+      <view class="btns">
+        <view class="btn refuse" catchtap="close">取消</view>
+        <view class="line"></view>
+        <view class="btn confirm" catchtap="confirm">提交</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,142 @@
+page {
+  background-color: #f4f5f5;
+  padding-bottom: 30rpx;
+}
+
+.WithdrawalLog .box {
+  position: relative;
+  width: 690rpx;
+  margin: 30rpx auto 0;
+}
+
+.WithdrawalLog .box .top {
+  width: 690rpx;
+  padding: 34rpx 32rpx;
+  background-color: #fff;
+  border-radius: 8rpx;
+  box-sizing: border-box;
+}
+
+.WithdrawalLog .box .top .statusAndAmount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.WithdrawalLog .box .top .statusAndAmount .status {
+  height: 44rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333333;
+  line-height: 44rpx;
+}
+
+.WithdrawalLog .box .top .statusAndAmount .amount {
+  height: 48rpx;
+  font-size: 40rpx;
+  font-weight: 500;
+  color: #3D82FF;
+  line-height: 48rpx;
+}
+
+.WithdrawalLog .box .top .statusAndAmount .yellow {
+  color: #FD8D09;
+}
+
+.WithdrawalLog .box .top .statusAndAmount .red {
+  color: #F0513A;
+}
+
+.WithdrawalLog .box .top .statusAndAmount .black {
+  color: #333333;
+}
+
+.WithdrawalLog .box .top .timeAndAccount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24rpx;
+}
+
+.WithdrawalLog .box .top .timeAndAccount .time {
+  height: 36rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #999999;
+  line-height: 36rpx;
+}
+
+.WithdrawalLog .box .top .timeAndAccount .accountBox {
+  display: flex;
+  align-items: center;
+  height: 36rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #999999;
+  line-height: 36rpx;
+}
+
+.WithdrawalLog .box .top .timeAndAccount .accountBox .accountTitle {
+  margin-right: 12rpx;
+}
+
+.WithdrawalLog .box .top .timeAndAccount .accountBox .account {
+  margin-right: 24rpx;
+}
+
+.WithdrawalLog .box .top .timeAndAccount .accountBox .image {
+  width: 24rpx;
+  height: 12rpx;
+}
+
+.WithdrawalLog .box .bottom {
+  width: 690rpx;
+  padding: 28rpx 32rpx 32rpx;
+  background-color: #fff;
+  border-radius: 8rpx;
+  border-top: 2rpx solid #F4F5F5;
+  box-sizing: border-box;
+}
+
+.WithdrawalLog .box .bottom .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.WithdrawalLog .box .bottom .item+.item {
+  margin-top: 20rpx;
+}
+
+.WithdrawalLog .box .bottom .item .title {
+  height: 36rpx;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #999999;
+  line-height: 36rpx;
+}
+
+.WithdrawalLog .box .bottom .item .text {
+  height: 36rpx;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #333333;
+  line-height: 36rpx;
+}
+
+.WithdrawalLog .box .circle {
+  position: absolute;
+  top: 160rpx;
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 16rpx;
+  background-color: #f4f5f5;
+}
+
+.WithdrawalLog .box .left {
+  left: -16rpx;
+}
+
+.WithdrawalLog .box .right {
+  right: -16rpx;
+}

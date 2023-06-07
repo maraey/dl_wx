@@ -1,0 +1,42 @@
+<view class="Withdrawal">
+  <view class="card">
+    <image src="../../static/images/Withdrawal_card.png"></image>
+    <view class="amount_box">
+      <view class="amount_box_title">可提款金额</view>
+      <view class="amount">
+        <text class="amount_num">{{apply.balance}}</text>
+        <text>元</text>
+      </view>
+    </view>
+  </view>
+  <view class="input_title">
+    请输入提款金额（元）
+  </view>
+  <view class="input">
+    <input type="text" placeholder-style="color: #AAAAAA;" placeholder="¥0.00" bindinput="handleAmount" />
+  </view>
+  <view class="line"></view>
+  <view class="Withdrawal_tips">
+    温馨提示:{{apply.intro}}
+  </view>
+  <view class="info">
+    <view class="info_title">账户名：</view>
+    <view class="info_text">{{apply.real_name}}</view>
+  </view>
+  <view class="info">
+    <view class="info_title">提现方式：</view>
+    <view class="info_text">{{apply.type_text}}</view>
+  </view>
+  <view class="info" wx:if="{{apply.pay_type===3}}">
+    <view class="info_title">银行：</view>
+    <view class="info_text">{{apply.bank}}</view>
+  </view>
+  <view class="info">
+    <view class="info_title">账户号：</view>
+    <view class="info_text">{{apply.account}}</view>
+  </view>
+  <view class="operate">
+    <view class="sub" bindtap="sub">提现</view>
+    <view class="edit" bindtap="edit">修改提现信息</view>
+  </view>
+</view>

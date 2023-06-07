@@ -1,0 +1,24 @@
+<view class="replenishLog">
+  <view class="box" wx:for="{{list}}" wx:key="id" wx:if="{{list.length>0}}">
+    <view class="item">
+      <view class="title">收货人名字：</view>
+      <view class="text">{{item.name}}</view>
+    </view>
+    <view class="item">
+      <view class="title">收货手机：</view>
+      <view class="text">{{item.phone}}</view>
+    </view>
+    <view class="item">
+      <view class="title">收货地址：</view>
+      <view class="text">{{item.address}}</view>
+    </view>
+    <view class="item">
+      <view class="title">补宝数量：</view>
+      <view class="text">{{item.num}}</view>
+    </view>
+  </view>
+  <view class="nodata" wx:if="{{list.length==0}}">
+    <image class="nodataImg" src="../../static/images/nodata.png"></image>
+    <view class="nodataText">暂无数据</view>
+  </view>
+</view>

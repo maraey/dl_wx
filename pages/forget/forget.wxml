@@ -1,0 +1,44 @@
+<view class="forget">
+  <view class="forget_wrap">
+    <view class="input_wrapinput_wrap">
+      <text class="title">手机号</text>
+      <input class="input" type="text" placeholder-class="phcolor" bindinput="handlePhone" placeholder="请输入手机号" />
+    </view>
+    <view class="input_wrapinput_wrap space-between">
+      <view class="wrap">
+        <text class="title">验证码</text>
+        <input class="input" type="text" placeholder-class="phcolor" bindinput="handleCode" placeholder="请输入验证码" />
+      </view>
+      <text class="get_sms" bindtap="getCodePopup" wx:if="{{!showCountTime}}">获取验证码</text>
+      <text class="get_sms_count_time"  wx:if="{{showCountTime}}">{{count_time}}</text>
+    </view>
+    <view class="input_wrapinput_wrap">
+      <text class="title">新密码</text>
+      <input class="input" type="text" placeholder-class="phcolor" bindinput="handleNew" placeholder="请输入新密码" />
+    </view>
+    <view class="input_wrapinput_wrap">
+      <text class="title">确认密码</text>
+      <input class="input" type="text" placeholder-class="phcolor" bindinput="handleConfirm" placeholder="确认密码" />
+    </view>
+    <view class="sub" bindtap="resetPsw">提交</view>
+  </view>
+  <view class="popup" wx:if="{{showPopup}}">
+    <view class="box">
+      <view class="popup_title">输入图形验证码</view>
+      <view class="input_wrap">
+        <input class="popup_input" type="text" bindinput="handleImageCode" placeholder-class="phcolor" placeholder="输入验证码" />
+        <text class="popup_text" wx:if="{{showError}}">输入不正确</text>
+      </view>
+      <view class="popup_sms">
+        <image class="popup_image" src="{{popup_image}}" bindtap="getImageCode"></image>
+        <text class="popup_sms_text">点击图片刷新</text>
+      </view>
+      <view class="popup_line"></view>
+      <view class="popup_btn_wrap">
+        <view class="popup_btn" bindtap="closePopup">取消</view>
+        <view class="popup_btn_line"></view>
+        <view class="popup_btn popup_btn_weight" bindtap="sendSms">发送</view>
+      </view>
+    </view>
+  </view>
+</view>

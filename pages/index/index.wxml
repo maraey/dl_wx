@@ -1,0 +1,239 @@
+<wxs src="../../utils/utils.wxs" module="utils" />
+<view class="index" wx:if="{{isLogin}}">
+  <view >
+    <view class="tabbar">
+      <view class="tabbar_item {{selected=='today'?'selected':''}}" bindtap="tabbar" data-type="today">
+        <view class="title">今日</view>
+        <view class="line"></view>
+      </view>
+      <view class="tabbar_item {{selected=='yesterday'?'selected':''}}" bindtap="tabbar" data-type="yesterday">
+        <view class="title">昨日</view>
+        <view class="line"></view>
+      </view>
+      <view class="tabbar_item {{selected=='7day'?'selected':''}}" bindtap="tabbar" data-type="7day">
+        <view class="title">近7日</view>
+        <view class="line"></view>
+      </view>
+      <view class="tabbar_item {{selected=='30day'?'selected':''}}" bindtap="tabbar" data-type="30day">
+        <view class="title">近30日</view>
+        <view class="line"></view>
+      </view>
+      <view class="tabbar_item {{selected=='custom'?'selected':''}}" bindtap="tabbar" data-type="custom">
+        <view class="title">自定义</view>
+        <view class="line"></view>
+      </view>
+    </view>
+  </view>
+  <!-- 代理权限 地推权限 -->
+  <view class="profit" >
+    <view class="profit_title_title">
+      <view class="profit_title_text">订单收益</view>
+      <view class="profit_title_time">{{indexInfo.date}}</view>
+    </view>
+    <view class="profit_number_big">{{indexInfo.profit}}</view>
+    <view class="profit_middle_wrap">
+      <view class="warp">
+        <text class="profit_title">全部订单</text>
+        <text class="profit_number">{{indexInfo.order_num}}</text>
+      </view>
+      <view class="warp">
+        <text class="profit_title">进行中订单</text>
+        <text class="profit_number">{{indexInfo.active_num}}</text>
+      </view>
+      <view class="warp">
+        <text class="profit_title">待付款订单</text>
+        <text class="profit_number">{{indexInfo.wait_pay_num}}</text>
+      </view>
+      <!-- <view class="warp">
+        <text class="profit_title">售宝金额</text>
+        <text class="profit_number">{{amount.yesterday_income}}</text>
+      </view> -->
+      <view class="warp">
+        <text class="profit_title">售宝订单</text>
+        <text class="profit_number">{{indexInfo.sale_num}}</text>
+      </view>
+    </view>
+    <view class="profit_line"></view>
+    <view class="profit_bottom_wrap">
+      <view class="profit_bottom_wrap_title">
+        <view class="profit_wrap">
+          <text class="profit_title">新增门店</text>
+          <text class="profit_number_small">{{indexInfo.add_store}}</text>
+        </view>
+        <view class="profit_wrap">
+          <text class="profit_title">已铺设门店</text>
+          <text class="profit_number_small">{{indexInfo.store_num}}</text>
+        </view>
+        <view class="profit_wrap">
+          <text class="profit_title">机柜数量</text>
+          <text class="profit_number_small">{{indexInfo.powerbank_num}}</text>
+        </view>
+      </view>
+      <view class="profit_bottom_wrap_title">
+        <view class="profit_wrap">
+          <text class="profit_title">已铺机柜</text>
+          <text class="profit_number_small">{{indexInfo.store_powerbank_num}}</text>
+        </view>
+        <view class="profit_wrap_s">
+          <text class="profit_title">库存机柜</text>
+          <text class="profit_number_small">{{indexInfo.stock_powerbank_num}}</text>
+        </view>
+        <view class="profit_wrap">
+          <text class="profit_title">在线机柜</text>
+          <text class="profit_number_small">{{indexInfo.online_powerbank_num}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 门店权限 -->
+  <view class="profit" wx:if="{{app_role=='manager'}}">
+    <view class="profit_title">订单收益</view>
+    <view class="profit_number_big">{{amount.total_income}}</view>
+  </view>
+  <!-- 中间人权限 -->
+  <view class="profit" wx:if="{{app_role=='introducer'}}">
+    <view class="profit_title">订单收益</view>
+    <view class="profit_number_big">{{amount.total_income}}</view>
+  </view>
+  <!-- <view class="middle">
+    <image class="image" src="../../static/images/order2.png" data-id="orderProfit" bindtap="goTo" wx:if="{{app_role!='introducer'&&shop_grade!=3}}"></image>
+    <image class="image" src="../../static/images/apply2.png" data-id="Withdrawal" bindtap="goTo"></image>
+  </view> -->
+    <!-- 代理权限 -->
+  <view class="lists" >
+    <view class="item" bindtap="agencyList" data-role="agent" >
+      <image class="images" src="../../static/images/agency@2x.png"></image>
+      <text class="text">代理商</text>
+    </view>
+    <view class="item" bindtap="agencyList" data-role="introducer" >
+      <image class="images" src="../../static/images/introducer@2x.png"></image>
+      <text class="text">渠道商</text>
+    </view>
+    <view class="item" bindtap="goTo" data-id="sellerVip" >
+      <image class="images" src="../../static/images/shopVip@2x.png"></image>
+      <text class="text">门店VIP</text>
+    </view>
+    <view class="item" bindtap="agencyList" data-role="manager" >
+      <image class="images" src="../../static/images/shopAccount@2x.png"></image>
+      <text class="text">门店管理员</text>
+    </view>
+    <view class="item" bindtap="agencyList" data-role="bd" >
+      <image class="images" src="../../static/images/staff@2x.png"></image>
+      <text class="text">员工管理</text>
+    </view>
+    <view class="item" bindtap="scanDevice">
+      <image class="images" src="../../static/images/scan@2x.png"></image>
+      <text class="text">扫码维护</text>
+    </view>
+    <view class="item" bindtap="goTo" data-id="dataBoard" >
+      <image class="images" src="../../static/images/statistics@2x.png"></image>
+      <text class="text">数据看板</text>
+    </view>
+    <view class="item" bindtap="agencyList" data-role="seller" >
+      <image class="images" src="../../static/images/battery@2x.png"></image>
+      <text class="text">订单收益</text>
+    </view>
+    <view class="item" bindtap="goTo" data-id="batteryDevice" >
+      <image class="images" src="../../static/images/device@2x.png"></image>
+      <text class="text">充电宝设备</text>
+    </view>
+    
+  </view>
+  <!-- 代理权限 -->
+  <!-- <view class="lists" >
+    <view class="item" bindtap="goTo" data-id="addSeller" >
+      <image class="image" src="../../static/images/add_seller.png"></image>
+      <text class="text">添加门店</text>
+    </view>
+    <view class="item" bindtap="goTo" data-id="addAgency" >
+      <image class="image" src="../../static/images/add_agency.png"></image>
+      <text class="text">添加代理</text>
+    </view>
+    <view class="item" bindtap="goTo" data-id="addStaff" >
+      <image class="image" src="../../static/images/add_staff.png"></image>
+      <text class="text">添加地推</text>
+    </view>
+    <view class="item" bindtap="goTo" data-id="addSellerAccount" >
+      <image class="image" src="../../static/images/add_seller_account.png"></image>
+      <text class="text">添加门店账户</text>
+    </view>
+    <view class="item" bindtap="goTo" data-id="addIntroducer" >
+      <image class="image" src="../../static/images/add_introducer.png"></image>
+      <text class="text">添加中间人</text>
+    </view>
+    <view class="item" bindtap="goTo" data-id="addVip" wx:if="{{utils.indexOf(permissions,'add_vip')!=-1}}">
+      <image class="image" src="../../static/images/add_seller_vip.png"></image>
+      <text class="text">添加门店VIP</text>
+    </view>
+    <view class="item" bindtap="goTo" data-id="batteryDevice" wx:if="{{utils.indexOf(device_types,'battery')!=-1}}">
+      <image class="image" src="../../static/images/charge_battery.png"></image>
+      <text class="text">充电宝设备</text>
+    </view>
+    <view class="item" bindtap="goTo" data-id="line" wx:if="{{utils.indexOf(device_types,'wired')!=-1}}">
+      <image class="image" src="../../static/images/line.png"></image>
+      <text class="text">线充设备</text>
+    </view>
+    <view class="item" bindtap="goTo" data-id="pile" wx:if="{{utils.indexOf(device_types,'pile')!=-1}}">
+      <image class="image" src="../../static/images/charge_pile.png"></image>
+      <text class="text">充电桩设备</text>
+    </view>
+  </view> -->
+  <!-- 地推权限 -->
+  <!-- <view class="lists" wx:if="{{app_role=='employee'}}">
+    <view class="item" bindtap="goTo" data-id="addSeller" wx:if="{{utils.indexOf(permissions,'add_seller')!=-1}}">
+      <image class="image" src="../../static/images/add_seller.png"></image>
+      <text class="text">添加门店</text>
+    </view>
+    <view class="item" bindtap="goTo" data-id="addSellerAccount" wx:if="{{utils.indexOf(permissions,'add_manager')!=-1}}">
+      <image class="image" src="../../static/images/add_seller_account.png"></image>
+      <text class="text">添加门店账户</text>
+    </view>
+    <view class="item" bindtap="goTo" data-id="addIntroducer" wx:if="{{utils.indexOf(permissions,'add_introducer')!=-1}}">
+      <image class="image" src="../../static/images/add_introducer.png"></image>
+      <text class="text">添加中间人</text>
+    </view>
+    <view class="item" bindtap="goTo" data-id="addVip" wx:if="{{utils.indexOf(permissions,'add_vip')!=-1}}">
+      <image class="image" src="../../static/images/add_seller_vip.png"></image>
+      <text class="text">添加门店VIP</text>
+    </view>
+    <view class="item" bindtap="goTo" data-id="batteryDevice" wx:if="{{utils.indexOf(device_types,'battery')!=-1}}">
+      <image class="image" src="../../static/images/charge_battery.png"></image>
+      <text class="text">充电宝设备</text>
+    </view>
+    <view class="item" bindtap="goTo" data-id="line" wx:if="{{utils.indexOf(device_types,'wired')!=-1}}">
+      <image class="image" src="../../static/images/line.png"></image>
+      <text class="text">线充设备</text>
+    </view>
+    <view class="item" bindtap="goTo" data-id="pile" wx:if="{{utils.indexOf(device_types,'pile')!=-1}}">
+      <image class="image" src="../../static/images/charge_pile.png"></image>
+      <text class="text">充电桩设备</text>
+    </view>
+  </view> -->
+  <!-- 门店权限 中间人权限 -->
+  <!-- <view class="lists" wx:if="{{app_role=='seller'||app_role=='introducer'}}">
+    <view class="item" bindtap="goTo" data-id="batteryDevice" wx:if="{{utils.indexOf(device_types,'battery')!=-1}}">
+      <image class="image" src="../../static/images/charge_battery.png"></image>
+      <text class="text">充电宝设备</text>
+    </view>
+    <view class="item" bindtap="goTo" data-id="line" wx:if="{{utils.indexOf(device_types,'wired')!=-1}}">
+      <image class="image" src="../../static/images/line.png"></image>
+      <text class="text">线充设备</text>
+    </view>
+    <view class="item" bindtap="goTo" data-id="pile" wx:if="{{utils.indexOf(device_types,'pile')!=-1}}">
+      <image class="image" src="../../static/images/charge_pile.png"></image>
+      <text class="text">充电桩设备</text>
+    </view>
+  </view> -->
+</view>
+<tabBar selected="index" wx:if="{{isLogin}}"></tabBar>
+<view class="entrance" wx:if="{{!isLogin}}">
+  <view class="box" bindtap="toLogin">
+    <text class="title">今日收入(元)</text>
+    <text class="acount">******</text>
+  </view>
+  <view class="quick_entrance">
+    <image class="image" src="../../static/images/banner_order_profit.png" bindtap="toLogin"></image>
+    <image class="image" src="../../static/images/banner_apply_withdrawal.png" bindtap="toLogin"></image>
+  </view>
+</view>
+<datePicker bindclose="closeDatePicker" bindconfirm="confirmDatePicker" wx:if="{{showDatePicker}}"></datePicker>

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "bindAgency":"/components/bindAgency/bindAgency",
+    "bindSellerDevice":"/components/bindSellerDevice/bindSellerDevice"
+  },
+  "navigationBarTitleText": "充电桩设备"
+}

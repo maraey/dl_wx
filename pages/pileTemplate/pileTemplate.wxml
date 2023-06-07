@@ -1,0 +1,27 @@
+<view class="pileTemplate">
+  <view class="tab">
+    <view class="tab_item {{type=='balance'?'select':''}}" data-type="balance" bindtap="tab">
+      <text class="text">单次充电</text>
+      <view class="line"></view>
+    </view>
+    <view class="tab_item {{type=='temporary'?'select':''}}" data-type="temporary" bindtap="tab">
+      <text class="text">临时充电</text>
+      <view class="line"></view>
+    </view>
+  </view>
+  <view class="item" wx:for="{{list}}" wx:key="id" wx:if="{{list.length>0}}">
+    <view class="left" data-id="{{item.id}}" bindtap="edit">
+      <view class="title">
+        <view class="text">{{item.name}}</view>
+        <image class="image" src="/static/images/more_pileTemplate.png"></image>
+      </view>
+      <view class="info">{{item.type_text}}</view>
+    </view>
+    <view class="delete" data-id="{{item.id}}" bindtap="delete">删除</view>
+  </view>
+  <view class="nodata" wx:if="{{list.length==0}}">
+    <image class="nodataImg" src="../../static/images/nodata.png"></image>
+    <view class="nodataText">暂无数据</view>
+  </view>
+  <image class="add_image" src="/static/images/add_seller_btn.png" bindtap="add"></image>
+</view>

@@ -1,0 +1,110 @@
+page{
+  background: #F4F5F5;
+}
+.sellerVip {
+  width: 100vw;
+  padding: 30rpx 0;
+  
+  box-sizing: border-box;
+}
+
+.sellerVip .input_box {
+  display: flex;
+  align-items: center;
+  width: 690rpx;
+  height: 72rpx;
+  margin: 0 auto;
+  padding: 0 30rpx;
+  font-size: 22rpx;
+  background: #ffffff;
+  border-radius: 4rpx;
+  box-sizing: border-box;
+}
+
+.sellerVip .input_box .image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 22rpx;
+}
+
+.sellerVip .input_box .input {
+  width: 570rpx;
+}
+
+.sellerVip .box {
+  width: 690rpx;
+  /* height: 276rpx; */
+  margin: 0 auto;
+  margin-top: 30rpx;
+  padding: 36rpx 32rpx 24rpx;
+  background: #FFFFFF;
+  border-radius: 8rpx;
+  box-sizing: border-box;
+}
+
+.sellerVip .box .name {
+  height: 44rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333333;
+  line-height: 44rpx;
+}
+
+.sellerVip .box .phone {
+  height: 40rpx;
+  margin: 30rpx 0 24rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #999999;
+  line-height: 40rpx;
+}
+
+.sellerVip .box .phone .phone_title {
+  margin-right: 28rpx;
+}
+
+.sellerVip .box .line {
+  width: 626rpx;
+  border-top: 2rpx solid #f5f5f5;
+}
+
+.sellerVip .box .btn_box {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16rpx;
+}
+
+.sellerVip .box .btn_box .delete {
+  width: 156rpx;
+  height: 60rpx;
+  margin-right: 24rpx;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #999999;
+  border-radius: 8rpx;
+  border: 2rpx solid #E9EAF0;
+  box-sizing: border-box;
+}
+
+.sellerVip .box .btn_box .detail {
+  width: 156rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #FFFFFF;
+  background: #3D82FF;
+  border-radius: 8rpx;
+}
+.sellerVip .add{
+  position: fixed;
+  top: 1108rpx;
+  right: 22rpx;
+}
+.sellerVip .add .image{
+  width: 106rpx;
+  height: 106rpx;
+}

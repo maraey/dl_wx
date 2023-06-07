@@ -1,0 +1,217 @@
+<view class="agencyDetail">
+  <view>
+    <view class="top_box">
+      <view class="top">
+        <view class="title_and_rate">
+          <view class="title">{{info.name}}</view>
+          <view class="rate" >
+            <text class="rate_text">提成比例</text>
+            <text class="rate_num">{{info.brokerage}}%</text>
+          </view>
+        </view>
+        <view class="delete" data-id="{{info.id}}" bindtap="delete" wx:if="{{info.is_self!=1||info.role!=1}}">
+          <image class="image" src="/static/images/delete.png"></image>
+          <text class="delete_text">删除</text>
+        </view>
+      </view>
+      <view class="line"></view>
+      <view class="middle" wx:if="{{role=='agent'}}">
+        <view class="item">
+          <view class="item_title">加盟方式</view>
+          <view class="item_text">{{info.type==1?'加盟商':'服务商'}}</view>
+        </view>
+        <view class="item">
+          <view class="item_title">登录手机</view>
+          <view class="item_text">{{info.phone}}</view>
+        </view>
+        <view class="item">
+          <view class="item_title">添加下级代理</view>
+          <view class="item_text">{{info.can_sub==1?'允许':'不允许'}}</view>
+        </view>
+        <view class="item">
+          <view class="item_title">弹出电池</view>
+          <view class="item_text">{{info.open_lock==1?'允许':'不允许'}}</view>
+        </view>
+        <view class="item">
+          <view class="item_title">是否可风控</view>
+          <view class="item_text">{{info.can_pass==1?'允许':'不允许'}}</view>
+        </view>
+        <view class="item">
+          <view class="item_title">是否可提现</view>
+          <view class="item_text">{{info.can_withdrawal==1?'允许':'不允许'}}</view>
+        </view>
+        <view class="item">
+          <view class="item_title">状态</view>
+          <view class="item_text">{{info.status==1?'正常':'禁止'}}</view>
+        </view>
+      </view>
+      <view class="middle" wx:if="{{role=='manager'}}">
+        <!-- <view class="item">
+          <view class="item_title">门店等级</view>
+          <view class="item_text">{{info.shop_grade_text}}</view>
+        </view> -->
+        <view class="item">
+          <view class="item_title">登录手机</view>
+          <view class="item_text">{{info.phone}}</view>
+        </view>
+        <view class="item" wx:if="{{info.employee_name||info.employee_name==='0'}}">
+          <view class="item_title">所属地推</view>
+          <view class="item_text">{{info.employee_name}}</view>
+        </view>
+        <view class="item">
+          <view class="item_title">弹出电池</view>
+          <view class="item_text">{{info.open_lock==1?'允许':'不允许'}}</view>
+        </view>
+        <view class="item">
+          <view class="item_title">状态</view>
+          <view class="item_text">{{info.status==1?'正常':'禁止'}}</view>
+        </view>
+      </view>
+      <view class="middle" wx:if="{{role=='bd'}}">
+        <view class="item">
+          <view class="item_title">登录手机</view>
+          <view class="item_text">{{info.phone}}</view>
+        </view>
+        <view class="item">
+          <view class="item_title">弹出电池</view>
+          <view class="item_text">{{info.open_lock==1?'允许':'不允许'}}</view>
+        </view>
+        <view class="item">
+          <view class="item_title">状态</view>
+          <view class="item_text">{{info.status==1?'正常':'禁止'}}</view>
+        </view>
+      </view>
+      <view class="middle" wx:if="{{role=='introducer'}}">
+        <view class="item">
+          <view class="item_title">登录手机</view>
+          <view class="item_text">{{info.phone}}</view>
+        </view>
+        <view class="item">
+          <view class="item_title">弹出电池</view>
+          <view class="item_text">{{info.open_lock==1?'允许':'不允许'}}</view>
+        </view>
+        <view class="item">
+          <view class="item_title">状态</view>
+          <view class="item_text">{{info.status==1?'正常':'禁止'}}</view>
+        </view>
+      </view>
+      <view class="line"></view>
+      <view class="bottom" wx:if="{{role=='agent'}}">
+        <view class="item" bindtap="sellerList">
+          <image class="image" src="/static/images/seller_manage.png"></image>
+          <text class="text">门店管理</text>
+        </view>
+        <view class="item" bindtap="edit">
+          <image class="image" src="/static/images/seller_detail_edit.png"></image>
+          <text class="text">修改代理</text>
+        </view>
+        <view class="item" bindtap="bind">
+          <image class="image" src="/static/images/seller_detail_bind.png"></image>
+          <text class="text">绑定设备</text>
+        </view>
+      </view>
+      <view class="bottom" wx:if="{{role=='manager'}}">
+        <view class="item" bindtap="editSeller">
+          <image class="image" src="/static/images/seller_detail_edit.png"></image>
+          <text class="text">修改门店账户</text>
+        </view>
+      </view>
+      <view class="bottom" wx:if="{{role=='bd'}}">
+        <view class="item" bindtap="editEmployee">
+          <image class="image" src="/static/images/seller_detail_edit.png"></image>
+          <text class="text">修改地推</text>
+        </view>
+        <view class="item" bindtap="bind">
+          <image class="image" src="/static/images/seller_detail_bind.png"></image>
+          <text class="text">绑定设备</text>
+        </view>
+        <view class="item" bindtap="sellerList">
+          <image class="image" src="/static/images/seller_manage.png"></image>
+          <text class="text">门店管理</text>
+        </view>
+      </view>
+      <view class="bottom" wx:if="{{role=='introducer'}}">
+        <view class="item" bindtap="editEmployee">
+          <image class="image" src="/static/images/seller_detail_edit.png"></image>
+          <text class="text">修改渠道商</text>
+        </view>
+        <view class="item" bindtap="sellerList">
+          <image class="image" src="/static/images/seller_manage.png"></image>
+          <text class="text">门店管理</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="line_bottom"></view>
+  <view>
+    <view class="bottom_box" wx:if="{{battery}}">
+      <view class="device_battery">
+        <view class="title">充电宝设备</view>
+        <view class="list">
+          <view class="item">
+            <view class="item_title">总数</view>
+            <view class="item_num">{{battery.all}}</view>
+          </view>
+          <view class="item">
+            <view class="item_title">离线</view>
+            <view class="item_num">{{battery.offline}}</view>
+          </view>
+          <view class="item">
+            <view class="item_title">未绑</view>
+            <view class="item_num">{{battery.unbind}}</view>
+          </view>
+          <view class="item">
+            <view class="item_title">故障</view>
+            <view class="item_num">{{battery.fault}}</view>
+          </view>
+          <view class="item">
+            <view class="item_title">补宝</view>
+            <view class="item_num">{{battery.replenish}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="bottom_box" wx:if="{{wired}}">
+      <view class="device_battery">
+        <view class="title">充电线设备</view>
+        <view class="list" style="padding: 0 64rpx;">
+          <view class="item">
+            <view class="item_title">总数</view>
+            <view class="item_num">{{wired.all}}</view>
+          </view>
+          <view class="item">
+            <view class="item_title">未绑充电线</view>
+            <view class="item_num">{{wired.unbind}}</view>
+          </view>
+          <view class="item">
+            <view class="item_title">故障</view>
+            <view class="item_num">{{wired.fault}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="bottom_box" wx:if="{{pile}}">
+      <view class="device_battery">
+        <view class="title">充电桩设备</view>
+        <view class="list" style="padding: 0 64rpx;">
+          <view class="item">
+            <view class="item_title">总数</view>
+            <view class="item_num">{{pile.all}}</view>
+          </view>
+          <view class="item">
+            <view class="item_title">离线</view>
+            <view class="item_num">{{pile.offline}}</view>
+          </view>
+          <view class="item">
+            <view class="item_title">未绑充电桩</view>
+            <view class="item_num">{{pile.unbind}}</view>
+          </view>
+          <view class="item">
+            <view class="item_title">故障</view>
+            <view class="item_num">{{pile.fault}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

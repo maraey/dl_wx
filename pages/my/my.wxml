@@ -1,0 +1,156 @@
+<wxs src="../../utils/utils.wxs" module="utils" />
+<view class="my">
+  <view class="user_info">
+    <view class="info">
+      <image src="../../static/images/avatar.png" class="ava_img"></image>
+      <view class="name_info">
+        <view class="name_role"> 
+          <text class="name_text">Hi,Esther!</text>
+          <view class="role">
+            <text class="role_text">代理商</text>
+          </view>
+        </view>
+        <view class="date_info">
+          10月20日 星期五
+        </view>
+      </view>
+    </view>
+    <image src="../../static/images/logout@2x.png" class="out_img"></image>
+    <!-- <text class="welcome">你好,{{info.name}}</text>
+    <button class="log_out" bindtap="logout">退出</button> -->
+  </view>
+  <view class="account_info">
+    <view class="account_info_top">
+      <view class="account_info_top_item">
+        <text class="text">累计分成</text>
+        <text class="amount">{{info.sum_amount}}</text>
+      </view>
+
+      <view class="account_info_top_item" wx:if="{{login_info.role!='seller'&&login_info.role!='introducer'}}">
+        <text class="text">总退款金额</text>
+        <text class="amount">{{info.total_refund}}</text>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="account_info_bottom">
+      <view class="account_info_bottom_item">
+        <text class="text">已提现金额</text>
+        <text class="amount_small">{{info.withdrawal_amount}}</text>
+      </view>
+      <view class="account_info_bottom_item">
+        <text class="text">可提现金额</text>
+        <text class="amount_small">{{info.balance}}</text>
+      </view>
+      <view class="account_info_bottom_item">
+        <text class="text">提现冻结金额</text>
+        <text class="amount_small">{{info.freeze_amount}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="something" >
+    <view class="title">角色管理</view>
+    <view class="lists">
+      <view class="item" data-role="agent" bindtap="agencyList" >
+        <view class="image_wrap">
+          <image class="image" src="../../static/images/agency@2x.png"></image>
+        </view>
+        <text class="text">代理</text>
+      </view>
+      <view class="item" data-role="introducer" bindtap="agencyList" >
+        <view class="image_wrap">
+          <image class="image" src="../../static/images/introducer@2x.png"></image>
+        </view>
+        <text class="text">渠道商</text>
+      </view>
+      <view class="item" bindtap="sellerVip">
+        <view class="image_wrap">
+          <image class="image"  src="../../static/images/shopVip@2x.png"></image>
+        </view>
+        <text class="text">门店VIP</text>
+      </view>
+      <view class="item" data-role="manager" bindtap="agencyList">
+        <view class="image_wrap">
+          <image class="image" src="../../static/images/shopAccount@2x.png"></image>
+        </view>
+        <text class="text">门店账户</text>
+      </view>
+    </view>
+  </view>
+  <!-- <view class="something">
+    <view class="title">其他功能</view>
+    <view class="lists">
+      <view class="item" bindtap="adjustPrice" wx:if="{{login_info.role=='agent'}}">
+        <view class="image_wrap">
+          <image style="width: 44rpx; height: 44rpx;" src="../../static/images/my_adjust_price.png"></image>
+        </view>
+        <text class="text">一键调价</text>
+      </view>
+      <view class="item" bindtap="resetPsw">
+        <view class="image_wrap">
+          <image style="width: 44rpx;height: 44rpx;" src="../../static/images/my_change_psw.png"></image>
+        </view>
+        <text class="text">修改密码</text>
+      </view>
+      <view class="item" bindtap="WithdrawalLog">
+        <view class="image_wrap">
+          <image style="width: 52rpx;height: 52rpx;" src="../../static/images/apply1.png"></image>
+        </view>
+        <text class="text">提现记录</text>
+      </view>
+      <view class="item" bindtap="replenish" wx:if="{{login_info.role=='agent'}}">
+        <view class="image_wrap">
+          <image style="width: 44rpx;height: 44rpx;" src="../../static/images/addDevice@2x.png"></image>
+        </view>
+        <text class="text">补宝</text>
+      </view>
+      <view class="item" bindtap="pileTemplate" style="width: 27%;" wx:if="{{login_info.role!='seller'&&login_info.role!='introducer'&&utils.indexOf(device_types,'pile')!=-1}}">
+        <view class="image_wrap">
+          <image class="image" style="width: 44rpx;height: 44rpx;" src="../../static/images/pileTemplate.png"></image>
+        </view>
+        <text class="text">充电桩模版管理</text>
+      </view>
+    </view>
+  </view> -->
+
+  <view class="scroll">
+    <view class="title">其他功能</view>
+    <scroll-view scroll-x="true" class="scroll_lists" 	bindscrolltolower="scrollRight" 	bindscrolltoupper="scrollLeft">
+      <view class="scroll_item" bindtap="adjustPrice" wx:if="{{login_info.role=='agent'}}">
+        <view class="image_wraps">
+          <image style="width: 44rpx; height: 44rpx;" src="../../static/images/my_adjust_price.png"></image>
+        </view>
+        <text class="text">一键调价</text>
+      </view>
+      <view class="scroll_item" bindtap="resetPsw">
+        <view class="image_wraps">
+          <image style="width: 44rpx;height: 44rpx;" src="../../static/images/my_change_psw.png"></image>
+        </view>
+        <text class="text">修改密码</text>
+      </view>
+      <view class="scroll_item" bindtap="WithdrawalLog">
+        <view class="image_wraps">
+          <image style="width: 52rpx;height: 52rpx;" src="../../static/images/apply1.png"></image>
+        </view>
+        <text class="text">提现记录</text>
+      </view>
+      <view class="scroll_item" bindtap="replenish" wx:if="{{login_info.role=='agent'}}">
+        <view class="image_wraps">
+          <image style="width: 44rpx;height: 44rpx;" src="../../static/images/addDevice@2x.png"></image>
+        </view>
+        <text class="text">补宝</text>
+      </view>
+      <view class="scroll_item" bindtap="pileTemplate" style="width: 27%;" wx:if="{{login_info.role!='manager'&&login_info.role!='introducer'&&utils.indexOf(device_types,'pile')!=-1}}">
+        <view class="image_wraps">
+          <image class="image" style="width: 44rpx;height: 44rpx;" src="../../static/images/pileTemplate.png"></image>
+        </view>
+        <text class="text">充电桩模版管理</text>
+      </view>
+    </scroll-view>
+    <view class="show_line">
+      <view class="{{scroll_right?'line_right':'line_left'}}"></view>
+      <view class="{{scroll_left?'line_right':'line_left'}}"></view>
+    </view>
+
+  </view>
+</view>
+<tabBar selected="my"></tabBar>

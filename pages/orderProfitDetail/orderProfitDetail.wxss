@@ -1,0 +1,132 @@
+.order_profit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #F4F5F5;
+  overflow: scroll;
+}
+
+.order_profit .wrap {
+  position: sticky;
+  top: 0;
+}
+.order_profit .wrap .search{
+  display: flex;
+  align-items: center;
+  width: 690rpx;
+  height: 72rpx;
+  margin-top: 30rpx;
+  background: #FFFFFF;
+  font-size: 26rpx;
+  font-weight: 400;
+  border-radius: 4rpx;
+}
+.order_profit .wrap .search image{
+  width: 28rpx;
+  height: 28rpx;
+  margin: 0 22rpx 0 30rpx;
+}
+.order_profit .wrap .search input {
+  width: 500rpx;
+}
+.order_profit .order_profit_box {
+  padding: 30rpx 0;
+  width: 690rpx;
+}
+
+.order_profit .order_profit_box .order_profit_box_item {
+  width: 690rpx;
+  padding: 36rpx 32rpx;
+  background-color: #fff;
+  border-radius: 8rpx;
+  box-sizing: border-box;
+}
+
+.order_profit .order_profit_box .order_profit_box_item+.order_profit_box_item {
+  margin-top: 30rpx;
+}
+
+.order_profit .order_profit_box .order_profit_box_item .order_profit_box_item_title_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order_profit .order_profit_box .order_profit_box_item .order_profit_box_item_title_box .order_profit_box_item_title {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #333333;
+  line-height: 42rpx;
+}
+
+.order_profit .order_profit_box .order_profit_box_item .order_profit_box_item_title_box .order_profit_box_item_copy {
+  width: 76rpx;
+  height: 38rpx;
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #3D82FF;
+  line-height: 38rpx;
+  text-align: center;
+  background: #FFFFFF;
+  border-radius: 19rpx;
+  border: 2rpx solid #3D82FF;
+}
+
+.order_profit .order_profit_box .order_profit_box_item .line {
+  width: 626rpx;
+  margin: 28rpx 0 30rpx;
+  border-top: 2rpx solid #f5f5f5;
+}
+
+.order_profit .order_profit_box .order_profit_box_item .order_profit_box_detail_box {
+  display: flex;
+  align-items: center;
+}
+
+.order_profit .order_profit_box .order_profit_box_item .order_profit_box_detail_box+.order_profit_box_detail_box {
+  margin-top: 16rpx;
+}
+
+.order_profit .order_profit_box .order_profit_box_item .order_profit_box_detail_box .order_profit_box_detail_title {
+  width: 112rpx;
+  margin-right: 28rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #999999;
+  line-height: 40rpx;
+}
+
+.order_profit .order_profit_box .order_profit_box_item .order_profit_box_detail_box .order_profit_box_detail_text {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #999999;
+  line-height: 40rpx;
+}
+
+.order_profit .order_profit_box .order_profit_box_detail {
+  width: 690rpx;
+  height: 568rpx;
+  padding: 36rpx 32rpx;
+  background: #FFFFFF;
+  border-radius: 8rpx;
+  box-sizing: border-box;
+}
+
+.order_profit .order_profit_box .order_profit_box_detail .title {
+  margin-bottom: 20rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333333;
+}
+
+.order_profit .order_profit_box .order_profit_box_detail .item {
+  height: 40rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #999999;
+}
+.order_profit .order_profit_box .order_profit_box_detail .item+.item{
+  margin-top: 16rpx;
+}

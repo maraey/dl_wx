@@ -1,0 +1,110 @@
+<view class="agencyAndstaff">
+  <view class="wrap">
+    <view class="screen_bar" >
+      <view class="screen_item {{screen_type == 'agency'?'screen_selected':''}}" data-type="agency" bindtap="screen">代理</view>
+      <view class="screen_item {{screen_type == 'staff'?'screen_selected':''}}" data-type="staff" bindtap="screen">地推</view>
+    </view>
+    <view class="search_bar">
+      <image class="image" src="../../static/images/search_bar.png"></image>
+      <input class="input" type="text" bindinput="handleInput" placeholder-class="phcolor" placeholder="请输入关键词" />
+    </view>
+  </view>
+  <view class="list_box">
+    <radio-group>
+      <view class="item">
+        <text>dfsf151515</text>
+        <view class="radio">
+          <radio color="#3D82FF"/>
+        </view>
+      </view>
+      <view class="item">
+        <text>dfsf151515</text>
+        <view class="radio">
+          <radio color="#3D82FF"/>
+        </view>
+      </view>
+      <view class="item">
+        <text>dfsf151515</text>
+        <view class="radio">
+          <radio color="#3D82FF"/>
+        </view>
+      </view>
+      <view class="item">
+        <text>dfsf151515</text>
+        <view class="radio">
+          <radio color="#3D82FF"/>
+        </view>
+      </view>
+      <view class="item">
+        <text>dfsf151515</text>
+        <view class="radio">
+          <radio color="#3D82FF"/>
+        </view>
+      </view>
+      <view class="item">
+        <text>dfsf151515</text>
+        <view class="radio">
+          <radio color="#3D82FF"/>
+        </view>
+      </view>
+      <view class="item">
+        <text>dfsf151515</text>
+        <view class="radio">
+          <radio color="#3D82FF"/>
+        </view>
+      </view>
+      <view class="item">
+        <text>dfsf151515</text>
+        <view class="radio">
+          <radio color="#3D82FF"/>
+        </view>
+      </view>
+      <view class="item">
+        <text>dfsf151515</text>
+        <view class="radio">
+          <radio color="#3D82FF"/>
+        </view>
+      </view>
+      <view class="item">
+        <text>dfsf151515</text>
+        <view class="radio">
+          <radio color="#3D82FF"/>
+        </view>
+      </view>
+      <view class="item">
+        <text>dfsf151515</text>
+        <view class="radio">
+          <radio color="#3D82FF"/>
+        </view>
+      </view>
+      <view class="item">
+        <text>dfsf151515</text>
+        <view class="radio">
+          <radio color="#3D82FF"/>
+        </view>
+      </view>
+      <view class="item">
+        <text>dfsf151515</text>
+        <view class="radio">
+          <radio color="#3D82FF"/>
+        </view>
+      </view>
+      <view class="item">
+        <text>dfsf151515</text>
+        <view class="radio">
+          <radio color="#3D82FF"/>
+        </view>
+      </view>
+      <view class="item">
+        <text>dfsf151515</text>
+        <view class="radio">
+          <radio color="#3D82FF"/>
+        </view>
+      </view>
+    </radio-group>
+  </view>
+  <view class="btn">
+    <view class="cancle" bindtap="cancle">取消</view>
+    <view class="sub" bindtap="sub">确定</view>
+  </view>
+</view>

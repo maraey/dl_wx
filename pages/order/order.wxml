@@ -1,0 +1,177 @@
+<wxs src="../../utils/utils.wxs" module="utils" />
+<view class="order">
+  <view class="wrap">
+    <view class="screen_bar">
+      <view class="screen_title_wrap" data-type="status" bindtap="selectScreen">
+        <text class="screen_title {{selectType == 'status'?'screen_title_select':''}}">状态</text>
+        <view class="{{selectType == 'status'?'screen_triangle_select':'screen_triangle'}}"></view>
+      </view>
+      <!-- <view class="screen_title_wrap" data-type="type" bindtap="selectScreen">
+        <text class="screen_title {{selectType == 'type'?'screen_title_select':''}}">类型</text>
+        <view class="{{selectType == 'type'?'screen_triangle_select':'screen_triangle'}}"></view>
+      </view> -->
+      <view class="screen_title_wrap" data-type="my" bindtap="selectScreen" wx:if="{{can_sub}}">
+        <text class="screen_title {{selectType == 'my'?'screen_title_select':''}}" wx:if="{{newDataMy.screenMy === 'all'}}">全部</text>
+        <text class="screen_title {{selectType == 'my'?'screen_title_select':''}}" wx:if="{{newDataMy.screenMy === 'self'}}">我的数据</text>
+        <text class="screen_title {{selectType == 'my'?'screen_title_select':''}}" wx:if="{{newDataMy.screenMy === 'sub'}}">下级数据</text>
+        <view class="{{selectType == 'my'?'screen_triangle_select': 'screen_triangle'}}"></view>
+      </view>
+      <view class="screen_title_wrap" data-type="screen" bindtap="selectScreen">
+        <text class="screen_title {{selectType == 'screen'?'screen_title_select':''}}">筛选</text>
+        <view class="{{selectType == 'screen'?'screen_triangle_select':'screen_triangle'}}"></view>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="screen_info">
+      <view class="screen_info_text">
+        当前筛选时间：{{newData.screenStartDate}}至{{newData.screenEndDate}}
+      </view>
+      <view class="screen_info_text">
+        总数量：{{total}}
+      </view>
+    </view>
+  </view>
+  <scroll-view scroll-y class="scroll" bindscrolltolower="bindscrolltolower">
+    <view class="order_box" data-id="{{item.order_no}}" bindtap="checkDetail" wx:for="{{list}}" wx:key="index" wx:if="{{list.length>0}}">
+      <view class="title_amount" wx:if="{{info.role!='seller'&&info.role!='introducer'&&item.status==2|| shop_grade==2}}">订单金额：¥{{item.amount}}</view>
+      <view class="title_num">
+        <text class="title_num_text">订单编号：{{item.order_no}}</text>
+        <text class="title_num_copy" data-id="{{item.order_no}}" catchtap="copy">复制</text>
+      </view>
+      <view class="order_box_line"></view>
+      <view class="order_box_bottom">
+        <view class="order_box_bottom_list">
+          <view class="order_box_bottom_list_item">
+            <text class="order_box_bottom_text_title" wx:if="{{info.role!='introducer'}}">订单时长</text>
+            <text class="order_box_bottom_text">{{item.use_time}}</text>
+          </view>
+          <view class="order_box_bottom_list_item" wx:if="{{item.start_time&& shop_grade==2}}">
+            <text class="order_box_bottom_text_title">使用时间</text>
+            <text class="order_box_bottom_text">{{item.start_time}}</text>
+          </view>
+          <view class="order_box_bottom_list_item">
+            <text class="order_box_bottom_text_title">租借门店</text>
+            <text class="order_box_bottom_text">{{item.seller}}</text>
+          </view>
+          <view class="order_box_bottom_list_item">
+            <text class="order_box_bottom_text_title">用户类型</text>
+            <text class="order_box_bottom_text">{{item.user_type}}</text>
+          </view>
+          <view class="order_box_bottom_list_copy" wx:if="{{info.role=='agent'}}">
+            <text class="order_box_bottom_text_copy" data-id="{{item.order_no}}" catchtap="endOrder" wx:if="{{item.status==1&&item.can_end==1&&!newData.screenMy}}">结束订单</text>
+          </view>
+        </view>
+        <view class="more" wx:if="{{info.role!='seller'&&info.role!='introducer'}}">
+          <image class="image" src="../../static/images/more.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="nodata" wx:if="{{list.length==0}}">
+      <image class="nodataImg" src="../../static/images/nodata.png"></image>
+      <view class="nodataText">暂无数据</view>
+    </view>
+  </scroll-view>
+  <view class="popup" wx:if="{{showPopup}}" bindtap="closePopup">
+    <view class="popup_box" catchtap="stop">
+      <view wx:if="{{selectType=='status'}}">
+        <view class="popup_box_title">
+          状态选择
+        </view>
+        <view class="popup_box_options">
+          <view class="popup_box_option {{screenStatus=='all'?'popup_box_option_select':''}}" data-type="all" catchtap="selectScreenStatus">全部</view>
+          <view class="popup_box_option {{screenStatus=='active'?'popup_box_option_select':''}}" data-type="active" catchtap="selectScreenStatus">进行中</view>
+          <view class="popup_box_option {{screenStatus=='end'?'popup_box_option_select':''}}" data-type="end" catchtap="selectScreenStatus">待付款</view>
+          <view class="popup_box_option {{screenStatus=='cancel'?'popup_box_option_select':''}}" data-type="cancel" catchtap="selectScreenStatus">已完成</view>
+          <view class="popup_box_option {{screenStatus=='over'?'popup_box_option_select':''}}" data-type="over" catchtap="selectScreenStatus" >售宝</view>
+          <view class="popup_box_option {{screenStatus=='not_pay'?'popup_box_option_select':''}}" data-type="not_pay" catchtap="selectScreenStatus">取消</view>
+        </view>
+      </view>
+      <view wx:if="{{selectType=='type'}}">
+        <view class="popup_box_title">
+          类型选择
+        </view>
+        <view class="popup_box_options">
+          <!-- 充电宝 -->
+          <view class="popup_box_option {{type=='battery'?'popup_box_option_select':''}}" data-type="battery" catchtap="selectScreenType" wx:if="{{utils.indexOf(device_types,'battery')!=-1}}">充电宝</view>
+          <!-- 充电线 -->
+          <view class="popup_box_option {{type=='wired'?'popup_box_option_select':''}}" data-type="wired" catchtap="selectScreenType" wx:if="{{utils.indexOf(device_types,'wired')!=-1}}">充电线</view>
+          <!-- 充电桩 -->
+          <view class="popup_box_option {{type=='pile'?'popup_box_option_select':''}}" data-type="pile" catchtap="selectScreenType" wx:if="{{utils.indexOf(device_types,'pile')!=-1}}">充电桩</view>
+        </view>
+      </view>
+      <view wx:if="{{selectType=='my'}}">
+        <view class="popup_box_title">
+          数据选择
+        </view>
+        <view class="popup_box_options">
+          <view class="popup_box_option {{screenMy=='all'?'popup_box_option_select':''}}" data-type="all" catchtap="selectScreenMy">全部</view>
+          <view class="popup_box_option {{screenMy=='self'?'popup_box_option_select':''}}" data-type="self" catchtap="selectScreenMy">我的数据</view>
+          <view class="popup_box_option {{screenMy=='sub'?'popup_box_option_select':''}}" data-type="sub" catchtap="selectScreenMy">下级数据</view>
+        </view>
+      </view>
+      <view wx:if="{{selectType=='screen'}}">
+        <view class="popup_box_screen">
+          <view class="popup_box_title">
+            订单编号
+          </view>
+          <view class="popup_box_screen_input">
+            <input class="input" type="text" placeholder-class="phcolor" placeholder="请输入订单编号" value="{{order_no}}" bindinput="handleDeviceId" />
+          </view>
+        </view>
+        <view class="popup_box_screen">
+          <view class="popup_box_title">
+            会员ID
+          </view>
+          <view class="popup_box_screen_input">
+            <input class="input" type="text" placeholder-class="phcolor" placeholder="请输入会员ID" value="{{member_id}}" bindinput="handleVipId" />
+          </view>
+        </view>
+        <view class="popup_box_screen">
+          <view class="popup_box_title">
+            租借门店
+          </view>
+          <view class="popup_box_screen_input">
+            <input class="input" type="text" placeholder-class="phcolor" placeholder="请输入租借门店" value="{{seller}}" bindinput="handleSeller" />
+          </view>
+        </view>
+        <view class="popup_box_screen">
+          <view class="popup_box_title">
+            租借时间
+          </view>
+          <view class="popup_box_screen_picker">
+            <view class="popup_screen_date">
+              <image class="popup_date_image" src="../../static/images/popup_date.png"></image>
+              <picker mode="date" value="{{screenStartDate}}" catchchange="bindStartDateChange">
+                <view class="popup_picker_placeholder" wx:if="{{!screenStartDate}}">请选择起始时间</view>
+                <view class="popup_picker" wx:if="{{screenStartDate}}">{{screenStartDate}}</view>
+              </picker>
+            </view>
+            <view class="popup_screen_date">
+              <image class="popup_date_image" src="../../static/images/popup_date.png"></image>
+              <picker mode="date" value="{{screenEndDate}}" catchchange="bindEndDateChange">
+                <view class="popup_picker_placeholder" wx:if="{{!screenEndDate}}">请选择结束时间</view>
+                <view class="popup_picker" wx:if="{{screenEndDate}}">{{screenEndDate}}</view>
+              </picker>
+            </view>
+          </view>
+        </view>
+        <view class="popup_box_screen" wx:if="{{screenStatus=='all'}}">
+          <view class="popup_box_title">
+            更多数据
+          </view>
+          <view class="popup_box_options">
+            <view class="popup_box_option {{is_refund==1?'popup_box_option_select':''}}" style="margin-top: 8rpx;" catchtap="isRefund" wx:if="{{screenStatus=='all'}}">退款订单</view>
+            <view class="popup_box_option {{is_lose==1?'popup_box_option_select':''}}" style="margin-top: 8rpx;" catchtap="isLose" wx:if="{{type==1&&screenStatus=='all'}}">丢宝订单</view>
+          </view>
+        </view>
+      </view>
+      <view class="popup_box_line"></view>
+      <view class="popup_box_btn">
+        <view class="popup_box_reset" catchtap="reset">重置</view>
+        <view class="popup_box_sub" catchtap="screenSub">确定</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<tabBar selected="order"></tabBar>

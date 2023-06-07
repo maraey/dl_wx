@@ -1,0 +1,6 @@
+function indexOf(str,val){
+  return str.indexOf(val)
+}
+module.exports={
+  indexOf:indexOf
+}

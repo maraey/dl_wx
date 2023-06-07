@@ -1,0 +1,41 @@
+<view class="bindSeller">
+  <view>
+    <view class="bindSeller_screen">
+      <view class="bindSeller_screen_item {{type=='all'?'select':''}}" data-type="all" bindtap="screen">全部</view>
+      <view class="bindSeller_screen_item {{type=='selected'?'select':''}}" data-type="selected" bindtap="screen">已选门店</view>
+    </view>
+  </view>
+  <view>
+    <view class="input_box">
+      <image class="image" src="../../static/images/search_bar.png"></image>
+      <input class="input" type="text" placeholder-class="phcolor" placeholder="请输入关键词" bindinput="handleInput" />
+    </view>
+  </view>
+  <view>
+    <view class="list" wx:if="{{type=='all'}}">
+      <label class="item" wx:for="{{list}}" wx:key="index" data-id="{{item.id}}" data-index="{{index}}" bindtap="handleSelect">
+        <text class="name">{{item.name}}</text>
+        <view class="radio">
+          <radio color="#3D82FF" value="{{item.id}}" checked="{{item.checked}}"></radio>
+        </view>
+      </label>
+    </view>
+    <view class="list" wx:if="{{type=='selected'}}">
+      <label class="item" wx:for="{{selectedList}}" wx:key="index" data-id="{{item.id}}" data-index="{{index}}" bindtap="handleSelectNew">
+        <text class="name">{{item.name}}</text>
+        <view class="radio">
+          <radio color="#3D82FF" value="{{item.id}}" checked="{{item.checked}}"></radio>
+        </view>
+      </label>
+    </view>
+  </view>
+  <view>
+    <view class="bottom">
+      <pagination wx:if="{{showPag}}" bindnewPage="handlePage" total="{{total}}" pageSize="{{pageSize}}"></pagination>
+      <view class="btn">
+        <view class="cancel" bindtap="cancle">取消</view>
+        <view class="sub" bindtap="sub">确定</view>
+      </view>
+    </view>
+  </view>
+</view>

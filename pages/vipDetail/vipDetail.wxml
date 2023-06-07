@@ -1,0 +1,47 @@
+<wxs src="../../utils/utils.wxs" module="utils" />
+<view class="vipDetail">
+  <view>
+    <view class="box" wx:for="{{list}}" wx:key="index">
+      <view class="item">
+        <view class="item_title">门店名：</view>
+        <view class="item_info">{{item.name}}</view>
+      </view>
+      <view class="item" wx:if="{{item.vip_type==2&&item.powerbank_type==2}}">
+        <view class="item_title">充电宝总免费分钟：</view>
+        <view class="item_info">
+          <text class="use">{{item.powerbank_use}}</text>
+          <text>/{{item.powerbank_free}}</text>
+        </view>
+      </view>
+      <view class="item" wx:if="{{item.vip_type==2&&item.powerbank_type==1}}">
+        <view class="item_title">充电宝每日免费次数：</view>
+        <view class="item_info">
+          <text class="use">{{item.powerbank_use_num}}</text>
+          <text>/{{item.powerbank_num}}</text>
+        </view>
+      </view>
+      <view class="item" wx:if="{{item.vip_type==2&&item.powerbank_type==1}}">
+        <view class="item_title">充电宝每次免费时长：</view>
+        <view class="item_info">
+          <text>{{item.powerbank_every_time}}</text>
+        </view>
+      </view>
+      <view class="item" wx:if="{{utils.indexOf(device_types,'wired')!=-1&&item.type==0}}">
+        <view class="item_title">充电线免费次数：</view>
+        <view class="item_info">
+          <text class="use">{{item.wire_use}}</text>
+          <text>/{{item.wire_free}}</text>
+        </view>
+      </view>
+      <view class="item" wx:if="{{item.vip_type==1}}">
+        <view class="item_title">享受折扣：</view>
+        <view class="item_info">{{item.powerbank_discount}}折</view>
+      </view>
+      <view class="line"></view>
+      <view class="btn">
+        <view class="delete" data-id="{{item.id}}" bindtap="delete">删除门店</view>
+        <view class="edit" data-uid="{{item.uid}}" data-name="{{item.name}}" data-sid="{{item.sid}}" data-info="{{item}}" bindtap="edit">编辑门店</view>
+      </view>
+    </view>
+  </view>
+</view>

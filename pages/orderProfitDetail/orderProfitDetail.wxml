@@ -1,0 +1,63 @@
+<view class="order_profit">
+  <view class="wrap" wx:if="{{type==1}}">
+    <view class="search">
+      <image src="../../static/images/search_bar.png"></image>
+      <input type="text" placeholder-style="color:#AAAAAA;" placeholder="请输入订单编号" bindinput="handleOrder" />
+    </view>
+  </view>
+  <view class="order_profit_box">
+    <view class="order_profit_box_item" wx:if="{{type==1}}" wx:for="{{list}}" wx:key="index" wx:if="{{list.length>0}}">
+      <view class="order_profit_box_item_title_box">
+        <view class="order_profit_box_item_title">订单编号：{{item.order_no}}</view>
+      </view>
+      <view class="line"></view>
+      <view class="order_profit_box_detail_box">
+        <view class="order_profit_box_detail_title">订单金额</view>
+        <view class="order_profit_box_detail_text">¥{{item.amount}}</view>
+      </view>
+      <view class="order_profit_box_detail_box">
+        <view class="order_profit_box_detail_title">状态</view>
+        <view class="order_profit_box_detail_text">{{item.status_text}}</view>
+      </view>
+      <view class="order_profit_box_detail_box">
+        <view class="order_profit_box_detail_title">比例</view>
+        <view class="order_profit_box_detail_text">{{item.ratio}}</view>
+      </view>
+      <view class="order_profit_box_detail_box">
+        <view class="order_profit_box_detail_title">使用时间</view>
+        <view class="order_profit_box_detail_text">{{item.start_time}}</view>
+      </view>
+      <view class="order_profit_box_detail_box">
+        <view class="order_profit_box_detail_title">客户端</view>
+        <view class="order_profit_box_detail_text">{{item.app_type}}</view>
+      </view>
+      <view class="order_profit_box_detail_box">
+        <view class="order_profit_box_detail_title">订单类型</view>
+        <view class="order_profit_box_detail_text" wx:if="{{item.order_type==1}}">充电宝</view>
+        <view class="order_profit_box_detail_text" wx:if="{{item.order_type==2}}">充电线</view>
+        <view class="order_profit_box_detail_text" wx:if="{{item.order_type==3}}">充电桩</view>
+      </view>
+      <view class="order_profit_box_detail_box">
+        <view class="order_profit_box_detail_title">设备号</view>
+        <view class="order_profit_box_detail_text">{{item.device_code}}</view>
+      </view>
+    </view>
+    <view class="order_profit_box_detail" wx:if="{{type==2}}" wx:for="{{list}}" wx:key="index" wx:if="{{list.length>0}}">
+      <view class="title">订单收益</view>
+      <view class="item">订单编号：{{item.order_no}}</view>
+      <view class="item">使用时间：{{item.start_time}}</view>
+      <view class="item">订单金额：{{item.amount}}</view>
+      <view class="item">比例：{{item.ratio}}</view>
+      <view class="item">状态：{{item.status_text}}</view>
+      <view class="item">客户端：{{item.app_type}}</view>
+      <view class="item" wx:if="{{item.order_type==1}}">订单类型：充电宝</view>
+      <view class="item" wx:if="{{item.order_type==2}}">订单类型：充电线</view>
+      <view class="item" wx:if="{{item.order_type==3}}">订单类型：充电桩</view>
+      <view class="item">设备号：{{item.device_code}}</view>
+    </view>
+    <view class="nodata" wx:if="{{list.length==0}}">
+      <image class="nodataImg" src="../../static/images/nodata.png"></image>
+      <view class="nodataText">暂无数据</view>
+    </view>
+  </view>
+</view>

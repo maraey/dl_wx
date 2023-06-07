@@ -1,0 +1,123 @@
+<view class="order_detail">
+  <view class="order_detail_box">
+    <view class="order_detail_box_wrap">
+      <view class="order_detail_box_title">租借信息</view>
+      <view class="order_detail_box_list">
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">租借门店：</view>
+          <view class="order_detail_box_item_text">{{info.seller}}</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">租借时间：</view>
+          <view class="order_detail_box_item_text">{{info.start_time}}</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">租借方式：</view>
+          <view class="order_detail_box_item_text">{{info.user_type}}</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">租借类型：</view>
+          <view class="order_detail_box_item_text" wx:if="{{info.order_type==1}}">充电宝</view>
+          <view class="order_detail_box_item_text" wx:if="{{info.order_type==2}}">充电线</view>
+          <view class="order_detail_box_item_text" wx:if="{{info.order_type==3}}">充电桩</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">免费时长：</view>
+          <view class="order_detail_box_item_text">{{info.free_time}}</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">收费标准：</view>
+          <view class="order_detail_box_item_text">{{info.billing}}</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">每天封顶：</view>
+          <view class="order_detail_box_item_text">{{info.ceiling}}</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">租借押金：</view>
+          <view class="order_detail_box_item_text">{{info.deposit}}</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">设备编号：</view>
+          <view class="order_detail_box_item_text">{{info.device_id}}</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">租借孔位：</view>
+          <view class="order_detail_box_item_text">{{info.rent_lock}}</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">电池编号：</view>
+          <view class="order_detail_box_item_text">{{info.battery_id}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="order_detail_box_wrap">
+      <view class="order_detail_box_title">费用信息</view>
+      <view class="order_detail_box_list">
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">消费金额：</view>
+          <view class="order_detail_box_item_text">¥{{info.amount}}</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">订单编号：</view>
+          <view class="order_detail_box_item_text">{{info.order_no}}</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">订单状态：</view>
+          <view class="order_detail_box_item_text">{{info.status_text}}</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">租借时长：</view>
+          <view class="order_detail_box_item_text">{{info.use_time}}</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">付款时间：</view>
+          <view class="order_detail_box_item_text">{{info.payment_time}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="order_detail_box_wrap" wx:if="{{info.status==2}}">
+      <view class="order_detail_box_title">归还信息</view>
+      <view class="order_detail_box_list">
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">归还商铺：</view>
+          <view class="order_detail_box_item_text">{{info.return_seller}}</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">设备编号：</view>
+          <view class="order_detail_box_item_text">{{info.return_device}}</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">归还孔位：</view>
+          <view class="order_detail_box_item_text">{{info.return_lock}}</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">归还时间：</view>
+          <view class="order_detail_box_item_text">{{item.return_time}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="order_detail_box_wrap" wx:if="{{info.status==2&&login_info.role=='agent'}}">
+      <view class="order_detail_box_title">分成明细</view>
+      <view class="order_detail_box_list">
+        <view class="order_detail_box_item" wx:for="{{info.brokerage}}" wx:key="index">
+          <view class="order_detail_box_item_title">{{item.type}}：</view>
+          <view class="order_detail_box_item_text">{{item.name}}一分成{{item.ratio}}%</view>
+        </view>
+      </view>
+    </view>
+    <view class="order_detail_box_wrap">
+      <view class="order_detail_box_title">用户信息</view>
+      <view class="order_detail_box_list">
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">用户昵称: </view>
+          <view class="order_detail_box_item_text">{{info.nick}}</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">会员ID：</view>
+          <view class="order_detail_box_item_text">{{info.member_id}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

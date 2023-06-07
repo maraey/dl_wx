@@ -1,0 +1,167 @@
+<view class="pileSet">
+  <view class="box" wx:if="{{isAdd!=1}}">
+    <view class="item" style="height: 94rpx;" wx:if="{{type == 'balance'}}">
+      <view class="title">
+        单次充电启用
+      </view>
+      <view class="switch">
+        <switch color="#3D82FF" checked='{{balance_enable==1}}' bindchange="changeBalance"></switch>
+      </view>
+    </view>
+    <view class="item" style="height: 94rpx;" wx:if="{{type == 'temporary'}}">
+      <view class="title">
+        临时充电启用
+      </view>
+      <view class="switch">
+        <switch color="#3D82FF" checked='{{temporary_enable==1}}' bindchange="changeTemporary"></switch>
+      </view>
+    </view>
+    <view class="item">
+      <view class="title">
+        选择模版
+      </view>
+      <view class="item_right" bindtap="openSelectTemplate">
+        <text class="text">{{templateText}}</text>
+        <image class="image" src="/static/images/more_icon.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="time_box" wx:if="{{type=='balance'}}">
+    <view class="title_box">
+      <view class="title">
+        请选择相应的充电时长
+      </view>
+      <view>
+        <text class="time_text time_selected">{{time_num}}</text>
+        <text class="time_text">/6</text>
+      </view>
+    </view>
+    <view class="options">
+      <view class="options_item {{item.select?'options_select':''}}" wx:for="{{options}}" wx:key="index" data-index="{{index}}" bindtap="optionsSelect">{{item.time}}</view>
+    </view>
+  </view>
+  <view class="time_box" wx:if="{{type=='temporary'}}" style="height: 290rpx;">
+    <view class="title_box">
+      <view class="title_wrap">
+        <view class="title">
+          请填写相应的金额
+        </view>
+        <text class="tips">输入0或为空则不生效</text>
+      </view>
+    </view>
+    <view class="inputs">
+      <view class="input_box" wx:for="{{recharge}}" wx:key="index">
+        <input class="input" value="{{item}}" placeholder-class="phcolor" type="text" data-index="{{index}}" bindinput="setMoney" />
+      </view>
+
+      <!-- 占位 -->
+      <view class="input_box" style="visibility: hidden;"></view>
+      <view class="input_box" style="visibility: hidden;"></view>
+    </view>
+  </view>
+  <view class="box" wx:if="{{type=='balance'}}">
+    <view class="item">
+      <view class="title">
+        智能充电
+      </view>
+      <view class="switch">
+        <switch color="#3D82FF" checked="{{intelligent_enable==1}}" bindchange="intelligent"></switch>
+      </view>
+    </view>
+    <view class="item" style="height: 116rpx;" wx:if="{{intelligent_enable==1}}">
+      <view class="title">
+        最大时长
+      </view>
+      <view class="item_right">
+        <view class="input_box">
+          <input class="input" type="text" value="{{intelligent_time}}" bindinput="intelligentTime" />
+        </view>
+        <text class="text">小时</text>
+      </view>
+    </view>
+  </view>
+  <view class="template_box">
+    <view class="title">计费模版</view>
+    <view class="tab">
+      <view class="tab_item {{template=='simple'?'tab_select':''}}" data-type="simple" bindtap="template">简洁版</view>
+      <view class="tab_item {{template=='detailed'?'tab_select':''}}" data-type="detailed" bindtap="template">详细版</view>
+      <view class="tab_item {{template=='custom'?'tab_select':''}}" data-type="custom" bindtap="template">自定义</view>
+    </view>
+    <view class="fastSet">
+      <view class="title">快捷设置</view>
+      <view class="item_right">
+        <view class="input_box">
+          <input class="input" type="text" value="{{bill_set}}" bindinput="billSet" />
+        </view>
+        <text class="text">元/度</text>
+      </view>
+    </view>
+    <view class="title">功率区间价格设置</view>
+    <view class="table">
+      <view class="list_title_box">
+        <view class="list_list colorGrey">功率区间(W)</view>
+        <view class="list_list colorBlue">计费(元/小时)</view>
+        <view class="list_list colorBlue">销售电价(元/度)</view>
+      </view>
+      <view class="table_item" wx:for="{{table_item}}" wx:key="index">
+        <view class="list_list colorGrey" wx:if="{{template!='custom'}}">{{item.power_start}}-{{item.power_end}}</view>
+        <view class="list_list colorGrey" wx:if="{{template=='custom'}}">
+          <text>{{item.power_start}}-</text>
+          <input class="input power" type="text" value="{{item.power_end}}" data-index="{{index}}" bindinput="powerSet" />
+        </view>
+        <view class="list_list">
+          <input class="input" type="text" value="{{item.amount}}" data-index="{{index}}" bindinput="amountSet" placeholder-class="phcolor" placeholder="输入" />
+        </view>
+        <view class="list_list">
+          <input class="input" type="text" value="{{item.sale_price}}" data-index="{{index}}" bindinput="priceSet" placeholder-class="phcolor" placeholder="输入" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="operate">
+    <view class="btn" style="width:328rpx;" wx:if="{{isAdd==1&&template!='custom'}}" bindtap="cancle">取消</view>
+    <view class="btn" wx:if="{{isAdd!=1}}" bindtap="cancle">取消</view>
+    <view class="btn" bindtap="openSaveTemplate1" wx:if="{{isAdd!=1}}">另存模版</view>
+    <view class="btn" wx:if="{{template=='custom'}}" bindtap="addSection">添加区间</view>
+    <view class="btn" wx:if="{{template=='custom'}}" bindtap="deleteSection">删除区间</view>
+    <view class="confirm" bindtap="openSaveTemplate" wx:if="{{isAdd==1}}">确定</view>
+    <view class="confirm" wx:if="{{isAdd!=1&&template!='custom'}}" bindtap="backInfo">确定</view>
+    <view class="confirm widthAll" wx:if="{{isAdd!=1&&template=='custom'}}" bindtap="backInfo">确定</view>
+  </view>
+  <view class="popup" wx:if="{{saveTemplate}}" catchtap="cancelSaveTemplate">
+    <view class="popup_box" catchtap="stop">
+      <view class="popup_title">
+        模版名称
+      </view>
+      <view class="popup_input_box">
+        <input class="input" type="text" value="{{name}}" bindinput="name" />
+      </view>
+      <view class="popup_operate">
+        <view class="popup_btn" catchtap="cancelSaveTemplate">取消</view>
+        <view class="line"></view>
+        <view class="popup_btn confirm" bindtap="saveTemplate">确定</view>
+      </view>
+    </view>
+  </view>
+  <view class="popup" wx:if="{{selectTemplate}}" catchtap="cancelSelectTemplate">
+    <view class="popup_box" style="height: auto;" catchtap="stop">
+      <view class="popup_title">
+        选择模版
+      </view>
+      <radio-group >
+        <view class="popup_item" wx:for="{{templateList}}" wx:key="index" bindtap="selectTemplate" data-id="{{item.id}}" data-name="{{item.name}}">
+          <view class="popup_item_title">{{item.name}}</view>
+          <view class="radio">
+            <radio color="#3D82FF" value="{{item.id}}" checked="{{templateId==item.id}}"></radio>
+          </view>
+        </view>
+      </radio-group>
+
+      <view class="popup_operate">
+        <view class="popup_btn" catchtap="cancelSelectTemplate">取消</view>
+        <view class="line"></view>
+        <view class="popup_btn confirm" bindtap="confirmTemplate">确定</view>
+      </view>
+    </view>
+  </view>
+</view>

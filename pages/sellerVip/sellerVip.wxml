@@ -1,0 +1,48 @@
+<view class="sellerVip">
+  <view>
+    <view class="input_box">
+      <image class="image" src="../../static/images/search_bar.png"></image>
+      <input class="input" type="text" placeholder-class="phcolor" placeholder="请输入会员ID" bindinput="handleKeyword" />
+    </view>
+  </view>
+  <view wx:for="{{list}}" wx:key="id" wx:if="{{list.length>0&&editType==1}}">
+    <view class="box">
+      <view class="name">{{item.nick}}</view>
+      <view class="phone">
+        <text class="phone_title">会员号</text>
+        <text class="phone_num">{{item.member_id}}</text>
+      </view>
+      <view class="line"></view>
+      <view class="btn_box">
+        <view class="delete" data-id="{{item.uid}}" bindtap="delete">删除会员</view>
+        <view class="detail" data-id="{{item.member_id}}" data-uid="{{item.uid}}" bindtap="detail">查看门店</view>
+        <view class="detail" style="margin-left: 20rpx;" data-id="{{item.member_id}}" data-uid="{{item.uid}}" bindtap="editVip" >修改优惠</view>
+      </view>
+    </view>
+  </view>
+  <view wx:for="{{list}}" wx:key="id" wx:if="{{list.length>0&&editType==2}}">
+    <view class="box">
+      <view class="name">{{item.nick}}</view>
+      <view class="phone">
+        <text class="phone_title">会员号</text>
+        <text class="phone_num">{{item.member_id}}</text>
+      </view>
+      <view class="phone">
+        <text class="phone_title">优惠信息</text>
+        <text class="phone_num">{{item.text}}</text>
+      </view>
+      <view class="line"></view>
+      <view class="btn_box">
+        <view class="delete" data-id="{{item.uid}}" bindtap="delete">删除会员</view>
+        <!-- <view class="detail" style="margin-left: 20rpx;" data-id="{{item.member_id}}" data-info="{{item}}" bindtap="editVip1">修改优惠</view> -->
+      </view>
+    </view>
+  </view>
+  <view class="nodata" wx:if="{{list.length==0}}">
+    <image class="nodataImg" src="../../static/images/nodata.png"></image>
+    <view class="nodataText">暂无数据</view>
+  </view>
+  <view class="add" bindtap="toAdd">
+    <image class="image" src="../../static/images/add_seller_btn.png"></image>
+  </view>
+</view>

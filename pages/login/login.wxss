@@ -1,0 +1,74 @@
+.login {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+.login .top {
+  display: block;
+  width: 100vw;
+  height: 358rpx;
+  padding: 0 72rpx;
+  background: linear-gradient(109deg, #3D82FF 0%, #47ACFC 95%);
+  box-sizing: border-box;
+}
+
+.login .top image {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 92rpx 0 36rpx;
+}
+
+.login .top .text {
+  font-size: 36rpx;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 42rpx;
+}
+
+.login .bottom {
+  display: block;
+  width: 750rpx;
+  /* height: 1110rpx; */
+  padding: 60rpx 72rpx;
+  margin-top: -40rpx;
+  background: #FFFFFF;
+  border-radius: 40rpx 40rpx 0rpx 0rpx;
+  box-sizing: border-box;
+}
+
+.login .bottom .input {
+  display: flex;
+  align-items: center;
+  width: 606rpx;
+  height: 100rpx;
+  padding: 0 40rpx;
+  background: #F0F3F6;
+  border-radius: 72rpx;
+  box-sizing: border-box;
+}
+.login .bottom .input+.input{
+  margin-top: 30rpx;
+}
+.login .bottom .input input{
+  background-color:  #F0F3F6;
+}
+.login .bottom .forget{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10rpx;
+}
+.login .bottom .forget .forgetPassword{
+  color: #666;
+}
+.login .bottom .loginbtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 606rpx;
+  height: 80rpx;
+  margin-top: 20rpx;
+  color: #fff;
+  background: linear-gradient(109deg, #3D82FF 100%, #47ACFC 100%);
+  border-radius: 80rpx;
+}

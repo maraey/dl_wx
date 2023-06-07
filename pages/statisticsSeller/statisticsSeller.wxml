@@ -1,0 +1,56 @@
+<view class="statisticsSeller">
+  <view class="date_box">
+    <view class="top">
+      <!-- <view class="text">周期：2022/03/07至2022/03/04</view> -->
+      <image class="image" src="/static/images/time.png"></image>
+      <picker mode="date" bindchange="bindStartDate">
+        <view class="picker">
+          <text class="text" wx:if="{{!start_date}}">请选择起始日期</text>
+          <text class="text select" wx:if="{{start_date}}">{{start_date}}</text>
+        </view>
+      </picker>
+      <view class="to">-</view>
+      <picker mode="date" bindchange="bindEndDate">
+        <view class="picker">
+          <text class="text" wx:if="{{!end_date}}">请选择结束日期</text>
+          <text class="text select" wx:if="{{end_date}}">{{end_date}}</text>
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class="echarts_box">
+    <view class="title">
+      <text>门店收益总金额</text>
+      <text class="text">(元) </text>
+    </view>
+    <view class="amount">¥{{total_amount}}</view>
+    <view class="container">
+      <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+    </view>
+  </view>
+  <view class="device" wx:for="{{datas}}" wx:key="index">
+    <view class="title">
+      <view class="blue_box"></view>
+      <view class="text">{{item.name}}</view>
+    </view>
+    <view class="line"></view>
+    <view class="list">
+      <view class="item">
+        <view class="item_title">订单次数</view>
+        <view class="item_text">{{item.order_num}}次</view>
+      </view>
+      <view class="item">
+        <view class="item_title">总金额</view>
+        <view class="item_text">{{item.order_amount}}元</view>
+      </view>
+      <view class="item">
+        <view class="item_title">总退款</view>
+        <view class="item_text">{{item.refund_amount}}元</view>
+      </view>
+      <view class="item">
+        <view class="item_title">实收金额</view>
+        <view class="item_text">{{item.pay_amount}}元</view>
+      </view>
+    </view>
+  </view>
+</view>
