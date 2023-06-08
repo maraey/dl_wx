@@ -36,9 +36,9 @@
         <image class="image" src="../../static/images/more.png" wx:if="{{info.role!='manager'&&info.role!='introducer'}}"></image>
       </view>
       <view class="address">{{item.address}}</view>
-      <view class="item_wrap" wx:if="{{info.role!='bd'}}">
-        <view class="item_left">{{item.is_sub=='true'?'所属代理':'所属地推'}}</view>
-        <view class="item_right">{{item.sub_name}}</view>
+      <view class="item_wrap" wx:if="{{item.sub_id!== 0}}">
+        <view class="item_left" >所属下级</view>
+        <view class="item_right">{{item.sub_name}}({{item.sub_role}})</view>
       </view>
       <view class="item_wrap">
         <view class="item_left">提成比例</view>

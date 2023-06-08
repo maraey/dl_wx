@@ -58,7 +58,7 @@ Page({
     }
   },
   forget() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '/pages/forget/forget',
     })
   }

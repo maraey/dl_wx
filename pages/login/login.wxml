@@ -32,7 +32,7 @@
       data-name="password" placeholder-class="placeholderClass" maxlength="20" bindinput="handlePsw"></input>
     </view>
     <view class="forget">
-      <!-- <navigator class="forgetPassword" url="/pages/forgetPassword/forgetPassword">忘记密码</navigator> -->
+      <navigator class="forgetPassword" bindtap="forget">忘记密码</navigator>
     </view>
     <view class="loginbtn" bindtap="login">立即登录</view>
   </view>

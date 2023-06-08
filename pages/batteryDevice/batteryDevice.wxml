@@ -70,7 +70,7 @@
           <view class="options">
             <view class="options_detail" data-id="{{item.device_id}}" bindtap="toDetail" wx:if="{{info.role!='manager'&&info.role!='introducer'}}">查看详情</view>
             <view class="option_bind" wx:if="{{!item.sub_id&&item.can_edit&&info.role=='agent'}}" data-id="{{item.device_id}}" bindtap="bindAgency">绑定代理</view>
-            <view class="option_unbind" wx:if="{{item.sub_id&&item.can_edit&&info.role=='agent'}}" data-id="{{item.device_id}}" bindtap="changeAgency">更换代理</view>
+            <view class="option_unbind" wx:if="{{item.sub_id&&item.can_edit&&info.role=='agent'}}" data-id="{{item.device_id}}" bindtap="changeAgency">更换下级</view>
           </view>
         </view>
       </view>

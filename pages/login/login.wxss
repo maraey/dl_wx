@@ -59,7 +59,8 @@
   margin-top: 10rpx;
 }
 .login .bottom .forget .forgetPassword{
-  color: #666;
+  font-size: 24rpx;
+  color: #666666;
 }
 .login .bottom .loginbtn{
   display: flex;

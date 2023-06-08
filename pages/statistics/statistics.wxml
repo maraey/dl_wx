@@ -8,13 +8,13 @@
           <view class="tab_line"></view>
         </view>
       </view>
-      <view class="tab_item {{tab_select=='employee'?'tab_select':''}}" data-type="employee" bindtap="tabSelect" wx:if="{{info.role=='agent'}}"> 
+      <view class="tab_item {{tab_select=='bd'?'tab_select':''}}" data-type="bd" bindtap="tabSelect" wx:if="{{info.role=='agent'}}"> 
         <text>地推</text>
         <view>
           <view class="tab_line"></view>
         </view>
       </view>
-      <view class="tab_item {{tab_select=='agency'?'tab_select':''}}" data-type="agency" bindtap="tabSelect" wx:if="{{info.role=='agent'}}">
+      <view class="tab_item {{tab_select=='agent'?'tab_select':''}}" data-type="agent" bindtap="tabSelect" wx:if="{{info.role=='agent'}}">
         <text>代理</text>
         <view>
           <view class="tab_line"></view>
@@ -28,7 +28,39 @@
       <input class="input" type="text" value="{{keyword}}" placeholder-class="phcolor" placeholder="{{placeholder}}" bindinput="handleKeyword"/>
     </view>
   </view>
-  <view>
+  <view >
+    <view class="tabbar">
+      <view class="tabbar_item {{selected=='yesterday'?'selected':''}}" bindtap="tabbar" data-type="yesterday">
+        <view class="title">昨日</view>
+        <view class="line"></view>
+      </view>
+      <view class="tabbar_item {{selected=='7day'?'selected':''}}" bindtap="tabbar" data-type="7day">
+        <view class="title">近7日</view>
+        <view class="line"></view>
+      </view>
+      <view class="tabbar_item {{selected=='30day'?'selected':''}}" bindtap="tabbar" data-type="30day">
+        <view class="title">近30日</view>
+        <view class="line"></view>
+      </view>
+      <view class="tabbar_item {{selected=='month'?'selected':''}}" bindtap="tabbar" data-type="month">
+        <view class="title">本月</view>
+        <view class="line"></view>
+      </view>
+      <view class="tabbar_item {{selected=='last_month'?'selected':''}}" bindtap="tabbar" data-type="last_month">
+        <view class="title">上月</view>
+        <view class="line"></view>
+      </view>
+      <!-- <view class="tabbar_item {{selected=='all'?'selected':''}}" bindtap="tabbar" data-type="all">
+        <view class="title">全部</view>
+        <view class="line"></view>
+      </view> -->
+      <view class="tabbar_item {{selected=='custom'?'selected':''}}" bindtap="tabbar" data-type="custom">
+        <view class="title">自定义</view>
+        <view class="line"></view>
+      </view>
+    </view>
+  </view>
+  <!-- <view>
     <view class="picker_box">
       <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
         <view class="picker">
@@ -49,7 +81,7 @@
         </view>
       </picker>
     </view>
-  </view>
+  </view> -->
   <!-- <view>
     <view class="tab_list">
       <view class="tab_list_item {{type=='all'?'tab_list_item_select':''}}" data-type="all" bindtap="tabType">全部</view>

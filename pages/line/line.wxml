@@ -49,7 +49,7 @@
           <view class="options">
             
             <view class="option_bind" wx:if="{{!item.sub_id&&item.can_edit}}" data-id="{{item.qrcode}}" bindtap="bindAgency">绑定代理</view>
-            <view class="option_unbind" wx:if="{{item.sub_id&&item.can_edit}}" data-id="{{item.qrcode}}" bindtap="changeAgency">更换代理</view>
+            <view class="option_unbind" wx:if="{{item.sub_id&&item.can_edit}}" data-id="{{item.qrcode}}" bindtap="changeAgency">更换下级</view>
             <view class="options_detail" data-id="{{item.qrcode}}" bindtap="setError" wx:if="{{!item.is_fault&&info.role=='agent'}}">设为故障</view>
             <view class="options_detail resetError" data-id="{{item.qrcode}}" bindtap="resetError" wx:if="{{item.is_fault&&info.role!='seller'&&info.role!='introducer'}}">取消故障</view>
           </view>

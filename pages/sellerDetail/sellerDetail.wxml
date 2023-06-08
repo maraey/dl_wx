@@ -67,11 +67,11 @@
   </view>
   <view class="line"></view>
   <view class="bottom">
-    <view class="bottom_list" bindtap="bindDevice">
+    <view class="bottom_list" bindtap="bindDevice" wx:if="{{info.can_edit}}">
       <image class="image" src="../../static/images/seller_detail_bind.png"></image>
       <text>绑定设备</text>
     </view>
-    <view class="bottom_list" bindtap="edit">
+    <view class="bottom_list" bindtap="edit" wx:if="{{info.can_edit}}">
       <image class="image" src="../../static/images/seller_detail_edit.png"></image>
       <text>修改门店</text>
     </view>

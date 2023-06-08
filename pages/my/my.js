@@ -101,6 +101,11 @@ Page({
       url: '/pages/WithdrawalLog/WithdrawalLog',
     })
   },
+  Withdrawal(){
+    wx.navigateTo({
+      url: '/pages/Withdrawal/Withdrawal',
+    })
+  },
   adjustPrice(){
     wx.navigateTo({
       url: '/pages/adjustPrice/adjustPrice',

@@ -34,6 +34,7 @@ App({
     pileBalance:'',
     pileTemporary:'',
     pileMonth:'',
-    info:''
+    info:'',
+    bd: ''
   }
 })

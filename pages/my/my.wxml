@@ -2,16 +2,16 @@
 <view class="my">
   <view class="user_info">
     <view class="info">
-      <image src="../../static/images/avatar.png" class="ava_img"></image>
+      <!-- <image src="../../static/images/avatar.png" class="ava_img"></image> -->
       <view class="name_info">
         <view class="name_role"> 
-          <text class="name_text">Hi,Esther!</text>
+          <text class="name_text">{{info.name}}</text>
           <view class="role">
             <text class="role_text">代理商</text>
           </view>
         </view>
         <view class="date_info">
-          10月20日 星期五
+          {{info.phone}}
         </view>
       </view>
     </view>
@@ -23,7 +23,7 @@
     <view class="account_info_top">
       <view class="account_info_top_item">
         <text class="text">累计分成</text>
-        <text class="amount">{{info.sum_amount}}</text>
+        <text class="amount">{{info.total_amount}}</text>
       </view>
 
       <view class="account_info_top_item" wx:if="{{login_info.role!='seller'&&login_info.role!='introducer'}}">
@@ -56,11 +56,17 @@
         </view>
         <text class="text">代理</text>
       </view>
-      <view class="item" data-role="introducer" bindtap="agencyList" >
+      <!-- <view class="item" data-role="introducer" bindtap="agencyList" >
         <view class="image_wrap">
           <image class="image" src="../../static/images/introducer@2x.png"></image>
         </view>
         <text class="text">渠道商</text>
+      </view> -->
+      <view class="item" data-role="bd" bindtap="agencyList">
+        <view class="image_wrap">
+          <image class="image" src="../../static/images/shopAccount@2x.png"></image>
+        </view>
+        <text class="text">地推</text>
       </view>
       <view class="item" bindtap="sellerVip">
         <view class="image_wrap">
@@ -68,12 +74,7 @@
         </view>
         <text class="text">门店VIP</text>
       </view>
-      <view class="item" data-role="manager" bindtap="agencyList">
-        <view class="image_wrap">
-          <image class="image" src="../../static/images/shopAccount@2x.png"></image>
-        </view>
-        <text class="text">门店账户</text>
-      </view>
+
     </view>
   </view>
   <!-- <view class="something">
@@ -115,12 +116,12 @@
   <view class="scroll">
     <view class="title">其他功能</view>
     <scroll-view scroll-x="true" class="scroll_lists" 	bindscrolltolower="scrollRight" 	bindscrolltoupper="scrollLeft">
-      <view class="scroll_item" bindtap="adjustPrice" wx:if="{{login_info.role=='agent'}}">
+      <!-- <view class="scroll_item" bindtap="adjustPrice" wx:if="{{login_info.role=='agent'}}">
         <view class="image_wraps">
           <image style="width: 44rpx; height: 44rpx;" src="../../static/images/my_adjust_price.png"></image>
         </view>
         <text class="text">一键调价</text>
-      </view>
+      </view> -->
       <view class="scroll_item" bindtap="resetPsw">
         <view class="image_wraps">
           <image style="width: 44rpx;height: 44rpx;" src="../../static/images/my_change_psw.png"></image>
@@ -129,13 +130,13 @@
       </view>
       <view class="scroll_item" bindtap="WithdrawalLog">
         <view class="image_wraps">
-          <image style="width: 52rpx;height: 52rpx;" src="../../static/images/apply1.png"></image>
+          <image style="width: 52rpx;height: 52rpx;" src="../../static/images/my_withdrawal_log.png"></image>
         </view>
         <text class="text">提现记录</text>
       </view>
       <view class="scroll_item" bindtap="replenish" wx:if="{{login_info.role=='agent'}}">
         <view class="image_wraps">
-          <image style="width: 44rpx;height: 44rpx;" src="../../static/images/addDevice@2x.png"></image>
+          <image style="width: 52rpx;height: 52rpx;" src="../../static/images/my_add_battery.png"></image>
         </view>
         <text class="text">补宝</text>
       </view>
@@ -144,6 +145,18 @@
           <image class="image" style="width: 44rpx;height: 44rpx;" src="../../static/images/pileTemplate.png"></image>
         </view>
         <text class="text">充电桩模版管理</text>
+      </view>
+      <view class="scroll_item" bindtap="Withdrawal">
+        <view class="image_wraps">
+          <image style="width: 52rpx;height: 52rpx;" src="../../static/images/apply1.png"></image>
+        </view>
+        <text class="text">提现</text>
+      </view>
+      <view class="scroll_item" >
+        <view class="image_wraps">
+          <image style="width: 52rpx;height: 52rpx;" src="../../static/images/addDevice@2x.png"></image>
+        </view>
+        <text class="text">设置</text>
       </view>
     </scroll-view>
     <view class="show_line">

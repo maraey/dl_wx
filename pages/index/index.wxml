@@ -105,6 +105,14 @@
       <image class="images" src="../../static/images/agency@2x.png"></image>
       <text class="text">代理商</text>
     </view>
+    <view class="item" bindtap="agencyList" data-role="bd" >
+      <image class="images" src="../../static/images/staff@2x.png"></image>
+      <text class="text">地推</text>
+    </view>
+    <view class="item" bindtap="agencyList" data-role="manager" >
+      <image class="images" src="../../static/images/shopAccount@2x.png"></image>
+      <text class="text">门店管理员</text>
+    </view>
     <view class="item" bindtap="agencyList" data-role="introducer" >
       <image class="images" src="../../static/images/introducer@2x.png"></image>
       <text class="text">渠道商</text>
@@ -112,18 +120,6 @@
     <view class="item" bindtap="goTo" data-id="sellerVip" >
       <image class="images" src="../../static/images/shopVip@2x.png"></image>
       <text class="text">门店VIP</text>
-    </view>
-    <view class="item" bindtap="agencyList" data-role="manager" >
-      <image class="images" src="../../static/images/shopAccount@2x.png"></image>
-      <text class="text">门店管理员</text>
-    </view>
-    <view class="item" bindtap="agencyList" data-role="bd" >
-      <image class="images" src="../../static/images/staff@2x.png"></image>
-      <text class="text">员工管理</text>
-    </view>
-    <view class="item" bindtap="scanDevice">
-      <image class="images" src="../../static/images/scan@2x.png"></image>
-      <text class="text">扫码维护</text>
     </view>
     <view class="item" bindtap="goTo" data-id="dataBoard" >
       <image class="images" src="../../static/images/statistics@2x.png"></image>
@@ -137,7 +133,10 @@
       <image class="images" src="../../static/images/device@2x.png"></image>
       <text class="text">充电宝设备</text>
     </view>
-    
+    <view class="item" bindtap="scanDevice">
+      <image class="images" src="../../static/images/scan@2x.png"></image>
+      <text class="text">扫码维护</text>
+    </view>
   </view>
   <!-- 代理权限 -->
   <!-- <view class="lists" >
@@ -226,14 +225,11 @@
   </view> -->
 </view>
 <tabBar selected="index" wx:if="{{isLogin}}"></tabBar>
-<view class="entrance" wx:if="{{!isLogin}}">
-  <view class="box" bindtap="toLogin">
-    <text class="title">今日收入(元)</text>
-    <text class="acount">******</text>
-  </view>
-  <view class="quick_entrance">
-    <image class="image" src="../../static/images/banner_order_profit.png" bindtap="toLogin"></image>
-    <image class="image" src="../../static/images/banner_apply_withdrawal.png" bindtap="toLogin"></image>
-  </view>
+<view class="welcome"  wx:if="{{!isLogin}}">
+  <image src="../../static/images/welcome@2x.png" class="wel_img"></image>
+  <view class="tittle">欢迎使用共享充电宝代理系统</view>
+  <navigator class="btn" url="/pages/login/login">
+    <text class="btn_text">立即进入</text>
+  </navigator>
 </view>
 <datePicker bindclose="closeDatePicker" bindconfirm="confirmDatePicker" wx:if="{{showDatePicker}}"></datePicker>

@@ -87,23 +87,17 @@
         </view>
       </view>
 
-      <view class="add_seller_item" wx:if="{{app_role!='bd'}}">
+      <view class="add_seller_item" wx:if="{{bd_select.bd_id!== 0}}">
         <view class="add_seller_item_title">
           <text>地推</text>
           <text class="add_seller_item_title_icon">*</text>
         </view>
-        <view class="add_seller_item_input">
-          <text class="add_seller_item_input_text_placeholder" wx:if="{{!bd_select.user_id}}">选择地推</text>
-          <text class="add_seller_item_input_text_placeholder" style="color: #333333;" wx:if="{{bd_select.user_id}}">{{bd_select.name}}</text>
-          <view class="add_seller_item_input_text_icon ">
-            <text class="text text_red" bindtap="clearbdSelect">清空</text>
-            <view class="line"></view>
-            <text class="text" bindtap="toSelectBd">选择</text>
-          </view>
+        <view class="add_seller_item_input_dis" >
+          <input class="input" type="text" bindinput="handleAddress" value="{{bd_select.bd_name}}" placeholder-class="phcolor"  disabled="true"/>
         </view>
       </view>
 
-      <view class="add_seller_item" wx:if="{{app_role!='bd'}}">
+      <view class="add_seller_item" wx:if="{{bd_select.bd_id!== 0}}">
         <view class="add_seller_item_title">
           <text>地推分成</text>
           <text class="add_seller_item_title_icon">*</text>
@@ -252,6 +246,17 @@
               </view>
             </picker>
           </view>
+        </view>
+      </view>
+      <view class="add_seller_item">
+        <view class="add_seller_item_title">
+          <text>Logo</text>
+          <!-- <text class="add_seller_item_title_icon">*</text> -->
+        </view>
+        <view class="picker_image_box" bindtap="uploadLogo">
+          <image class="picker_image" src="../../static/images/add_seller_add_image.png" wx:if="{{!logo_url}}">
+          </image>
+          <image class="picker_image" src="{{logo_url}}" wx:if="{{logo_url}}"></image>
         </view>
       </view>
       <view class="add_seller_item">

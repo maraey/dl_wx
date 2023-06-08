@@ -18,7 +18,7 @@ Component({
     selected:'',
     name: '',
     list: [],
-    role:'agency'
+    role:'agent'
   },
   lifetimes: {
     attached() {
@@ -32,7 +32,7 @@ Component({
   methods: {
     async getInfo(){
       const {name,page,pageSize,role} = this.data
-      const res = await util.request('role/list',{
+      const res = await util.request('marketer/index',{
         name,
         page,
         page_size:pageSize,

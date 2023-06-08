@@ -49,7 +49,22 @@
   border: 2rpx solid #E8E8E8;
   box-sizing: border-box;
 }
-
+.add_seller .add_seller_box .add_seller_list .add_seller_item .add_seller_item_input_dis {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 690rpx;
+  height: 80rpx;
+  margin: 20rpx 0;
+  padding: 0 20rpx;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #AAAAAA;
+  background-color: #F5F7FA;
+  border-radius: 4rpx;
+  border: 2rpx solid #E8E8E8;
+  box-sizing: border-box;
+}
 .add_seller .add_seller_box .add_seller_list .add_seller_item .add_seller_item_input .input {
   width: 650rpx;
   font-size: 26rpx;

@@ -10,7 +10,7 @@
     </view>
     <view class="inputWrap">
       <view class="title">确认新密码</view>
-      <input class="input" type="password" placeholder="请输入密码（密码为英文字母与数字组成）" placeholder-class="phcolor" bindinput="handleConfirm"/>
+      <input class="input" type="password" placeholder="请输入密码" placeholder-class="phcolor" bindinput="handleConfirm"/>
     </view>
     <view class="btn" bindtap="sub">保存</view>
   </view>

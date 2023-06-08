@@ -195,3 +195,51 @@
   color: #999999;
   line-height: 40rpx;
 }
+
+.statistics .tabbar {
+  display: flex;
+  width: 690rpx;
+  margin: 0 auto;
+  margin-bottom: 30rpx;
+}
+
+.statistics .tabbar .tabbar_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.statistics .tabbar .tabbar_item+.tabbar_item {
+  margin-left: 24rpx;
+}
+
+.statistics .tabbar .tabbar_item .title {
+  height: 40rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #333333;
+  line-height: 40rpx;
+}
+
+.statistics .tabbar .tabbar_item .line {
+  width: 48rpx;
+  height: 8rpx;
+  margin-top: 10rpx;
+}
+
+.statistics .tabbar .selected .title {
+  height: 44rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #3D82FF;
+  line-height: 44rpx;
+}
+
+.statistics .tabbar .selected .line {
+  width: 48rpx;
+  height: 8rpx;
+  margin-top: 8rpx;
+  background: #3D82FF;
+  border-radius: 4rpx;
+}

@@ -3,17 +3,19 @@ const util = require('../../utils/util')
 let timer = null
 Page({
   data: {
-    array:['全部','月度','日度'],
-    index:0,
-    date:'',
+    start:'',
+    end:'',
     month:'',
+    sortby:'',
     tab_select:'seller',
     placeholder:'请输入门店名称',
     type:'all',
     list:[],
     keyword:'',
     info:'',
-    device_types:[]
+    device_types:[],
+    selected: '',
+    showDatePicker:false
   },
   onLoad(options) {
     let date = new Date()
@@ -50,31 +52,48 @@ Page({
   onShow() {
     
   },
-  async getData(){
-    let res = null,time=null,date=''
-    const {keyword,tab_select,index,month,type} = this.data
-    if(index==0){
-      time='all'
-    }else if(index==1){
-      time='month'
-      date=month
-    }else if(index==2){
-      time = 'day'
-      date=this.data.date
+  tabbar(e) {
+    const selected = e.currentTarget.dataset.type
+    this.setData({
+      selected
+    })
+    if (selected == 'custom') {
+      this.setData({
+        showDatePicker: true
+      })
+    } else {
+      console.log(this.data.selected)
+      this.getData()
     }
+  },
+  async getData(){
+    let res = null
+    const {keyword,tab_select,start,end,sortby} = this.data
+    const time = this.data.selected
+    // if(index==0){
+    //   time='all'
+    // }else if(index==1){
+    //   time='month'
+    //   date=month
+    // }else if(index==2){
+    //   time = 'day'
+    //   date=this.data.date
+    // }
     if(tab_select=='seller'){
-      res= await util.request('index/statSeller',{
+      res= await util.request('index/statStore',{
+        start,
+        end,
         keyword,
         time,
-        date,
-        type
+        sortby
       })
     }else{
-      res= await util.request('index/statBranch',{
+      res= await util.request('index/statSub',{
+        start,
+        end,
         keyword,
         time,
-        date,
-        type,
+        sortby,
         role:tab_select
       })
     }

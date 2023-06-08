@@ -38,13 +38,18 @@ Page({
     introducer_data: [],
     introducer_select: {},
     seller_select: {},
-    bd_select: {},
+    bd_select: {
+      bd_id: 0,
+      bd_name:''
+    },
     introducer: [],
     industryList: [],
     divide: '',
     depreciation: '',
     picture: '',
     picture_url: '',
+    logo: '',
+    logo_url:'',
     status: 1,
     is_adjust: 1,
     battery_amount: {},
@@ -212,6 +217,7 @@ Page({
       shop_start,
       shop_end,
       picture,
+      logo,
       status,
       is_adjust,
       device_types,
@@ -248,10 +254,10 @@ Page({
       user_id: manager_id
     }
     const bd_select = {
-      name: bd_name,
-      user_id: bd_id
+      bd_name: bd_name,
+      bd_id: bd_id
     }
-    console.log(device_types);
+    console.log(this.data.bd_select);
     const {
       powerbank,
       wired,
@@ -331,6 +337,7 @@ Page({
       start_time: shop_start,
       end_time: shop_end,
       picture_url: picture,
+      logo_url:logo,
       status,
       is_adjust,
       device_types: device_types,
@@ -360,6 +367,7 @@ Page({
       district_code,
       industry_id
     })
+    console.log(this.data.bd_select)
     this.industry(industry_id)
   },
   industry(num) {
@@ -765,6 +773,24 @@ Page({
       }
     })
   },
+  uploadLogo() {
+    wx.chooseImage({
+      count: 1,
+      success: async (res) => {
+        const tempLogoPaths = res.tempFilePaths
+        console.log(tempLogoPaths[0]);
+        let img = await util.uploadImage(tempLogoPaths[0])
+        img = JSON.parse(img.data)
+        console.log(res)
+        if (img.code == 200) {
+          this.setData({
+            logo: img.data.id,
+            logo_url: img.data.url
+          })
+        }
+      }
+    })
+  },
   switchStatus(e) {
     console.log(e.detail.value);
     if (e.detail.value) {
@@ -1060,7 +1086,7 @@ Page({
       // pile_amount
     }
     const manager_id = this.data.seller_select.user_id
-    const bd_id = this.data.bd_select.user_id
+    const bd_id = this.data.bd_select.bd_id
     console.log(billing_set);
     const {
       name,
@@ -1079,6 +1105,7 @@ Page({
       cost_amount,
       status,
       picture,
+      logo,
       tel,
       is_adjust
     } = this.data
@@ -1101,6 +1128,7 @@ Page({
         cost_amount,
         status,
         picture,
+        logo,
         tel,
         is_adjust,
         manager_id,
@@ -1140,6 +1168,7 @@ Page({
         cost_amount,
         status,
         picture,
+        logo,
         tel,
         is_adjust,
         manager_id,

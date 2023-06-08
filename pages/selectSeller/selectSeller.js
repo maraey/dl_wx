@@ -62,7 +62,12 @@ Page({
   sub() {
     app.globalData.seller = {
       name: this.data.info.name,
-      user_id: this.data.info.user_id
+      user_id: this.data.info.user_id,
+
+    }
+    app.globalData.bd = {
+      bd_id: this.data.info.bd_id,
+      bd_name: this.data.info.bd_name
     }
     wx.navigateBack({
       delta: 1
@@ -71,7 +76,11 @@ Page({
   cancle() {
     app.globalData.seller = {
       name: '',
-      user_id: ''
+      user_id: 0,
+    }
+    app.globalData.bd = {
+      bd_id: '',
+      bd_name: ''
     }
     wx.navigateBack({
       delta: 1
