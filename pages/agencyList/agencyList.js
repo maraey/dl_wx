@@ -132,8 +132,17 @@ Page({
     }) 
   },
   detail(e){
-    wx.navigateTo({
-      url: `/pages/agencyDetail/agencyDetail?id=${e.currentTarget.dataset.id}&role=${this.data.role}`,
-    })
+    if(util.permissions.indexOf('/marketer/detail')!= -1 ){
+      wx.navigateTo({
+        url: `/pages/agencyDetail/agencyDetail?id=${e.currentTarget.dataset.id}&role=${this.data.role}`,
+      })
+    } else {
+      wx.showToast({
+        title: '无权访问',
+        icon: 'error',
+        duration: 1000
+      })
+    }
+
   }
 })

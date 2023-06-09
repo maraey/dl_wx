@@ -36,13 +36,17 @@ Page({
     },
     bindType:'bind',
     bindSeller:false,
-    info:''
+    info:'',
+    permissions:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.setData({
+      permissions: util.permissions
+    })
     console.log(options);
     let is_sub = false
     if(options.sub==2){
@@ -447,7 +451,7 @@ Page({
           const res1 = await util.request('user/getDeviceCode',{
             url:res.result
           })
-          if(res1.data.type=='battery'){
+          if(res1.data.type=='powerbank'){
             console.log(1);
             this.setData({
               keyword:res1.data.code

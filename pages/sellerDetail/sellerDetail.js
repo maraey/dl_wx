@@ -13,13 +13,17 @@ Page({
     end: '',
     is_sub: '',
     login_info: '',
-    device_types: []
+    device_types: [],
+    permissions: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.setData({
+      permissions: util.permissions
+    })
     console.log(options.id);
     this.setData({
       seller_id: options.id,

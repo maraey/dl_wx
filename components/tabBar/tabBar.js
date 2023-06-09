@@ -1,4 +1,5 @@
 // components/tabBar.js
+const util = require('../../utils/util')
 const app = getApp();
 Component({
   /**
@@ -15,9 +16,13 @@ Component({
    * 组件的初始数据
    */
   data: {
-    role:''
+    role:'',
+    permissions:[]
   },
   attached() {
+    this.setData({
+      permissions: util.permissions
+    })
     wx.getStorage({
       key: 'login_info',
       success: (res)=> {

@@ -1,3 +1,4 @@
+<wxs src="../../utils/utils.wxs" module="utils" />
 <scroll-view scroll-y class="seller" bindscrolltolower="scrolltolower">
   <view class="wrap">
     <!-- 代理权限 -->
@@ -54,7 +55,7 @@
       <view class="nodataText">暂无数据</view>
     </view>
   </view>
-  <view class="add" bindtap="addSeller" wx:if="{{info.role!='manager'&&info.role!='introducer'}}">
+  <view class="add" bindtap="addSeller" wx:if="{{utils.indexOf(permissions,'/store/add')!= -1}}">
     <image class="image" src="../../static/images/add_seller_btn.png"></image>
   </view>
   <view class="popup" wx:if="{{showPopup}}" bindtap="closePopup">

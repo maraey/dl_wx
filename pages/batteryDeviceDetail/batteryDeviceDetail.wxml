@@ -1,3 +1,4 @@
+<wxs src="../../utils/utils.wxs" module="utils" />
 <view class="batteryDeviceDetail">
   <view>
     <view class="wrap">
@@ -10,7 +11,7 @@
           <text>设备收益</text>
           <view class="line"></view>
         </view>
-        <view class="screen_item {{screen_type == 'manage'?'screen_selected':''}}" data-type="manage" bindtap="screen">
+        <view class="screen_item {{screen_type == 'manage'?'screen_selected':''}}" data-type="manage" bindtap="screen" wx:if="{{utils.indexOf(permissions,'/powerbankDevice/operate')!= -1}}">
           <text>槽位管理</text>
           <view class="line"></view>
         </view>
@@ -57,7 +58,7 @@
       </view>
     </view>
   </view>
-  <view class="return" wx:if="{{screen_type == 'basic'&&info.can_back}}" bindtap="return">退回上级</view>
+  <view class="return" wx:if="{{screen_type == 'basic'&&info.can_back && utils.indexOf(permissions,'/backParent')!= -1}}" bindtap="return">退回上级</view>
   <view class="manage" wx:if="{{screen_type == 'manage'}}">
     <view class="manage_top_box">
       <view class="device_set">

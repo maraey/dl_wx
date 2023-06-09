@@ -14,7 +14,8 @@ Page({
     tabType: 'year',
     tabList: [],
     date: '',
-    totalAmount: ''
+    totalAmount: '',
+    permissions:[]
   },
 
   /**
@@ -23,7 +24,8 @@ Page({
   onLoad(options) {
     console.log(options);
     this.setData({
-      device_id: options.id
+      device_id: options.id,
+      permissions: util.permissions
     })
   },
 
@@ -90,7 +92,7 @@ Page({
       content: '确定将设备退回上级代理？退回后设备将解绑所归属门店。',
       success: async (res) => {
         if (res.confirm) {
-          const res = await util.request('batteryDevice/backParent', {
+          const res = await util.request('powerbankDevice/backParent', {
             device_id: this.data.device_id
           })
           if (res.code == 1) {

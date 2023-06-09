@@ -33,7 +33,7 @@
   </view>
   <scroll-view scroll-y class="scroll" bindscrolltolower="bindscrolltolower">
     <view class="order_box" data-id="{{item.order_no}}" bindtap="checkDetail" wx:for="{{list}}" wx:key="index" wx:if="{{list.length>0}}">
-      <view class="title_amount" wx:if="{{info.role!='seller'&&info.role!='introducer'&&item.status==2|| shop_grade==2}}">订单金额：¥{{item.amount}}</view>
+      <view class="title_amount" wx:if="{{utils.indexOf(permissions,'/order/amount')!= -1 &&item.status==2}}">订单金额：¥{{item.amount}}</view>
       <view class="title_num">
         <text class="title_num_text">订单编号：{{item.order_no}}</text>
         <text class="title_num_copy" data-id="{{item.order_no}}" catchtap="copy">复制</text>
@@ -92,7 +92,7 @@
         </view>
         <view class="popup_box_options">
           <!-- 充电宝 -->
-          <view class="popup_box_option {{type=='battery'?'popup_box_option_select':''}}" data-type="battery" catchtap="selectScreenType" wx:if="{{utils.indexOf(device_types,'battery')!=-1}}">充电宝</view>
+          <view class="popup_box_option {{type=='battery'?'popup_box_option_select':''}}" data-type="battery" catchtap="selectScreenType" wx:if="{{utils.indexOf(device_types,'powerbank')!=-1}}">充电宝</view>
           <!-- 充电线 -->
           <view class="popup_box_option {{type=='wired'?'popup_box_option_select':''}}" data-type="wired" catchtap="selectScreenType" wx:if="{{utils.indexOf(device_types,'wired')!=-1}}">充电线</view>
           <!-- 充电桩 -->

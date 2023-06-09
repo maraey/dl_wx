@@ -15,7 +15,7 @@
         </view>
       </view>
     </view>
-    <image src="../../static/images/logout@2x.png" class="out_img"></image>
+    <image src="../../static/images/logout@2x.png" class="out_img" bindtap="logout"></image>
     <!-- <text class="welcome">你好,{{info.name}}</text>
     <button class="log_out" bindtap="logout">退出</button> -->
   </view>
@@ -146,7 +146,7 @@
         </view>
         <text class="text">充电桩模版管理</text>
       </view>
-      <view class="scroll_item" bindtap="Withdrawal">
+      <view class="scroll_item" bindtap="Withdrawal" wx:if="{{utils.indexOf(permissions,'/user/withdrawalApply')!= -1}}">
         <view class="image_wraps">
           <image style="width: 52rpx;height: 52rpx;" src="../../static/images/apply1.png"></image>
         </view>

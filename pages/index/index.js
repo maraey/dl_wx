@@ -2,7 +2,6 @@ const util = require('../../utils/util')
 const app = getApp()
 Page({
   data: {
-    permissions: [],
     amount: {},
     isLogin: false,
     selected: 'today',
@@ -12,10 +11,10 @@ Page({
     device_types:[],
     login_info:'',
     shop_grade:1,
-    indexInfo:{}
+    indexInfo:{},
+    permissions:[]
   },
   onLoad() {
-    console.log(util.permissions)
     try {
       const value = wx.getStorageSync('login_info')
       console.log(value)
@@ -35,6 +34,7 @@ Page({
         isLogin: false
       })
     }
+    console.log(this.data.permissions,this.data.isLogin)
   },
   async onShow() {
     this.getData()
@@ -119,10 +119,10 @@ Page({
       success: async res => {
         console.log(res.result);
         if (res.result.indexOf('https') != -1) {
-          const res1 = await util.request('misc/qrcode', {
+          const res1 = await util.request('user/getDeviceCode', {
             url: res.result
           })
-          if (res1.data.type == 'battery') {
+          if (res1.data.type == 'powerbank') {
             console.log(1);
             wx.navigateTo({
               url: `/pages/batteryDeviceDetail/batteryDeviceDetail?id=${res1.data.code}`

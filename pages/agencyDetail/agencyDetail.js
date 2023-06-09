@@ -11,13 +11,18 @@ Page({
     battery: '',
     wired: '',
     pile: '',
-    role: ''
+    role: '',
+    permissions:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.setData({
+      permissions: util.permissions
+    })
+    console.log(this.data.permissions)
     if (options.id || options.id == 0) {
       this.setData({
         user_id: options.id

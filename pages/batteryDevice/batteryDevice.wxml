@@ -1,3 +1,4 @@
+<wxs src="../../utils/utils.wxs" module="utils" />
 <view class="batteryDevice">
   <view class="wrap">
     <view class="screen_bar">
@@ -34,8 +35,8 @@
         <view class="bind_seller_box">
           <text>所属门店：</text>
           <text class="seller_name">{{item.store_name}}</text>
-          <text class="bind_seller" data-id="{{item.device_id}}" wx:if="{{!item.store_name&&item.can_edit}}" bindtap="bindSeller">点击选择门店</text>
-          <text class="unbind_seller" data-id="{{item.device_id}}" bindtap="unbindSeller" wx:if="{{item.store_name&&item.can_edit}}">解绑</text>
+          <text class="bind_seller" data-id="{{item.device_id}}" wx:if="{{!item.store_name&&item.can_edit && utils.indexOf(permissions,'/powerbankDevice/bindStore')!= -1}}" bindtap="bindSeller">点击选择门店</text>
+          <text class="unbind_seller" data-id="{{item.device_id}}" bindtap="unbindSeller" wx:if="{{item.store_name&&item.can_edit && utils.indexOf(permissions,'/powerbankDevice/unbindStore')!= -1}}">解绑</text>
         </view>
         <view class="device_info_list">
           <view class="device_info_item">
@@ -69,8 +70,8 @@
         <view class="options_box">
           <view class="options">
             <view class="options_detail" data-id="{{item.device_id}}" bindtap="toDetail" wx:if="{{info.role!='manager'&&info.role!='introducer'}}">查看详情</view>
-            <view class="option_bind" wx:if="{{!item.sub_id&&item.can_edit&&info.role=='agent'}}" data-id="{{item.device_id}}" bindtap="bindAgency">绑定代理</view>
-            <view class="option_unbind" wx:if="{{item.sub_id&&item.can_edit&&info.role=='agent'}}" data-id="{{item.device_id}}" bindtap="changeAgency">更换下级</view>
+            <view class="option_bind" wx:if="{{!item.sub_id&&item.can_edit&&info.role=='agent' && utils.indexOf(permissions,'/powerbankDevice/bindSub')!= -1}}" data-id="{{item.device_id}}" bindtap="bindAgency">绑定代理</view>
+            <view class="option_unbind" wx:if="{{item.sub_id&&item.can_edit&&info.role=='agent' && utils.indexOf(permissions,'/powerbankDevice/unbinSub')!= -1}}" data-id="{{item.device_id}}" bindtap="changeAgency">更换下级</view>
           </view>
         </view>
       </view>

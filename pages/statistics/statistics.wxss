@@ -198,8 +198,7 @@
 
 .statistics .tabbar {
   display: flex;
-  width: 690rpx;
-  margin: 0 auto;
+  width: 630rpx;
   margin-bottom: 30rpx;
 }
 

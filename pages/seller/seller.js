@@ -21,7 +21,8 @@ Page({
     page_size: 20,
     list:[],
     screenMyText:false,
-    info:''
+    info:'',
+    permissions:[]
   },
 
   /**
@@ -30,7 +31,8 @@ Page({
   onLoad  (options) {
     this.getList()
     this.setData({
-      info:app.globalData.info
+      info:app.globalData.info,
+      permissions: util.permissions
     })
     // wx.getStorage({
     //   key: 'login_info',
@@ -230,8 +232,17 @@ Page({
     if(this.data.screenMyText){
       type=2
     }
-    wx.navigateTo({
-      url: `/pages/sellerDetail/sellerDetail?id=${e.currentTarget.dataset.id}&type=${type}`,
-    })
+    if(util.permissions.indexOf('/store/detail')!= -1){
+      wx.navigateTo({
+        url: `/pages/sellerDetail/sellerDetail?id=${e.currentTarget.dataset.id}&type=${type}`,
+      })
+    }else {
+      wx.showToast({
+        title: '无权访问',
+        icon: 'error',
+        duration: 1000
+      })
+    }
+
   }
 })

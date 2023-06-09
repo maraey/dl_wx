@@ -11,7 +11,8 @@ Page({
     login_info:'',
     device_types:[],
     scroll_right: false,
-    scroll_left: true
+    scroll_left: true,
+    permissions:[]
   },
 
   /**
@@ -20,7 +21,8 @@ Page({
   onLoad  (options) {
     this.setData({
       login_info:app.globalData.info,
-      device_types:app.globalData.info.device_types
+      device_types:app.globalData.info.device_types,
+      permissions: util.permissions
     })
     // wx.getStorage({
     //   key: 'login_info',

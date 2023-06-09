@@ -6,7 +6,7 @@ Page({
     start:'',
     end:'',
     month:'',
-    sortby:'',
+    sortby:'desc',
     tab_select:'seller',
     placeholder:'请输入门店名称',
     type:'all',
@@ -15,7 +15,9 @@ Page({
     info:'',
     device_types:[],
     selected: '',
-    showDatePicker:false
+    showDatePicker:false,
+    datePicker:[],
+    permissions:[]
   },
   onLoad(options) {
     let date = new Date()
@@ -38,6 +40,7 @@ Page({
     this.setData({
       info:app.globalData.info,
       device_types:app.globalData.info.device_types,
+      permissions: util.permissions
     })
     // wx.getStorage({
     //   key: 'login_info',
@@ -62,12 +65,15 @@ Page({
         showDatePicker: true
       })
     } else {
+      this.data.datePicker = []
       console.log(this.data.selected)
       this.getData()
     }
   },
   async getData(){
     let res = null
+    this.data.start = this.data.datePicker[0]|| ''
+    this.data.end = this.data.datePicker[1]|| ''
     const {keyword,tab_select,start,end,sortby} = this.data
     const time = this.data.selected
     // if(index==0){
@@ -162,5 +168,24 @@ Page({
     timer = setTimeout(() => {
       this.getData()
     }, 500)
-  }
+  },
+  changeSort(e){
+    this.setData({
+      sortby: e.currentTarget.dataset.type
+    })
+    this.getData()
+    console.log(e.currentTarget.dataset.type)
+  },
+  closeDatePicker() {
+    this.setData({
+      showDatePicker: false
+    })
+  },
+  confirmDatePicker(e) {
+    this.setData({
+      datePicker: e.detail,
+      showDatePicker: false
+    })
+    this.getData()
+  },
 });

@@ -42,6 +42,7 @@ Page({
     info:'',
     device_types:[],
     can_sub:false,
+    permissions:[]
   },
 
   /**
@@ -70,7 +71,8 @@ Page({
     this.getList()
     this.setData({
       info:app.globalData.info,
-      device_types:app.globalData.info.device_types
+      device_types:app.globalData.info.device_types,
+      permissions: util.permissions
     })
     // wx.getStorage({
     //   key: 'login_info',
@@ -316,9 +318,18 @@ Page({
     if(this.data.info.role=='seller'||this.data.info.role=='introducer'){
       return
     }
-    wx.navigateTo({
-      url: '/pages/orderDetail/orderDetail?id=' + e.currentTarget.dataset.id
-    })
+    if(util.permissions.indexOf('/order/detail')!= -1){
+      wx.navigateTo({
+        url: '/pages/orderDetail/orderDetail?id=' + e.currentTarget.dataset.id
+      })
+    } else{
+      wx.showToast({
+        title: '无权访问',
+        icon:'error',
+        duration: 1000
+      })
+    }
+
   },
   copy(e) {
     wx.setClipboardData({

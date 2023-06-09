@@ -101,43 +101,45 @@
   </view> -->
     <!-- 代理权限 -->
   <view class="lists" >
-    <view class="item" bindtap="agencyList" data-role="agent" >
+    <view class="item" bindtap="agencyList" data-role="agent" wx:if="{{utils.indexOf(permissions,'/marketer/addAgent')!= -1}}">
       <image class="images" src="../../static/images/agency@2x.png"></image>
       <text class="text">代理商</text>
     </view>
-    <view class="item" bindtap="agencyList" data-role="bd" >
+    <view class="item" bindtap="agencyList" data-role="bd"  wx:if="{{utils.indexOf(permissions,'/marketer/addBd')!= -1}}">
       <image class="images" src="../../static/images/staff@2x.png"></image>
       <text class="text">地推</text>
     </view>
-    <view class="item" bindtap="agencyList" data-role="manager" >
+    <view class="item" bindtap="agencyList" data-role="manager" wx:if="{{utils.indexOf(permissions,'/marketer/addManager')!= -1}}">
       <image class="images" src="../../static/images/shopAccount@2x.png"></image>
       <text class="text">门店管理员</text>
     </view>
-    <view class="item" bindtap="agencyList" data-role="introducer" >
+    <view class="item" bindtap="agencyList" data-role="introducer" wx:if="{{utils.indexOf(permissions,'/marketer/addIntroducer')!= -1}}">
       <image class="images" src="../../static/images/introducer@2x.png"></image>
       <text class="text">渠道商</text>
     </view>
-    <view class="item" bindtap="goTo" data-id="sellerVip" >
+    <view class="item" bindtap="goTo" data-id="sellerVip" wx:if="{{utils.indexOf(permissions,'/vip/add')!= -1}}">
       <image class="images" src="../../static/images/shopVip@2x.png"></image>
       <text class="text">门店VIP</text>
     </view>
-    <view class="item" bindtap="goTo" data-id="dataBoard" >
+    <view class="item" bindtap="goTo" data-id="dataBoard" wx:if="{{utils.indexOf(permissions,'/powerbankDevice/board')!= -1}}">
       <image class="images" src="../../static/images/statistics@2x.png"></image>
       <text class="text">数据看板</text>
     </view>
-    <view class="item" bindtap="agencyList" data-role="seller" >
+    <view class="item" bindtap="agencyList" data-role="seller" wx:if="{{utils.indexOf(permissions,'/user/brokerageMonth')!= -1}}">
       <image class="images" src="../../static/images/battery@2x.png"></image>
       <text class="text">订单收益</text>
     </view>
-    <view class="item" bindtap="goTo" data-id="batteryDevice" >
+    <view class="item" bindtap="goTo" data-id="batteryDevice" wx:if="{{utils.indexOf(permissions,'/powerbankDevice/index')== -1}}">
       <image class="images" src="../../static/images/device@2x.png"></image>
       <text class="text">充电宝设备</text>
     </view>
-    <view class="item" bindtap="scanDevice">
+    <view class="item" bindtap="scanDevice" wx:if="{{utils.indexOf(permissions,'/powerbankDevice/scan')!= -1}}">
       <image class="images" src="../../static/images/scan@2x.png"></image>
       <text class="text">扫码维护</text>
     </view>
   </view>
+
+ 
   <!-- 代理权限 -->
   <!-- <view class="lists" >
     <view class="item" bindtap="goTo" data-id="addSeller" >

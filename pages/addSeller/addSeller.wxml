@@ -182,7 +182,7 @@
           <text class="price" wx:if="{{!isShowPlaceholderBattery}}">{{battery_amount.unit==1?'1小时':'半小时'}}/{{battery_amount.amount}}元|{{battery_amount.freetime}}分钟免费|最高消费{{battery_amount.ceiling}}元</text>
         </view>
       </view>
-      <view class="add_seller_item_switch" style="margin-top: 20rpx;" wx:if="{{utils.indexOf(login_info_devices,'wired')!=-1}}">
+      <view class="add_seller_item_switch" style="margin-top: 20rpx;">
         <text class="text">充电线</text>
         <view class="switch">
           <switch color="#3D82FF" checked="{{switchTypeLine}}" data-type="line" bindchange="isShowInputLine"></switch>

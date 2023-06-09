@@ -269,3 +269,7 @@
   color: #FFFFFF;
   line-height: 30rpx;
 }
+.index .box{
+  width: 690rpx;
+  height: 300rpx;
+}

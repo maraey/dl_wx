@@ -1,3 +1,4 @@
+<wxs src="../../utils/utils.wxs" module="utils" />
 <view class="agencyDetail">
   <view>
     <view class="top_box">
@@ -9,7 +10,7 @@
             <text class="rate_num">{{info.brokerage}}%</text>
           </view>
         </view>
-        <view class="delete" data-id="{{info.id}}" bindtap="delete" wx:if="{{info.is_self!=1||info.role!=1}}">
+        <view class="delete" data-id="{{info.id}}" bindtap="delete" wx:if="{{utils.indexOf(permissions,'/marketer/delete')!= -1}}">
           <image class="image" src="/static/images/delete.png"></image>
           <text class="delete_text">删除</text>
         </view>
@@ -101,7 +102,7 @@
           <image class="image" src="/static/images/seller_manage.png"></image>
           <text class="text">门店管理</text>
         </view>
-        <view class="item" bindtap="edit">
+        <view class="item" bindtap="edit" wx:if="{{utils.indexOf(permissions,'/marketer/edit')!= -1}}">
           <image class="image" src="/static/images/seller_detail_edit.png"></image>
           <text class="text">修改代理</text>
         </view>
@@ -111,13 +112,13 @@
         </view>
       </view>
       <view class="bottom" wx:if="{{role=='manager'}}">
-        <view class="item" bindtap="editSeller">
+        <view class="item" bindtap="editSeller" wx:if="{{utils.indexOf(permissions,'/marketer/edit')!= -1}}">
           <image class="image" src="/static/images/seller_detail_edit.png"></image>
           <text class="text">修改门店账户</text>
         </view>
       </view>
       <view class="bottom" wx:if="{{role=='bd'}}">
-        <view class="item" bindtap="editEmployee">
+        <view class="item" bindtap="editEmployee" wx:if="{{utils.indexOf(permissions,'/marketer/edit')!= -1}}">
           <image class="image" src="/static/images/seller_detail_edit.png"></image>
           <text class="text">修改地推</text>
         </view>
@@ -131,7 +132,7 @@
         </view>
       </view>
       <view class="bottom" wx:if="{{role=='introducer'}}">
-        <view class="item" bindtap="editEmployee">
+        <view class="item" bindtap="editEmployee" wx:if="{{utils.indexOf(permissions,'/marketer/edit')!= -1}}">
           <image class="image" src="/static/images/seller_detail_edit.png"></image>
           <text class="text">修改渠道商</text>
         </view>

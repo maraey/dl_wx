@@ -10,7 +10,7 @@
         <image class="image" src="../../static/images/navigation.png"></image>
         <text>导航</text>
       </view>
-      <view class="image_box" bindtap="delete">
+      <view class="image_box" bindtap="delete" wx:if="{{utils.indexOf(permissions,'/store/delete')!= -1}}">
         <image class="image" src="../../static/images/delete.png"></image>
         <text>删除</text>
       </view>
@@ -71,11 +71,11 @@
       <image class="image" src="../../static/images/seller_detail_bind.png"></image>
       <text>绑定设备</text>
     </view>
-    <view class="bottom_list" bindtap="edit" wx:if="{{info.can_edit}}">
+    <view class="bottom_list" bindtap="edit" wx:if="{{info.can_edit && utils.indexOf(permissions,'/store/edit')!= -1}}">
       <image class="image" src="../../static/images/seller_detail_edit.png"></image>
       <text>修改门店</text>
     </view>
-    <view class="bottom_list" bindtap="batteryDevice" wx:if="{{utils.indexOf(device_types,'battery')!=-1}}">
+    <view class="bottom_list" bindtap="batteryDevice" wx:if="{{utils.indexOf(device_types,'powerbank')!=-1}}">
       <image class="image" src="../../static/images/seller_detail_device.png"></image>
       <text>充电宝设备</text>
     </view>

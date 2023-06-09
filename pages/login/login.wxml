@@ -21,15 +21,14 @@
 <view class="login">
   <view class="top">
     <image class="image" src="../../static/images/Frame@2x.png"></image>
-    <view class="text">欢迎使用富立共享代理系统</view>
+    <view class="text">欢迎使用开新电代理系统</view>
   </view>
   <view class="bottom">
     <view class="input">
-      <input type="text" placeholder="请输入手机号" value="{{phone}}" data-name="phone" placeholder-class="placeholderClass" maxlength="20" bindinput="handlePhone"/>
+      <input type="text" placeholder="请输入手机号" bindinput="handlePhone" placeholder-class="placeholderClass" />
     </view>
     <view class="input">
-      <input type="password" placeholder="请输入密码" value="{{password}}"  
-      data-name="password" placeholder-class="placeholderClass" maxlength="20" bindinput="handlePsw"></input>
+      <input type="password" placeholder="请输入密码" placeholder-class="placeholderClass" bindinput="handlePsw"></input>
     </view>
     <view class="forget">
       <navigator class="forgetPassword" bindtap="forget">忘记密码</navigator>

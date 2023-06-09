@@ -2,7 +2,7 @@ const md5 = require('./md5')
 const app = getApp()
 const config = {
   // host: 'https://lechongbao.w-dian.cn/merchant/',
-  host: 'http://cdb.chaohuo365.com/agent/',
+  host: 'https://cdb.chaohuo365.com/agent/',
   qrcodeUrl: 'https://qrcode.w-dian.cn',
   headerkey: 'zdhx%&$^*app',
   ocode: 'lcb'

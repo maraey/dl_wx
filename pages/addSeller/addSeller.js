@@ -660,6 +660,7 @@ Page({
     console.log(this.data.device_types)
   },
   isShowInputLine(e) {
+    console.log(e)
     let device_types = this.data.device_types
     device_types.wired = e.detail.value
     this.setData({

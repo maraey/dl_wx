@@ -2,19 +2,19 @@
 <view class="statistics">
   <view>
     <view class="tab_box">
-      <view class="tab_item {{tab_select=='seller'?'tab_select':''}}" data-type="seller" bindtap="tabSelect">
+      <view class="tab_item {{tab_select=='seller'?'tab_select':''}}" data-type="seller" bindtap="tabSelect" wx:if="{{utils.indexOf(permissions,'/stat/store')!= -1}}">
         <text>门店</text>
         <view>
           <view class="tab_line"></view>
         </view>
       </view>
-      <view class="tab_item {{tab_select=='bd'?'tab_select':''}}" data-type="bd" bindtap="tabSelect" wx:if="{{info.role=='agent'}}"> 
+      <view class="tab_item {{tab_select=='bd'?'tab_select':''}}" data-type="bd" bindtap="tabSelect" wx:if="{{utils.indexOf(permissions,'/stat/bd')!= -1}}"> 
         <text>地推</text>
         <view>
           <view class="tab_line"></view>
         </view>
       </view>
-      <view class="tab_item {{tab_select=='agent'?'tab_select':''}}" data-type="agent" bindtap="tabSelect" wx:if="{{info.role=='agent'}}">
+      <view class="tab_item {{tab_select=='agent'?'tab_select':''}}" data-type="agent" bindtap="tabSelect" wx:if="{{utils.indexOf(permissions,'/stat/agent')!= -1}}">
         <text>代理</text>
         <view>
           <view class="tab_line"></view>
@@ -28,7 +28,7 @@
       <input class="input" type="text" value="{{keyword}}" placeholder-class="phcolor" placeholder="{{placeholder}}" bindinput="handleKeyword"/>
     </view>
   </view>
-  <view >
+  <view style="display: flex;justify-content: space-between;padding: 0 30rpx;">
     <view class="tabbar">
       <view class="tabbar_item {{selected=='yesterday'?'selected':''}}" bindtap="tabbar" data-type="yesterday">
         <view class="title">昨日</view>
@@ -58,6 +58,10 @@
         <view class="title">自定义</view>
         <view class="line"></view>
       </view>
+    </view>
+    <view class="sortImg">
+      <image style="width: 44rpx;height: 44rpx;" src="../../static/images/upsort.png" bindtap="changeSort" data-type="asc" wx:if="{{sortby == 'desc'}}"> </image>
+      <image style="width: 44rpx;height: 44rpx;" src="../../static/images/downsort.png" bindtap="changeSort" data-type="desc" wx:if="{{sortby == 'asc'}}"> </image>
     </view>
   </view>
   <!-- <view>
@@ -126,3 +130,4 @@
   </view>
 </view>
 <tabBar selected="statistics"></tabBar>
+<datePicker bindclose="closeDatePicker" bindconfirm="confirmDatePicker" wx:if="{{showDatePicker}}"></datePicker>
