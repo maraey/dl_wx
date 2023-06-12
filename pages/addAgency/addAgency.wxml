@@ -64,13 +64,13 @@
         <switch color="#3D82FF" checked="{{status==2}}" bindchange="handleStatus"></switch>
       </view>
     </view>
-    <view class="authority_set_line" wx:if="{{is_self== 1}}"></view>
+    <!-- <view class="authority_set_line" wx:if="{{is_self== 1}}"></view>
     <view class="authority_set_switch_wrap" wx:if="{{is_self== 1}}">
       <text class="addAgency_title">是否可风控</text>
       <view class="authority_set_switch">
         <switch color="#3D82FF" checked="{{can_pass==1}}" bindchange="handlePass"></switch>
       </view>
-    </view>
+    </view> -->
   </view>
   <view class="btn" bindtap="sub">确 定</view>
 </view>

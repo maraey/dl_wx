@@ -1,0 +1,80 @@
+.info_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 640rpx;
+  margin: 0 auto;
+}
+
+.info_box .text {
+  height: 36rpx;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #333333;
+  line-height: 36rpx;
+}
+
+.info_box .name_box {
+  display: flex;
+  align-items: center;
+  width: 190rpx;
+}
+
+.info_box .name_box .image {
+  width: 24rpx;
+  height: 12rpx;
+  margin-left: 12rpx;
+}
+
+.w134 {
+  width: 134rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.w170 {
+  width: 130rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.w150 {
+  width: 150rpx;
+  text-align: center;
+}
+
+.w100 {
+  width: 100rpx;
+  text-align: center;
+}
+
+.w60 {
+  width: 60rpx;
+  height: 36rpx;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #999;
+  line-height: 36rpx;
+}
+
+.row {
+  margin: 30rpx 0;
+}
+
+/* .row+.row {
+  margin-top: 30rpx;
+} */
+
+.info_box .name_box .child {
+  padding-left: 20rpx;
+}
+
+.info_box .blue {
+  height: 36rpx;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #3D82FF;
+  line-height: 36rpx;
+}

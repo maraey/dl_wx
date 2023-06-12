@@ -48,7 +48,7 @@
     </view>
   </view>
   <view class="something" >
-    <view class="title">角色管理</view>
+    <view class="title">人员管理</view>
     <view class="lists">
       <view class="item" data-role="agent" bindtap="agencyList" >
         <view class="image_wrap">
@@ -74,45 +74,8 @@
         </view>
         <text class="text">门店VIP</text>
       </view>
-
     </view>
   </view>
-  <!-- <view class="something">
-    <view class="title">其他功能</view>
-    <view class="lists">
-      <view class="item" bindtap="adjustPrice" wx:if="{{login_info.role=='agent'}}">
-        <view class="image_wrap">
-          <image style="width: 44rpx; height: 44rpx;" src="../../static/images/my_adjust_price.png"></image>
-        </view>
-        <text class="text">一键调价</text>
-      </view>
-      <view class="item" bindtap="resetPsw">
-        <view class="image_wrap">
-          <image style="width: 44rpx;height: 44rpx;" src="../../static/images/my_change_psw.png"></image>
-        </view>
-        <text class="text">修改密码</text>
-      </view>
-      <view class="item" bindtap="WithdrawalLog">
-        <view class="image_wrap">
-          <image style="width: 52rpx;height: 52rpx;" src="../../static/images/apply1.png"></image>
-        </view>
-        <text class="text">提现记录</text>
-      </view>
-      <view class="item" bindtap="replenish" wx:if="{{login_info.role=='agent'}}">
-        <view class="image_wrap">
-          <image style="width: 44rpx;height: 44rpx;" src="../../static/images/addDevice@2x.png"></image>
-        </view>
-        <text class="text">补宝</text>
-      </view>
-      <view class="item" bindtap="pileTemplate" style="width: 27%;" wx:if="{{login_info.role!='seller'&&login_info.role!='introducer'&&utils.indexOf(device_types,'pile')!=-1}}">
-        <view class="image_wrap">
-          <image class="image" style="width: 44rpx;height: 44rpx;" src="../../static/images/pileTemplate.png"></image>
-        </view>
-        <text class="text">充电桩模版管理</text>
-      </view>
-    </view>
-  </view> -->
-
   <view class="scroll">
     <view class="title">其他功能</view>
     <scroll-view scroll-x="true" class="scroll_lists" 	bindscrolltolower="scrollRight" 	bindscrolltoupper="scrollLeft">
@@ -128,19 +91,19 @@
         </view>
         <text class="text">修改密码</text>
       </view>
-      <view class="scroll_item" bindtap="WithdrawalLog">
+      <view class="scroll_item" bindtap="WithdrawalLog" wx:if="{{utils.indexOf(permissions,'/user/withdrawalApply')!= -1}}">
         <view class="image_wraps">
           <image style="width: 52rpx;height: 52rpx;" src="../../static/images/my_withdrawal_log.png"></image>
         </view>
         <text class="text">提现记录</text>
       </view>
-      <view class="scroll_item" bindtap="replenish" wx:if="{{login_info.role=='agent'}}">
+      <view class="scroll_item" bindtap="replenish" >
         <view class="image_wraps">
           <image style="width: 52rpx;height: 52rpx;" src="../../static/images/my_add_battery.png"></image>
         </view>
         <text class="text">补宝</text>
       </view>
-      <view class="scroll_item" bindtap="pileTemplate" style="width: 27%;" wx:if="{{login_info.role!='manager'&&login_info.role!='introducer'&&utils.indexOf(device_types,'pile')!=-1}}">
+      <view class="scroll_item" bindtap="pileTemplate" style="width: 27%;" wx:if="{{utils.indexOf(device_types,'pile')!=-1}}">
         <view class="image_wraps">
           <image class="image" style="width: 44rpx;height: 44rpx;" src="../../static/images/pileTemplate.png"></image>
         </view>

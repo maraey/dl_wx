@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    keyword: '',
+    name: '',
     page: 1,
     page_size: 10,
     total: 0,
@@ -38,7 +38,7 @@ Page({
    */
   onShow () {
     this.setData({
-      keyword: '',
+      name: '',
       page: 1,
       page_size:10,
       list:[]
@@ -62,13 +62,13 @@ Page({
 
   },
   async getList() {
-    const {keyword,
+    const {name,
       page,
       page_size,
     list,sub_id} = this.data
-    const res = await util.request('seller/sellerList',{
+    const res = await util.request('store/index',{
       is_sub:true,
-      keyword,
+      name,
       page,
       page_size,
       sub_id
@@ -81,7 +81,7 @@ Page({
   },
   handleName(e) {
     this.setData({
-      keyword: e.detail.value
+      name: e.detail.value
     })
     clearTimeout(timer)
     timer = setTimeout(() => {

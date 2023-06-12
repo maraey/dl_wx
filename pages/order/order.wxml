@@ -42,20 +42,24 @@
       <view class="order_box_bottom">
         <view class="order_box_bottom_list">
           <view class="order_box_bottom_list_item">
-            <text class="order_box_bottom_text_title" wx:if="{{info.role!='introducer'}}">订单时长</text>
+            <text class="order_box_bottom_text_title" >状态</text>
+            <text class="order_box_bottom_text">{{item.status_text}}</text>
+          </view>
+          <view class="order_box_bottom_list_item" wx:if="{{utils.indexOf(permissions,'/order/amount') != -1}}">
+            <text class="order_box_bottom_text_title" >订单时长</text>
             <text class="order_box_bottom_text">{{item.use_time}}</text>
           </view>
-          <view class="order_box_bottom_list_item" wx:if="{{item.start_time&& shop_grade==2}}">
+          <view class="order_box_bottom_list_item" >
             <text class="order_box_bottom_text_title">使用时间</text>
             <text class="order_box_bottom_text">{{item.start_time}}</text>
           </view>
           <view class="order_box_bottom_list_item">
             <text class="order_box_bottom_text_title">租借门店</text>
-            <text class="order_box_bottom_text">{{item.seller}}</text>
+            <text class="order_box_bottom_text">{{item.store}}</text>
           </view>
           <view class="order_box_bottom_list_item">
-            <text class="order_box_bottom_text_title">用户类型</text>
-            <text class="order_box_bottom_text">{{item.user_type}}</text>
+            <text class="order_box_bottom_text_title">用户</text>
+            <text class="order_box_bottom_text">{{item.nick}}    ({{item.user_type}})</text>
           </view>
           <view class="order_box_bottom_list_copy" wx:if="{{info.role=='agent'}}">
             <text class="order_box_bottom_text_copy" data-id="{{item.order_no}}" catchtap="endOrder" wx:if="{{item.status==1&&item.can_end==1&&!newData.screenMy}}">结束订单</text>
@@ -131,7 +135,7 @@
             租借门店
           </view>
           <view class="popup_box_screen_input">
-            <input class="input" type="text" placeholder-class="phcolor" placeholder="请输入租借门店" value="{{seller}}" bindinput="handleSeller" />
+            <input class="input" type="text" placeholder-class="phcolor" placeholder="请输入门店名称" value="{{store_name}}" bindinput="handleStore" />
           </view>
         </view>
         <view class="popup_box_screen">

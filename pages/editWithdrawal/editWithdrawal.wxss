@@ -27,7 +27,7 @@
 .editWithdrawal .item .radio_group {
   display: flex;
   align-items: center;
-  height: 36rpx;
+  flex-direction: column;
 }
 
 .editWithdrawal .item .radio_group .radio_group_label {
@@ -42,7 +42,7 @@
 }
 
 .editWithdrawal .item .radio_group .radio_group_label+.radio_group_label {
-  margin-left: 40rpx;
+  margin-left: 28rpx;
 }
 
 .editWithdrawal .item .radio_group .radio_group_label .radio_group_text {

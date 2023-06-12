@@ -19,7 +19,7 @@ Page({
     disable:false,
     self:true,
     can_withdrawal:1,
-    can_pass: 1
+    can_pass: 0
   },
 
   /**

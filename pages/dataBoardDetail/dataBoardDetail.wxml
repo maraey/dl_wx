@@ -1,0 +1,33 @@
+<view class="dataBoardDetail">
+  <view class="box">
+    <view>
+      <view class="title_box">
+        <view class="title w170">组织机构</view>
+        <view class="title w180" wx:if="{{type=='offline1_3'}}">1～3天断电</view>
+        <view class="title w180" wx:if="{{type=='offline3_5'}}">3～5天断电</view>
+        <view class="title w180" wx:if="{{type=='offline5'}}">5天以上断电</view>
+        <view class="title w180" wx:if="{{type=='active1_3'}}">1～3天不活跃</view>
+        <view class="title w180" wx:if="{{type=='active3_7'}}">3～7天不活跃</view>
+        <view class="title w180" wx:if="{{type=='empty'}}">全天空仓机柜</view>
+        <view class="title w100">占比</view>
+        <view class="title w60">明细</view>
+      </view>
+    </view>
+    <view class="line"></view>
+    <block wx:for="{{list}}" wx:key="index">
+      <view class="row">
+        <view class="info_box">
+          <view class="name_box" bindtap="loadSub" data-index="{{index}}" data-id="{{item.id}}" data-sub="{{item.sub}}">
+            <view class="text w134">{{item.name}}</view>
+            <image class="image" src="/static/images/down.png" wx:if="{{item.sub}}"></image>
+          </view>
+          <view class="text w150">{{item.num}}</view>
+          <view class="text w100">{{item.ratio}}%</view>
+          <view class="w60" wx:if="{{!item.num}}">查看</view>
+          <view class="w60 blue" wx:if="{{item.num}}"  bindtap="batteryList" data-id="{{item.id}}" data-name="{{item.name}}">查看</view>
+        </view>
+      </view>
+      <child class="child" wx:if="{{item.children}}" type="{{type}}" child="{{item.children}}"></child>
+    </block>
+  </view>
+</view>

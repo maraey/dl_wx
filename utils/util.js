@@ -88,9 +88,9 @@ const request = (url, data = {}) => {
             wx.removeStorage({
               key: 'login_info'
             })
-            // wx.reLaunch({
-            //   url: '/pages/welcome/welcome'
-            // })
+            wx.reLaunch({
+              url: '/pages/index/index'
+            })
           }, 1000)
         } else if (res.data.code == 200) {
           resolve(res.data)

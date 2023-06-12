@@ -1,0 +1,62 @@
+<view class="batteryList">
+  <view class="wrap">
+    <view class="top_box">
+      <view class="name"><text class="text">{{name}}</text></view>
+      <view class="search_box">
+        <image src="/static/images/search_bar.png" class="image"></image>
+        <input type="text" class="input" placeholder-class="phcolor" placeholder="请输入关键词" bindinput="search"/>
+      </view>
+    </view>
+  </view>
+  <view class="item" wx:for="{{list}}" wx:key="index">
+    <view class="device_box">
+      <view class="device_num">设备编号：{{item.device_id}}</view>
+      <view class="copy" bindtap="copy" data-text="{{item.device_id}}">复制</view>
+    </view>
+    <view class="seller">所属商户：{{item.seller_name}}</view>
+    <view class="line"></view>
+    <view class="info_wrap">
+      <view class="info_list">
+        <view class="info">
+          <view class="info_title">网络</view>
+          <view class="info_text" wx:if="{{item.is_online}}">在线</view>
+          <view class="info_text" style="color:#F0513A;" wx:if="{{!item.is_online}}">离线</view>
+        </view>
+        <view class="info">
+          <view class="info_title">可借</view>
+          <view class="info_text">{{item.borrow_num}}</view>
+        </view>
+        <view class="info">
+          <view class="info_title">可还</view>
+          <view class="info_text">{{item.return_num}}</view>
+        </view>
+        <view class="info">
+          <view class="info_title">总数</view>
+          <view class="info_text">{{item.device_num}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="other_wrap" style="margin-top: 24rpx;">
+      <view class="other">
+        <view class="other_title">备注</view>
+        <view class="other_text">{{item.memo}}</view>
+      </view>
+    </view>
+    <view class="other_wrap">
+      <view class="other">
+        <view class="other_title">所属人员</view>
+        <view class="other_text">{{item.agency_name}}</view>
+      </view>
+    </view>
+    <view class="other_wrap">
+      <view class="other">
+        <view class="other_title">心跳时间</view>
+        <view class="other_text">{{item.heart_time}}</view>
+      </view>
+    </view>
+    <view class="detail">
+      <view class="detail_btn" data-id="{{item.device_id}}" bindtap="toDetail">查看详情</view>
+    </view>
+  </view>
+</view>

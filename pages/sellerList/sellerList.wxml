@@ -16,15 +16,15 @@
           </view>
           <view class="phone">
             <text class="phone_title">提成比例</text>
-            <text class="phone_num">{{item.rate}}%</text>
+            <text class="phone_num">{{item.store_brokerage}}%</text>
           </view>
-          <view class="phone">
-            <text class="phone_title">所属代理</text>
-            <text class="phone_num">{{item.sub_name}}</text>
+          <view class="phone" wx:if="{{item.sub_id!== 0}}">
+            <text class="phone_title">所属下级</text>
+            <text class="phone_num">{{item.sub_name}}({{item.sub_role}})</text>
           </view>
           <view class="phone">
             <text class="phone_title">创建时间</text>
-            <text class="phone_num">{{item.create_time}}</text>
+            <text class="phone_num">{{item.created_time}}</text>
           </view>
         </view>
         <!-- <view class="detail">

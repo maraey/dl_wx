@@ -10,25 +10,25 @@ Page({
     showPopup: false,
     selectType: 'my',
     screenStatus: 'all', //订单状态
-    type: 'battery', //订单类型
+    type: 'powerbank', //订单类型
     screenMy: 'all', //我的数据
     is_refund: '0', //退款订单
     is_lose: '0', //丢宝订单
     order_no: '', //订单编号
     member_id: '', //会员ID
-    seller: '', //门店名
+    store_name: '', //门店名
     screenStartDate: '', //起始时间
     screenEndDate: '', //结束时间
     screenMyText:false,
     newData: {
       screenStatus: 'all',
-      type: 'battery',
+      type: 'powerbank',
       screenMy: 'all',
       is_refund: '0',
       is_lose: '0',
       order_no: '',
       member_id: '',
-      seller: '',
+      store_name: '',
       screenStartDate: '',
       screenEndDate: '',
     },
@@ -109,18 +109,18 @@ Page({
       is_lose,
       order_no,
       member_id,
-      seller,
+      store_name,
       screenStartDate,
       screenEndDate
     } = newData
     const res = await util.request('order/index', {
       order_no,
       member_id,
-      start_date: screenStartDate,
-      end_date: screenEndDate,
+      start_time: screenStartDate,
+      ende: screenEndDate,
       page,
       page_size,
-      seller,
+      store_name,
       status: screenStatus,
       type,
       is_sub: screenMy,
@@ -185,13 +185,13 @@ Page({
     this.setData({
       showPopup: false,
       screenStatus: 'all',
-      type: 'battery',
+      type: 'powerbank',
       screenMy: 'all',
       is_refund: '0',
       is_lose: '0',
       order_no: '',
       member_id: '',
-      seller: '',
+      store_name: '',
       screenStartDate: '',
       screenEndDate: '',
     })
@@ -199,14 +199,14 @@ Page({
   reset() {
     const newData = {
         screenStatus: 'all',
-        type: 'battery',
+        type: 'powerbank',
         screenMy: 'all',
         screenMyText:'all',
         is_refund: '0',
         is_lose: '0',
         order_no: '',
         member_id: '',
-        seller: '',
+        store_name: '',
         screenStartDate: '',
         screenEndDate: '',
         newDataMy:{
@@ -243,7 +243,7 @@ Page({
       is_lose,
       order_no,
       member_id,
-      seller,
+      store_name,
       screenStartDate,
       screenEndDate
     } = this.data
@@ -255,7 +255,7 @@ Page({
       is_lose,
       order_no,
       member_id,
-      seller,
+      store_name,
       screenStartDate,
       screenEndDate
     }
@@ -292,9 +292,9 @@ Page({
       member_id: e.detail.value
     })
   },
-  handleSeller(e) {
+  handleStore(e) {
     this.setData({
-      seller: e.detail.value
+      store_name: e.detail.value
     })
   },
   stop() {
@@ -303,19 +303,19 @@ Page({
   resetData() {
     this.setData({
       screenStatus: 'all',
-      type: 'battery',
+      type: 'powerbank',
       screenMy: 'all',
       is_refund: '0',
       is_lose: '0',
       order_no: '',
       member_id: '',
-      seller: '',
+      store_name: '',
       screenStartDate: '',
       screenEndDate: '',
     })
   },
   checkDetail(e) {
-    if(this.data.info.role=='seller'||this.data.info.role=='introducer'){
+    if(this.data.info.role=='store_name'||this.data.info.role=='introducer'){
       return
     }
     if(util.permissions.indexOf('/order/detail')!= -1){

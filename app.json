@@ -45,7 +45,9 @@
     "pages/pile/pile",
     "pages/welcome/welcome",
     "pages/selectBD/selectBD",
-    "pages/dataBoard/dataBoard"
+    "pages/dataBoard/dataBoard",
+    "pages/dataBoardDetail/dataBoardDetail",
+    "pages/batteryList/batteryList"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "child":"/components/childDataboard/childDataboard"
+  },
+  "navigationBarTitleText": "数据明细"
+}

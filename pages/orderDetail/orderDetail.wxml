@@ -4,22 +4,26 @@
       <view class="order_detail_box_title">租借信息</view>
       <view class="order_detail_box_list">
         <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">订单编号：</view>
+          <view class="order_detail_box_item_text">{{info.order_no}}</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">订单状态：</view>
+          <view class="order_detail_box_item_text">{{info.status_text}}</view>
+        </view>
+        <view class="order_detail_box_item">
           <view class="order_detail_box_item_title">租借门店：</view>
-          <view class="order_detail_box_item_text">{{info.seller}}</view>
+          <view class="order_detail_box_item_text">{{info.store}}</view>
         </view>
         <view class="order_detail_box_item">
           <view class="order_detail_box_item_title">租借时间：</view>
           <view class="order_detail_box_item_text">{{info.start_time}}</view>
         </view>
         <view class="order_detail_box_item">
-          <view class="order_detail_box_item_title">租借方式：</view>
-          <view class="order_detail_box_item_text">{{info.user_type}}</view>
-        </view>
-        <view class="order_detail_box_item">
           <view class="order_detail_box_item_title">租借类型：</view>
-          <view class="order_detail_box_item_text" wx:if="{{info.order_type==1}}">充电宝</view>
-          <view class="order_detail_box_item_text" wx:if="{{info.order_type==2}}">充电线</view>
-          <view class="order_detail_box_item_text" wx:if="{{info.order_type==3}}">充电桩</view>
+          <view class="order_detail_box_item_text" wx:if="{{info.order_type=='powerbank'}}">充电宝</view>
+          <view class="order_detail_box_item_text" wx:if="{{info.order_type=='wire'}}">充电线</view>
+          <view class="order_detail_box_item_text" wx:if="{{info.order_type=='pile'}}">充电桩</view>
         </view>
         <view class="order_detail_box_item">
           <view class="order_detail_box_item_title">免费时长：</view>
@@ -43,7 +47,7 @@
         </view>
         <view class="order_detail_box_item">
           <view class="order_detail_box_item_title">租借孔位：</view>
-          <view class="order_detail_box_item_text">{{info.rent_lock}}</view>
+          <view class="order_detail_box_item_text">{{info.return_lock}}</view>
         </view>
         <view class="order_detail_box_item">
           <view class="order_detail_box_item_title">电池编号：</view>
@@ -59,19 +63,15 @@
           <view class="order_detail_box_item_text">¥{{info.amount}}</view>
         </view>
         <view class="order_detail_box_item">
-          <view class="order_detail_box_item_title">订单编号：</view>
-          <view class="order_detail_box_item_text">{{info.order_no}}</view>
-        </view>
-        <view class="order_detail_box_item">
-          <view class="order_detail_box_item_title">订单状态：</view>
-          <view class="order_detail_box_item_text">{{info.status_text}}</view>
-        </view>
-        <view class="order_detail_box_item">
           <view class="order_detail_box_item_title">租借时长：</view>
           <view class="order_detail_box_item_text">{{info.use_time}}</view>
         </view>
         <view class="order_detail_box_item">
           <view class="order_detail_box_item_title">付款时间：</view>
+          <view class="order_detail_box_item_text">{{info.payment_time}}</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">分成金额：</view>
           <view class="order_detail_box_item_text">{{info.payment_time}}</view>
         </view>
       </view>
@@ -110,12 +110,16 @@
       <view class="order_detail_box_title">用户信息</view>
       <view class="order_detail_box_list">
         <view class="order_detail_box_item">
-          <view class="order_detail_box_item_title">用户昵称: </view>
+          <view class="order_detail_box_item_title">用户昵称：</view>
           <view class="order_detail_box_item_text">{{info.nick}}</view>
         </view>
         <view class="order_detail_box_item">
           <view class="order_detail_box_item_title">会员ID：</view>
           <view class="order_detail_box_item_text">{{info.member_id}}</view>
+        </view>
+        <view class="order_detail_box_item">
+          <view class="order_detail_box_item_title">租客户端：</view>
+          <view class="order_detail_box_item_text">{{info.user_type}}小程序</view>
         </view>
       </view>
     </view>

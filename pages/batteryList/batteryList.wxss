@@ -1,0 +1,203 @@
+/* pages/batteryList/batteryList.wxss */
+page {
+  background: #F4F5F5;
+}
+
+.wrap {
+  width: 750rpx;
+  height: 96rpx;
+  background: #FFFFFF;
+}
+
+.wrap .top_box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 750rpx;
+  height: 96rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.wrap .top_box .name {
+  width: 100rpx;
+  height: 36rpx;
+  margin-right: 30rpx;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #333333;
+  line-height: 36rpx;
+  overflow: hidden;
+}
+
+.wrap .top_box .name .text:hover {
+  position: absolute;
+  height: 72rpx;
+  background-color: #fff;
+  border-radius: 8rpx;
+  z-index: 2;
+  line-height: 72rpx;
+}
+
+.wrap .top_box .search_box {
+  display: flex;
+  align-items: center;
+  width: 560rpx;
+  height: 72rpx;
+  padding: 0 30rpx;
+  background: #F8F8F8;
+  border-radius: 4rpx;
+  box-sizing: border-box;
+}
+
+.wrap .top_box .search_box .image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 22rpx;
+}
+
+.wrap .top_box .search_box .input {
+  width: 450rpx;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #333;
+}
+
+.item {
+  width: 690rpx;
+  height: 612rpx;
+  margin: 30rpx auto;
+  padding: 36rpx 32rpx 30rpx;
+  background: #FFFFFF;
+  border-radius: 8rpx;
+  box-sizing: border-box;
+}
+
+.item .device_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item .device_box .device_num {
+  height: 44rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333333;
+  line-height: 44rpx;
+}
+
+.item .device_box .copy {
+  width: 76rpx;
+  height: 38rpx;
+  font-size: 24rpx;
+  font-weight: 400;
+  line-height: 38rpx;
+  text-align: center;
+  color: #3D82FF;
+  background: #FFFFFF;
+  border-radius: 19rpx;
+  border: 2rpx solid #3D82FF;
+}
+
+.item .seller {
+  max-width: 626rpx;
+  height: 40rpx;
+  margin: 16rpx 0 24rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #333333;
+  line-height: 40rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item .line {
+  width: 626rpx;
+  height: 2rpx;
+  background: #F5F5F5;
+}
+
+.item .info_wrap {
+  margin: 40rpx 48rpx;
+}
+
+.item .info_wrap .info_list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item .info_wrap .info_list .info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item .info_wrap .info_list .info .info_title {
+  height: 36rpx;
+  margin-bottom: 20rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #999999;
+  line-height: 36rpx;
+}
+
+.item .info_wrap .info_list .info .info_text {
+  height: 36rpx;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #333333;
+  line-height: 36rpx;
+}
+
+.item .other_wrap+.other_wrap {
+  margin-top: 16rpx;
+}
+
+.item .other_wrap .other {
+  display: flex;
+  align-items: center;
+}
+
+.item .other_wrap .other .other_title {
+  width: 112rpx;
+  height: 40rpx;
+  margin-right: 28rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #999999;
+  line-height: 40rpx;
+}
+
+.item .other_wrap .other .other_text {
+  width: 470rpx;
+  height: 40rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #999999;
+  line-height: 40rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item .detail {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24rpx;
+}
+
+.item .detail .detail_btn {
+  width: 128rpx;
+  height: 46rpx;
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #3D82FF;
+  line-height: 46rpx;
+  text-align: center;
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  border: 2rpx solid #3D82FF;
+}

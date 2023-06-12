@@ -37,7 +37,10 @@ Page({
     console.log(this.data.permissions,this.data.isLogin)
   },
   async onShow() {
-    this.getData()
+    const login = wx.getStorageSync('login_info')
+    if(login){
+      this.getData()
+    }
     // if (this.data.isLogin) {
     //   this.getAmount()
     //   const res = await util.request('user/index')
