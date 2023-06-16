@@ -700,7 +700,7 @@ Page({
         balance_data: JSON.stringify(balance_data),
         temporary_data: JSON.stringify(temporary_data)
       })
-      if (res.code == 1) {
+      if (res.code == 200) {
         wx.showToast({
           title: res.msg,
           icon: 'success'
@@ -719,7 +719,7 @@ Page({
         balance_data: JSON.stringify(balance_data),
         temporary_data: JSON.stringify(temporary_data)
       })
-      if (res.code == 1) {
+      if (res.code == 200) {
         wx.showToast({
           title: res.msg,
           icon: 'success'
@@ -822,7 +822,7 @@ Page({
         type,
         balance_data: JSON.stringify(obj)
       })
-      if (res.code == 1) {
+      if (res.code == 200) {
         app.globalData.pileBalance = obj
       }
     } else if (this.data.pile == 2) {
@@ -830,7 +830,7 @@ Page({
         type,
         temporary_data: JSON.stringify(objT)
       })
-      if (res.code == 1) {
+      if (res.code == 200) {
         app.globalData.pileTemporary = objT
       }
     }

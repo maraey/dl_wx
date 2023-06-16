@@ -75,7 +75,7 @@ Page({
               canSub:true
             })
             const res = await util.request('auth/logout')
-            if(res.code == 1){
+            if(res.code == 200){
               wx.clearStorageSync()
               wx.reLaunch({
                 url: '/pages/login/login'

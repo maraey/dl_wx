@@ -203,7 +203,7 @@ Page({
       device_id:this.data.device_id,
       memo:this.data.remarks
     })
-    if(res.code == 1){
+    if(res.code == 200){
       this.setData({
         showRemarkPopup: false,
         page:1,

@@ -15,7 +15,7 @@ Page({
   onLoad(options) {
     console.log(options);
     this.setData({
-      seller_id: JSON.parse(options.info).id
+      store_id: JSON.parse(options.info).id
     })
     this.echartsComponnet = this.selectComponent('#mychart-dom-bar');
     let date = new Date()
@@ -93,16 +93,16 @@ Page({
   },
   async getStat() {
     const {
-      seller_id,
+      store_id,
       start_date,
       end_date
     } = this.data
-    const res = await util.request('seller/stat', {
-      seller_id,
+    const res = await util.request('store/stat', {
+      store_id,
       start_date,
       end_date
     })
-    if (res.code == 1) {
+    if (res.code == 200) {
       let {
         total_amount,
         data,

@@ -121,17 +121,17 @@
         </view>
         <text class="text">提现</text>
       </view>
-      <view class="scroll_item" >
+      <!-- <view class="scroll_item" >
         <view class="image_wraps">
           <image style="width: 52rpx;height: 52rpx;" src="../../static/images/addDevice@2x.png"></image>
         </view>
         <text class="text">设置</text>
-      </view>
+      </view> -->
     </scroll-view>
-    <view class="show_line">
+    <!-- <view class="show_line">
       <view class="{{scroll_right?'line_right':'line_left'}}"></view>
       <view class="{{scroll_left?'line_right':'line_left'}}"></view>
-    </view>
+    </view> -->
 
   </view>
 </view>

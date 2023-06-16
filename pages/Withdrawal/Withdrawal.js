@@ -30,7 +30,7 @@ Page({
   },
   async getInfo() {
     const res = await util.request('user/withdrawalAccount')
-    if (res.code == 1) {
+    if (res.code == 200) {
       this.setData({
         apply: res.data
       })
@@ -57,7 +57,7 @@ Page({
       amount: this.data.amount,
       account_id: this.data.apply.id
     })
-    if (res.code == 1) {
+    if (res.code == 200) {
       wx.showToast({
         title: '发送提现申请成功',
         icon: 'success'

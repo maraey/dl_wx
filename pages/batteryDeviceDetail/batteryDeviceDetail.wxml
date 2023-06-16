@@ -7,12 +7,12 @@
           <text>基本信息</text>
           <view class="line"></view>
         </view>
-        <view class="screen_item {{screen_type == 'profit'?'screen_selected':''}}" data-type="profit" bindtap="screen">
+        <!-- <view class="screen_item {{screen_type == 'profit'?'screen_selected':''}}" data-type="profit" bindtap="screen">
           <text>设备收益</text>
           <view class="line"></view>
-        </view>
+        </view> -->
         <view class="screen_item {{screen_type == 'manage'?'screen_selected':''}}" data-type="manage" bindtap="screen" wx:if="{{utils.indexOf(permissions,'/powerbankDevice/operate')!= -1}}">
-          <text>槽位管理</text>
+          <text>机柜管理</text>
           <view class="line"></view>
         </view>
       </view>
@@ -44,7 +44,7 @@
     </view>
     <view class="basic_info_item">
       <view class="title">添加时间</view>
-      <view class="text">{{info.create_time}}</view>
+      <view class="text">{{info.bind_time}}</view>
     </view>
     <view class="basic_info_item">
       <view class="title">心跳时间</view>
@@ -76,7 +76,7 @@
     </view>
     <view class="slot_box" wx:for="{{info.battery}}" wx:key="index">
       <view class="slot_title">
-        <text>槽位{{item.lock_id}}</text>
+        <text>仓道{{item.lock_id}}</text>
         <view class="open" data-lock="{{item.lock_id}}" bindtap="openLock" wx:if="{{info.open_lock}}">弹出</view>
       </view>
       <view class="line"></view>

@@ -34,7 +34,7 @@ Page({
       })
       if (options.role == 'manager') {
         wx.setNavigationBarTitle({
-          title: '门店账户详情',
+          title: '门店管理员详情',
         })
       } else if (options.role == 'bd') {
         wx.setNavigationBarTitle({
@@ -91,7 +91,7 @@ Page({
           const res = await util.request('role/delete', {
             id: this.data.user_id
           })
-          if (res.code == 1) {
+          if (res.code == 200) {
             wx.showToast({
               title: res.msg,
               icon: 'success',
@@ -163,7 +163,7 @@ Page({
               })
               break;
           }
-          if (res.code == 1) {
+          if (res.code == 200) {
             wx.showToast({
               title: '绑定成功',
               icon: 'success '
@@ -175,7 +175,7 @@ Page({
             code_type: 'sn',
             device_id: result
           })
-          if (res.code == 1) {
+          if (res.code == 200) {
             wx.showToast({
               title: '绑定成功',
               icon: 'success '

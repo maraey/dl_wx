@@ -125,7 +125,7 @@
       <image class="images" src="../../static/images/statistics@2x.png"></image>
       <text class="text">数据看板</text>
     </view>
-    <view class="item" bindtap="agencyList" data-role="seller" wx:if="{{utils.indexOf(permissions,'/user/brokerageMonth')!= -1}}">
+    <view class="item" bindtap="goTo" data-id="orderProfit" wx:if="{{utils.indexOf(permissions,'/user/brokerageMonth')!= -1}}">
       <image class="images" src="../../static/images/battery@2x.png"></image>
       <text class="text">订单收益</text>
     </view>
@@ -156,7 +156,7 @@
     </view>
     <view class="item" bindtap="goTo" data-id="addSellerAccount" >
       <image class="image" src="../../static/images/add_seller_account.png"></image>
-      <text class="text">添加门店账户</text>
+      <text class="text">添加门店管理员</text>
     </view>
     <view class="item" bindtap="goTo" data-id="addIntroducer" >
       <image class="image" src="../../static/images/add_introducer.png"></image>
@@ -187,7 +187,7 @@
     </view>
     <view class="item" bindtap="goTo" data-id="addSellerAccount" wx:if="{{utils.indexOf(permissions,'add_manager')!=-1}}">
       <image class="image" src="../../static/images/add_seller_account.png"></image>
-      <text class="text">添加门店账户</text>
+      <text class="text">添加门店管理员</text>
     </view>
     <view class="item" bindtap="goTo" data-id="addIntroducer" wx:if="{{utils.indexOf(permissions,'add_introducer')!=-1}}">
       <image class="image" src="../../static/images/add_introducer.png"></image>

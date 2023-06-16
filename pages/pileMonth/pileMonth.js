@@ -111,7 +111,7 @@ Page({
       type: 'package',
       package_data: JSON.stringify(obj)
     })
-    if (res.code == 1) {
+    if (res.code == 200) {
       app.globalData.pileMonth = obj
       wx.navigateBack()
     }

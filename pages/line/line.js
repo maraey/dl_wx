@@ -253,7 +253,7 @@ Page({
         qrcode: this.data.device_id
       })
     }
-    if (res.code == 1) {
+    if (res.code == 200) {
       wx.showToast({
         title: res.msg,
       })
@@ -278,7 +278,7 @@ Page({
       code_type: 'qrcode',
       qrcode: this.data.device_id
     })
-    if (res.code == 1) {
+    if (res.code == 200) {
       wx.showToast({
         title: res.msg,
       })
@@ -305,7 +305,7 @@ Page({
           const res = await util.request('WiredDevice/unbindSeller', {
             qrcode: e.currentTarget.dataset.id
           })
-          if (res.code == 1) {
+          if (res.code == 200) {
             wx.showToast({
               title: res.msg,
             })

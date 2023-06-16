@@ -16,31 +16,32 @@
       </radio-group>
     </view>
   </view>
-  <view class="item" wx:if="{{pay_type==1}}">
+  <view class="item" wx:if="{{pay_type== 'wechat'}}">
     <view class="item_title">本机微信ID</view>
-    <view bindtap="getUSerInfo">
+    <!-- <view bindtap="getUSerInfo"> -->
+    <view>
       <input type="text" style="width: 470rpx;" placeholder="点击获取本机微信ID" placeholder-style="color:#DADAD9;" placeholder-class="phcolor" value="{{accountName}}" disabled></input>
     </view>
   </view>
-  <view class="item" wx:if="{{pay_type==2}}">
+  <view class="item" wx:if="{{pay_type== 'alipay'}}">
     <view class="item_title">支付宝</view>
     <view class="input">
       <input type="text" placeholder-style="color: #DADAD9;" placeholder="请输入支付宝账号" bindinput="handleAccName" />
     </view>
   </view>
-  <view class="item" wx:if="{{pay_type==3}}">
+  <!-- <view class="item" wx:if="{{pay_type== 'bank'}}">
     <view class="item_title">所属银行</view>
     <view class="input">
       <input type="text" placeholder-style="color: #DADAD9;" placeholder="请输入所属银行" bindinput="handleBank" />
     </view>
   </view>
-  <view class="item" wx:if="{{pay_type==3}}">
+  <view class="item" wx:if="{{pay_type== 'bank'}}">
     <view class="item_title">开户行</view>
     <view class="input">
       <input type="text" placeholder-style="color: #DADAD9;" placeholder="请输入开户行" bindinput="handleBankBranch" />
     </view>
-  </view>
-  <view class="item" wx:if="{{pay_type==3}}">
+  </view> -->
+  <view class="item" wx:if="{{pay_type== 'bank'}}">
     <view class="item_title">银行账号</view>
     <view class="input">
       <input type="text" placeholder-style="color: #DADAD9;" placeholder="请输入银行账号" bindinput="handleAccName" />

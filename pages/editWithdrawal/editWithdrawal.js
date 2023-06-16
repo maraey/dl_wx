@@ -223,7 +223,7 @@ Page({
         console.log(tempFilePaths[0]);
         let img = await util.uploadImage(tempFilePaths[0])
         img = JSON.parse(img.data)
-        if (img.code == 1) {
+        if (img.code == 200) {
           this.setData({
             img: img.data.id,
             img_url: tempFilePaths[0]
@@ -263,7 +263,7 @@ Page({
         icon: 'none'
       })
       clearInterval(Interval)
-      if(res.code == 1){
+      if(res.code == 200){
         setTimeout(()=>{
           wx.redirectTo({
             url:'/pages/Withdrawal/Withdrawal'
@@ -287,7 +287,7 @@ Page({
         icon: 'none'
       })
       clearInterval(Interval)
-      if(res.code == 1){
+      if(res.code == 200){
         setTimeout(()=>{
           wx.redirectTo({
             url:'/pages/Withdrawal/Withdrawal'

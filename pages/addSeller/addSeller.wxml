@@ -73,7 +73,7 @@
       </view>
       <view class="add_seller_item">
         <view class="add_seller_item_title">
-          <text>门店账户</text>
+          <text>门店管理员</text>
           <text class="add_seller_item_title_icon">*</text>
         </view>
         <view class="add_seller_item_input">

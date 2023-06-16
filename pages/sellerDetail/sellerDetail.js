@@ -149,7 +149,7 @@ Page({
               })
               break;
           }
-          if (res.code == 1) {
+          if (res.code == 200) {
             wx.showToast({
               title: '绑定成功',
               icon: 'success '
@@ -161,7 +161,7 @@ Page({
             code_type: 'sn',
             device_id: result
           })
-          if (res.code == 1) {
+          if (res.code == 200) {
             wx.showToast({
               title: '绑定成功',
               icon: 'success '
@@ -206,7 +206,7 @@ Page({
       end,
       code_type: 'qrcode'
     })
-    if (res.code == 1) {
+    if (res.code == 200) {
       wx.showToast({
         title: '绑定成功',
         icon: 'success'

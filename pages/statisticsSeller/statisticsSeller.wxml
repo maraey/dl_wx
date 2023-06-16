@@ -36,20 +36,20 @@
     <view class="line"></view>
     <view class="list">
       <view class="item">
-        <view class="item_title">订单次数</view>
-        <view class="item_text">{{item.order_num}}次</view>
+        <view class="item_title">订单金额</view>
+        <view class="item_text">{{item.pay_amount}}</view>
       </view>
       <view class="item">
-        <view class="item_title">总金额</view>
-        <view class="item_text">{{item.order_amount}}元</view>
-      </view>
-      <view class="item">
-        <view class="item_title">总退款</view>
+        <view class="item_title">退款金额</view>
         <view class="item_text">{{item.refund_amount}}元</view>
       </view>
       <view class="item">
-        <view class="item_title">实收金额</view>
-        <view class="item_text">{{item.pay_amount}}元</view>
+        <view class="item_title">订单数</view>
+        <view class="item_text">{{item.order_num}}</view>
+      </view>
+      <view class="item">
+        <view class="item_title">我的收益</view>
+        <view class="item_text">{{item.profits}}元</view>
       </view>
     </view>
   </view>

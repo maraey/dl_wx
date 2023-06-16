@@ -72,11 +72,11 @@
         </view>
         <view class="order_detail_box_item">
           <view class="order_detail_box_item_title">分成金额：</view>
-          <view class="order_detail_box_item_text">{{info.payment_time}}</view>
+          <view class="order_detail_box_item_text">{{info.brokerage_amount}}</view>
         </view>
       </view>
     </view>
-    <view class="order_detail_box_wrap" wx:if="{{info.status==2}}">
+    <view class="order_detail_box_wrap" wx:if="{{info.status==2|| info.status == 3}}">
       <view class="order_detail_box_title">归还信息</view>
       <view class="order_detail_box_list">
         <view class="order_detail_box_item">
@@ -93,11 +93,11 @@
         </view>
         <view class="order_detail_box_item">
           <view class="order_detail_box_item_title">归还时间：</view>
-          <view class="order_detail_box_item_text">{{item.return_time}}</view>
+          <view class="order_detail_box_item_text">{{info.return_time}}</view>
         </view>
       </view>
     </view>
-    <view class="order_detail_box_wrap" wx:if="{{info.status==2}}">
+    <!-- <view class="order_detail_box_wrap" wx:if="{{info.status==2}}">
       <view class="order_detail_box_title">分成明细</view>
       <view class="order_detail_box_list">
         <view class="order_detail_box_item" wx:for="{{info.brokerage}}" wx:key="index">
@@ -105,7 +105,7 @@
           <view class="order_detail_box_item_text">{{item.name}}一分成{{item.ratio}}%</view>
         </view>
       </view>
-    </view>
+    </view> -->
     <view class="order_detail_box_wrap">
       <view class="order_detail_box_title">用户信息</view>
       <view class="order_detail_box_list">

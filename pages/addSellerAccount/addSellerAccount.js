@@ -33,7 +33,7 @@ Page({
         id: options.id
       })
       wx.setNavigationBarTitle({
-        title: '修改门店账户',
+        title: '修改门店管理员',
       })
     }
     if (options.info) {

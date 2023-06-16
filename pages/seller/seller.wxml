@@ -43,7 +43,7 @@
       </view>
       <view class="item_wrap">
         <view class="item_left">提成比例</view>
-        <view class="item_right">{{item.rate}}</view>
+        <view class="item_right">{{item.store_brokerage}}</view>
       </view>
       <view class="item_wrap">
         <view class="item_left">创建时间</view>

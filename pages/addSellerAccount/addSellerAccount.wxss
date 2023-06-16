@@ -124,7 +124,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30rpx 0;
+  padding: 24rpx 0;
 }
 .authority_set .authority_set_checkbox .checkbox_title{
   font-size: 26rpx;
@@ -138,6 +138,7 @@
 .authority_set .authority_set_checkbox .authority_checkbox .checkbox_options{
   display: flex;
   align-items: center;
+  margin: 20rpx 0;
 }
 .authority_set .authority_set_checkbox .authority_checkbox .checkbox_options .checkbox_check{
   color: #3D82FF;

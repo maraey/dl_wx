@@ -110,7 +110,7 @@ Page({
         open_lock: this.data.open_lock,
         brokerage:this.data.brokerage
       })
-      if(res.code == 1){
+      if(res.code == 200){
         wx.showToast({
           title: res.msg,
           icon:'success',

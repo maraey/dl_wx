@@ -95,7 +95,7 @@ Page({
           const res = await util.request('powerbankDevice/backParent', {
             device_id: this.data.device_id
           })
-          if (res.code == 1) {
+          if (res.code == 200) {
             wx.showToast({
               title: res.msg,
               icon: 'success',
@@ -146,7 +146,7 @@ Page({
       type: 'openAll',
     })
     wx.hideLoading()
-    if (res.code == 1) {
+    if (res.code == 200) {
       this.getInfo()
     }
   },
@@ -159,7 +159,7 @@ Page({
       type: 'restart',
     })
     wx.hideLoading()
-    if (res.code == 1) {
+    if (res.code == 200) {
       this.getInfo()
     }
   },
@@ -173,7 +173,7 @@ Page({
       val: e.currentTarget.dataset.lock
     })
     wx.hideLoading()
-    if (res.code == 1) {
+    if (res.code == 200) {
       this.getInfo()
     }
   },
@@ -217,7 +217,7 @@ Page({
       type: 'volume',
       val: this.data.volume
     })
-    if (res.code == 1) {
+    if (res.code == 200) {
       wx.showToast({
         title: res.msg,
         icon: 'success'

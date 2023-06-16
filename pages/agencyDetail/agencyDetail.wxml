@@ -114,7 +114,7 @@
       <view class="bottom" wx:if="{{role=='manager'}}">
         <view class="item" bindtap="editSeller" wx:if="{{utils.indexOf(permissions,'/marketer/edit')!= -1}}">
           <image class="image" src="/static/images/seller_detail_edit.png"></image>
-          <text class="text">修改门店账户</text>
+          <text class="text">修改门店管理员</text>
         </view>
       </view>
       <view class="bottom" wx:if="{{role=='bd'}}">
