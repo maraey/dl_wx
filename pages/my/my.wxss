@@ -193,7 +193,7 @@
 }
 
 .my .something{
-  padding: 30rpx 0rpx;
+  padding: 30rpx 0rpx 0rpx 0rpx;
   width: 686rpx;
   margin-bottom: 42rpx;
   background: #FFFFFF;
@@ -217,6 +217,7 @@
   align-items: center;
   justify-content: space-between;
   width: 25%;
+  margin-bottom: 30rpx;
 }
 
 .my .lists .item .image_wrap {

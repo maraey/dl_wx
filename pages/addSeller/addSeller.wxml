@@ -172,7 +172,7 @@
           <switch color="#3D82FF" checked="{{switchTypeBattery}}" bindchange="isShowInputBattery"></switch>
         </view>
       </view>
-      <view class="add_seller_item">
+      <view class="add_seller_item" wx:if="{{switchTypeBattery}}">
         <view class="add_seller_item_title">
           <text>充电宝计费策略</text>
           <text class="add_seller_item_title_icon">*</text>

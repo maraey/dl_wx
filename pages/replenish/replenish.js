@@ -10,7 +10,10 @@ Page({
     phone:'',
     address:'',
     num:'',
-    canSub:true
+    canSub:true,
+    is_apply: 0,
+    is_replenish: false,
+    max_num:0
   },
 
   /**
@@ -24,7 +27,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady () {
-
+    console.log(1122)
   },
 
   /**
@@ -32,7 +35,18 @@ Page({
    */
   onShow () {
     this.getNum()
+    console.log(2211)
+    if(this.data.is_apply){
+      this.setData({
+        is_replenish: true
+      })
+    } else {
+      this.setData({
+        is_replenish: false
+      })
+    }
   },
+  
   handleName(e){
     this.setData({
       name:e.detail.value
@@ -49,9 +63,10 @@ Page({
     })
   },
   async getNum(){
-    const res = await util.request('batteryDevice/replenishStatus')
+    const res = await util.request('powerbankdevice/replenishStatus')
     this.setData({
-      num:res.data.is_apply
+      max_num:res.data.max_num,
+      is_apply: res.data.is_apply
     })
   },
   log(){
@@ -60,10 +75,10 @@ Page({
     })
   },
   async sub(){
-    const {name,phone,address,canSub} = this.data
+    const {name,phone,address,canSub,num} = this.data
     if(canSub){
-      const res = await util.request('batteryDevice/replenishApply',{
-        name,phone,address
+      const res = await util.request('powerbankdevice/replenishApply',{
+        num,name,phone,address
       })
       if(res.code==200){
         wx.showToast({
@@ -75,5 +90,11 @@ Page({
         },800)
       }
     }
+  },
+  handleNum(e){
+    this.setData({
+      num : e.detail.value
+    })
+    console.log(e)
   }
 })

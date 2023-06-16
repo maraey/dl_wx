@@ -6,11 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    uid: '',
     type: '',
     page:1,
     page_size:10,
-    seller:'',
+    store_name:'',
     list:[],
     name:''
   },
@@ -20,12 +19,10 @@ Page({
    */
   onLoad(options) {
     const {
-      id,
       type,
       name
     } = options
     this.setData({
-      uid: id,
       type,
       name
     })
@@ -87,9 +84,9 @@ Page({
     }
   },
   async getList(){
-    const {page,page_size,seller,uid,type} = this.data
-    const res = await util.request('batteryDevice/searchList',{
-      page,page_size,seller,uid,type
+    const {page,page_size,store_name,type} = this.data
+    const res = await util.request('powerbankDevice/searchList',{
+      page,page_size,store_name,type
     })
     const listOld = this.data.list
     if(page==1){
@@ -113,7 +110,7 @@ Page({
   },
   search(e){
     this.setData({
-      seller:e.detail.value,
+      store_name:e.detail.value,
       page:1,
       list:[]
     })

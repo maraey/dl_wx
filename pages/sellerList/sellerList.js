@@ -67,7 +67,7 @@ Page({
       page_size,
     list,sub_id} = this.data
     const res = await util.request('store/index',{
-      is_sub:true,
+      view_type:'all',
       name,
       page,
       page_size,

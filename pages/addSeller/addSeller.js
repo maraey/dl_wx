@@ -951,10 +951,12 @@ Page({
     console.log(this.data.industry_id);
   },
   bindMultiPickerColumnChange(e) {
+    console.log(e)
     let data = {
       multiArray: this.data.multiArray,
       multiIndex: this.data.multiIndex
     };
+    console.log(data)
     data.multiIndex[e.detail.column] = e.detail.value;
     switch (e.detail.column) {
       case 0:
@@ -979,6 +981,7 @@ Page({
     }
     // console.log(data.multiIndex);
     this.setData(data);
+    console.log(data,'111')
   },
   selectBatteryBillingUnit(e) {
     console.log(e);

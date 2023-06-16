@@ -37,9 +37,9 @@ Page({
 
   },
   async getLog(){
-    const res = await util.request('batteryDevice/myApply')
+    const res = await util.request('powerbankdevice/replenishLog')
     this.setData({
-      list:res.data
+      list:res.data.list
     })
   }
 })

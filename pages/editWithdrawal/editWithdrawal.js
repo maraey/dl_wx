@@ -197,10 +197,10 @@ Page({
         showError: true
       })
     }
-    if (res.code == 1) {
+    if (res.code == 200) {
       wx.showToast({
         title: res.msg,
-        icon: 'success',
+        icon: 'none',
         duration: 1000
       })
       this.setData({

@@ -52,7 +52,7 @@ Page({
         data: res.data
       })
       app.globalData.info = res.data
-      wx.redirectTo({
+      wx.reLaunch({
         url: '/pages/index/index',
       })
     }

@@ -42,7 +42,20 @@
       <view class="authority_set_switch">
         <switch color="#3D82FF" checked="{{status==2}}" bindchange="handleStatus"></switch>
       </view>
-      
+    </view>
+    <view class="authority_set_line"></view>
+    <view class="authority_set_checkbox">
+      <text class="checkbox_title">查看级别</text>
+      <view class="authority_checkbox">
+        <checkbox-group bindchange="checkboxChange">
+          <label class="checkbox_options" wx:for="{{permissionsItem}}" wx:key="{{item.value}}">
+            <view class="checkbox_check">
+              <checkbox  value="{{item.value}}" checked="{{item.checked}}" color="#3D82FF"/>
+            </view>
+            <view class="checkbox_name">{{item.name}}</view>
+          </label>
+        </checkbox-group>
+      </view>
     </view>
     
   </view>

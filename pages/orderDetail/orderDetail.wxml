@@ -81,7 +81,7 @@
       <view class="order_detail_box_list">
         <view class="order_detail_box_item">
           <view class="order_detail_box_item_title">归还商铺：</view>
-          <view class="order_detail_box_item_text">{{info.return_seller}}</view>
+          <view class="order_detail_box_item_text">{{info.return_store}}</view>
         </view>
         <view class="order_detail_box_item">
           <view class="order_detail_box_item_title">设备编号：</view>
@@ -97,7 +97,7 @@
         </view>
       </view>
     </view>
-    <view class="order_detail_box_wrap" wx:if="{{info.status==2&&login_info.role=='agent'}}">
+    <view class="order_detail_box_wrap" wx:if="{{info.status==2}}">
       <view class="order_detail_box_title">分成明细</view>
       <view class="order_detail_box_list">
         <view class="order_detail_box_item" wx:for="{{info.brokerage}}" wx:key="index">

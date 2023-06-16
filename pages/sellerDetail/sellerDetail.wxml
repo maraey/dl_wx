@@ -50,12 +50,12 @@
       <view class="item_title">充电宝计费策略</view>
       <view class="item_text">{{info.battery_text[0]}}｜{{info.battery_text[1]}}｜{{info.battery_text[2]}}</view>
     </view>
-    <view class="item" wx:if="{{info.device_types.wired=='true'}}">
+    <!-- <view class="item" wx:if="{{info.device_types.wired=='true'}}">
       <view class="item_title">充电线计费策略</view>
       <view class="item_text">
         <view class="item_text_item" wx:for="{{info.wired_text_new}}" wx:key="index">{{item}}</view>
       </view>
-    </view>
+    </view> -->
     <!-- <view class="item">
       <view class="item_title">免费时长/分钟</view>
       <view class="item_text">2</view>

@@ -14,7 +14,14 @@ Page({
     status: 1,
     shop_grade: '',
     disable: false,
-    id:''
+    id:'',
+    permissionsItem:[
+      {value : 1, name: '订单收益', checked: false},
+      {value : 2, name: '订单金额', checked: false},
+      {value : 3, name: '订单详情', checked: false}
+    ],
+    grade:[],
+    manager_grade:''
   },
 
   /**
@@ -41,10 +48,22 @@ Page({
           password: '******',
           disable: true,
           open_lock: info.open_lock,
-          status: info.status
+          status: info.status,
+          manager_grade: info.manager_grade
         })
       }
     }
+    console.log(this.data.manager_grade)
+    if(this.data.manager_grade){
+      this.updataCheckedStatus()
+    }
+    // let values = this.data.manager_grade.split(',')
+    // for(let i = 0; i< this.data.permissionsItem.length; i ++){
+    //   if(values.incluedes(this.data.permissionsItem[i].value.toString())){
+    //     this.setData({
+    //       permissionsItem[i].checked : true
+    //     })
+    //   }
   },
 
   /**
@@ -118,6 +137,7 @@ Page({
         name: this.data.name,
         status: this.data.status,
         open_lock: this.data.open_lock,
+        manager_grade: this.data.manager_grade
       })
       if (res.code == 200) {
         wx.showToast({
@@ -136,6 +156,7 @@ Page({
         password: this.data.password,
         status: this.data.status,
         open_lock: this.data.open_lock,
+        manager_grade: this.data.manager_grade
       })
       if (res.code == 200) {
         wx.showToast({
@@ -148,5 +169,29 @@ Page({
         }, 1000);
       }
     }
+  },
+  checkboxChange(e){
+    const grade = e.detail.value
+    const obj = grade.join(',')
+    this.setData({
+      manager_grade: obj
+    })
+    console.log(this.data.manager_grade)
+  },
+
+  updataCheckedStatus(){
+    let checkObj = this.data.manager_grade
+    let checkItem = this.data.permissionsItem
+    let values = checkObj.split(',')
+    checkItem.forEach(item=> {
+      if(values.includes(item.value.toString())){
+        item.checked = true
+      }
+    })
+    this.setData({
+      permissionsItem: checkItem
+    })
+    console.log(this.data.manager_grade)
+    console.log(this.data.permissionsItem)
   }
 })

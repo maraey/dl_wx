@@ -1,7 +1,6 @@
 <view class="batteryList">
   <view class="wrap">
     <view class="top_box">
-      <view class="name"><text class="text">{{name}}</text></view>
       <view class="search_box">
         <image src="/static/images/search_bar.png" class="image"></image>
         <input type="text" class="input" placeholder-class="phcolor" placeholder="请输入关键词" bindinput="search"/>
@@ -13,7 +12,7 @@
       <view class="device_num">设备编号：{{item.device_id}}</view>
       <view class="copy" bindtap="copy" data-text="{{item.device_id}}">复制</view>
     </view>
-    <view class="seller">所属商户：{{item.seller_name}}</view>
+    <view class="seller">所属商户：{{item.store_name}}</view>
     <view class="line"></view>
     <view class="info_wrap">
       <view class="info_list">
@@ -46,7 +45,7 @@
     <view class="other_wrap">
       <view class="other">
         <view class="other_title">所属人员</view>
-        <view class="other_text">{{item.agency_name}}</view>
+        <view class="other_text">{{item.sub_name}} ({{item.sub_role}})</view>
       </view>
     </view>
     <view class="other_wrap">

@@ -50,25 +50,31 @@
   <view class="something" >
     <view class="title">人员管理</view>
     <view class="lists">
-      <view class="item" data-role="agent" bindtap="agencyList" >
+      <view class="item" data-role="agent" bindtap="agencyList" wx:if="{{utils.indexOf(permissions,'/marketer/addAgent')!= -1}}">
         <view class="image_wrap">
           <image class="image" src="../../static/images/agency@2x.png"></image>
         </view>
         <text class="text">代理</text>
       </view>
-      <!-- <view class="item" data-role="introducer" bindtap="agencyList" >
-        <view class="image_wrap">
-          <image class="image" src="../../static/images/introducer@2x.png"></image>
-        </view>
-        <text class="text">渠道商</text>
-      </view> -->
-      <view class="item" data-role="bd" bindtap="agencyList">
+      <view class="item" data-role="bd" bindtap="agencyList" wx:if="{{utils.indexOf(permissions,'/marketer/addBd')!= -1}}">
         <view class="image_wrap">
           <image class="image" src="../../static/images/shopAccount@2x.png"></image>
         </view>
         <text class="text">地推</text>
       </view>
-      <view class="item" bindtap="sellerVip">
+      <view class="item"  bindtap="agencyList" data-role="manager" wx:if="{{utils.indexOf(permissions,'/marketer/addManager')!= -1}}">
+        <view class="image_wrap">
+          <image class="image"  src="../../static/images/shopAccount@2x.png"></image>
+        </view>
+        <text class="text">门店管理员</text>
+      </view>
+      <view class="item" bindtap="agencyList" data-role="introducer" wx:if="{{utils.indexOf(permissions,'/marketer/addIntroducer')!= -1}}">
+        <view class="image_wrap">
+          <image class="image"  src="../../static/images/shopVip@2x.png"></image>
+        </view>
+        <text class="text">渠道商</text>
+      </view>
+      <view class="item" bindtap="sellerVip" wx:if="{{utils.indexOf(permissions,'/vip/add')!= -1}}">
         <view class="image_wrap">
           <image class="image"  src="../../static/images/shopVip@2x.png"></image>
         </view>

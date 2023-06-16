@@ -92,7 +92,7 @@ Page({
   dataBoardDetail(e){
     const type = e.currentTarget.dataset.type
     wx.navigateTo({
-      url: `/pages/dataBoardDetail/dataBoardDetail?type=${type}`,
+      url: `/pages/batteryList/batteryList?type=${type}`,
     })
   },
   async getDevices(){
