@@ -31,7 +31,7 @@
         <view class="order_profit_box_detail_title">客户端</view>
         <view class="order_profit_box_detail_text">{{item.app_type}}</view>
       </view>
-      <view class="order_profit_box_detail_box">
+      <!-- <view class="order_profit_box_detail_box">
         <view class="order_profit_box_detail_title">订单类型</view>
         <view class="order_profit_box_detail_text" wx:if="{{item.order_type==1}}">充电宝</view>
         <view class="order_profit_box_detail_text" wx:if="{{item.order_type==2}}">充电线</view>
@@ -40,7 +40,7 @@
       <view class="order_profit_box_detail_box">
         <view class="order_profit_box_detail_title">设备号</view>
         <view class="order_profit_box_detail_text">{{item.device_code}}</view>
-      </view>
+      </view> -->
     </view>
     <view class="order_profit_box_detail" wx:if="{{type==2}}" wx:for="{{list}}" wx:key="index" wx:if="{{list.length>0}}">
       <view class="title">订单收益</view>
